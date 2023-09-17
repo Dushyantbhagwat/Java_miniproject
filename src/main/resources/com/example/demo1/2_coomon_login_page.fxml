@@ -31,12 +31,12 @@
             <Font name="Gill Sans MT Bold Italic" size="48.0" />
          </font>
       </TextField>
-      <Button fx:id="buttonlogin" layoutX="279.0" layoutY="314.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" text="Login" />
-      <Hyperlink fx:id="hyperlinkdonthaveacc" layoutX="237.0" layoutY="362.0" text="Don't have an account? sign up">
+      <Button fx:id="buttonlogin" layoutX="279.0" layoutY="314.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="34.0" prefWidth="84.0" text="Login" />
+      <Hyperlink fx:id="hyperlinkdonthaveacc" layoutX="237.0" layoutY="362.0" onAction="#createaccount" text="Don't have an account? sign up">
          <effect>
             <Glow />
          </effect></Hyperlink>
-      <Label fx:id="message" layoutX="233.0" layoutY="279.0" prefHeight="18.0" prefWidth="198.0" textFill="#ef1818">
+      <Label fx:id="message" layoutX="196.0" layoutY="279.0" onDragDetected="#setmessage" prefHeight="20.0" prefWidth="282.0" textFill="#ef1818">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

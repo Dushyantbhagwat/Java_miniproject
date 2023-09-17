@@ -1,11 +1,13 @@
 package com.example.demo1;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 /**
@@ -17,12 +19,15 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class LoginController implements Initializable {
 
@@ -79,17 +84,17 @@ public class LoginController implements Initializable {
     public void loginButtonOnAction(ActionEvent event){
 
         if (username.getText().isBlank() == false && password.getText().isBlank() == false){
-           setInvalidlogin();
+           setmessage();
         }else {
             message.setText("Please enter your username and password");
         }
     }
 
-    public void setInvalidlogin(){
+    public void setmessage(){
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifylogin = "select count(1) from user_account where email_id = ' " + username.getText() + " ' and password = ' " + password.getText() + " ' ";
+        String verifylogin = "select count(1) from admin_1 where email_id = ' " + username.getText() + " ' and password = ' " + password.getText() + " ' ";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -107,6 +112,22 @@ public class LoginController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
+        }
+
+    }
+
+    public void createaccount(){
+        try{
+            Object root = FXMLLoader.load(getClass().getResource("3_blood_bank_sign_up.fxml")); //pass scene name here
+            Scene scene = new Scene((Parent) root);
+            Stage registerstage = new Stage();
+            registerstage.setScene(scene);
+            registerstage.show();
+            registerstage.setResizable(false);
+            registerstage.setTitle("account"); // set title of app
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }

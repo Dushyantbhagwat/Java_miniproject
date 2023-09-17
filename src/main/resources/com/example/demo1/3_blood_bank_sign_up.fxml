@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane fx:id="anchorpaneBBSU" maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Label fx:id="labelBBD" layoutX="14.0" prefHeight="62.0" prefWidth="240.0" style="-fx-background-color: transperent;" text="Blood Bank Details" textFill="#ac0f0f">
+               <font>
+                  <Font name="ArtifaktElement-Regular" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="labeladdress" layoutX="21.0" layoutY="70.0" prefHeight="62.0" prefWidth="594.0" style="-fx-border-color: black;" />
+            <Label fx:id="labeldetails" layoutX="23.0" layoutY="143.0" prefHeight="251.0" prefWidth="594.0" style="-fx-border-color: black;" />
+            <Label fx:id="lablestate" layoutX="23.0" layoutY="91.0" prefHeight="22.0" prefWidth="54.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="  State" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="labeldistrict" layoutX="232.0" layoutY="91.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="District" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelcity" layoutX="445.0" layoutY="90.0" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="City" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textfieldcity" layoutX="494.0" layoutY="90.0" prefHeight="26.0" prefWidth="110.0" />
+            <Label fx:id="labelBBN" layoutX="25.0" layoutY="148.0" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text=" Blood Bank Name" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textBBN" layoutX="144.0" layoutY="147.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="labelemail" layoutX="25.0" layoutY="186.0" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text=" Email" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textusername" layoutX="144.0" layoutY="185.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="lablelisenceno" layoutX="22.0" layoutY="221.0" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="  Lisence no." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textlicenseno" layoutX="144.0" layoutY="220.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="labelcomponentfacility" layoutX="28.0" layoutY="333.0" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Component facility" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <SplitMenuButton fx:id="splitmenubuttonselectvalue" layoutX="147.0" layoutY="333.0" mnemonicParsing="false" text="select ">
+              <items>
+                <MenuItem fx:id="menuyes" mnemonicParsing="false" text="yes" />
+                <MenuItem fx:id="menuno" mnemonicParsing="false" text="no" />
+              </items>
+            </SplitMenuButton>
+            <Label fx:id="labelPHN" layoutX="331.0" layoutY="147.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Parent Hospital name" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textPHN" layoutX="468.0" layoutY="147.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="labelcategory" layoutX="329.0" layoutY="184.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Category" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <SplitMenuButton fx:id="splitbuttoncategory" layoutX="464.0" layoutY="187.0" mnemonicParsing="false" text="select ">
+               <items>
+                  <MenuItem fx:id="menugovt" mnemonicParsing="false" text="Govt." />
+                  <MenuItem fx:id="menuprivate" mnemonicParsing="false" text="private" />
+                  <MenuItem fx:id="menucharitable" mnemonicParsing="false" text="charitable" />
+                  <MenuItem fx:id="menuredcross" mnemonicParsing="false" text="red cross" />
+               </items>
+            </SplitMenuButton>
+            <Label fx:id="labelcontactno" layoutX="331.0" layoutY="221.0" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Contact no." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textcontactno" layoutX="463.0" layoutY="220.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="labelfromdate" layoutX="25.0" layoutY="259.0" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text=" From Date" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datefrom" layoutX="144.0" layoutY="259.0" prefHeight="26.0" prefWidth="94.0" />
+            <Label fx:id="labeltodate" layoutX="23.0" layoutY="292.0" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text=" To Date" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datetodate" layoutX="144.0" layoutY="292.0" prefHeight="26.0" prefWidth="94.0" />
+            <Label fx:id="labelsetpassword" layoutX="331.0" layoutY="259.0" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Set Password" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textsetpassword" layoutX="463.0" layoutY="258.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Label fx:id="labelconfirmpassword" layoutX="331.0" layoutY="292.0" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: deault; -fx-background-color: opaque;" text="Confirm Password" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordconfirmpassword" layoutX="463.0" layoutY="291.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: transperent; -fx-border-color: grey;" />
+            <Button fx:id="buttonsignupBBD" layoutX="398.0" layoutY="346.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Sign Up">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="textstate" layoutX="98.0" layoutY="92.0" prefHeight="26.0" prefWidth="102.0" />
+            <TextField fx:id="textdistrict" layoutX="309.0" layoutY="92.0" prefHeight="26.0" prefWidth="102.0" />
+            <Label fx:id="registered" layoutX="433.0" layoutY="22.0" prefHeight="18.0" prefWidth="194.0" textFill="#2e56dc" />
+            <Label fx:id="incorrect" layoutX="438.0" layoutY="318.0" prefHeight="18.0" prefWidth="174.0" textFill="#cc0a0a" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
