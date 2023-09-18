@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
  */
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -60,9 +61,13 @@ public class LoginController implements Initializable {
 
     @FXML // fx:id="username"
     private TextField username; // Value injected by FXMLLoader
+
+    @FXML
+    private Button back;
     private DatabaseConnection connectNow;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert anchorppanelogin != null : "fx:id=\"anchorppanelogin\" was not injected: check your FXML file '2_coomon login page.fxml'.";
         assert buttonlogin != null : "fx:id=\"buttonlogin\" was not injected: check your FXML file '2_coomon login page.fxml'.";
@@ -75,63 +80,80 @@ public class LoginController implements Initializable {
 
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         File backFile = new File("im/background.png");
         Image backImage = new Image(backFile.toURI().toString());
         iamge_.setImage(backImage);
     }
 
-    public void loginButtonOnAction(ActionEvent event){
+    public void loginButtonOnAction(ActionEvent event) {
 
-        if (username.getText().isBlank() == false && password.getText().isBlank() == false){
-           setmessage();
-        }else {
+        if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
+            setmessage();
+        } else {
             message.setText("Please enter your username and password");
         }
     }
 
-    public void setmessage(){
+    public void setmessage() {
         DatabaseConnection connection = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
+        Connection connection1 = connection.getConnection();
 
-        String verifylogin = "select count(1) from admin_1 where email_id = ' " + username.getText() + " ' and password = ' " + password.getText() + " ' ";
+        String verifylogin = "select count(1) from admin1_ where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
 
         try {
-            Statement statement = connectDB.createStatement();
+            Statement statement = connection1.createStatement();
             ResultSet queryResult = statement.executeQuery(verifylogin);
 
-            while (queryResult.next()){
-                if (queryResult.getInt(1)== 1){
+            while (queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
                     message.setText("Congratulations!");
-                }else {
+                } else {
                     message.setText("Invalid credentials. Please try again.");
                 }
 
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
 
     }
 
-    public void createaccount(){
-        try{
+    public void createaccount() {
+        try {
             Object root = FXMLLoader.load(getClass().getResource("3_blood_bank_sign_up.fxml")); //pass scene name here
             Scene scene = new Scene((Parent) root);
             Stage registerstage = new Stage();
             registerstage.setScene(scene);
             registerstage.show();
             registerstage.setResizable(false);
-            registerstage.setTitle("account"); // set title of app
+            registerstage.setTitle("Register"); // set title of app
 
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void homepage(){
+        try {
+            Object root = FXMLLoader.load(getClass().getResource("1_startingpage.fxml")); //pass scene name here
+            Scene scene = new Scene((Parent) root);
+            Stage registerstage = new Stage();
+            registerstage.setScene(scene);
+            registerstage.show();
+            registerstage.setResizable(false);
+            registerstage.setTitle("Home"); // set title of app
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 }
+
 
 
 
