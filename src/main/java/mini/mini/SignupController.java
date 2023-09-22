@@ -3,7 +3,7 @@ package mini.mini;
 /**
  * Sample Skeleton for '3_blood_bank_sign_up.fxml' Controller Class
  */
-////////////fs
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -309,6 +309,4 @@ public class SignupController implements Initializable {
 
 
 }
-
-
 

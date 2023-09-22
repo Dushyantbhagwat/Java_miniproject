@@ -14,7 +14,7 @@ import java.io.IOException;
         @Override
         public void start(Stage stage) throws IOException {
             try {
-                Object root = FXMLLoader.load(getClass().getResource("2_coomon_login_page.fxml")); //pass scene name here
+                Object root = FXMLLoader.load(getClass().getResource("1_startingpage.fxml")); //pass scene name here
                 Scene scene = new Scene((Parent) root);
                 stage.setScene(scene);
                 stage.show();
@@ -25,6 +25,8 @@ import java.io.IOException;
                 e.printStackTrace();
             }
         }
+
+        public void
 
 
 

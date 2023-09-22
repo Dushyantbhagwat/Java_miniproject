@@ -32,7 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -42,9 +42,9 @@
 
 <VBox fx:id="vboxscreen" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.HomeController">
   <children>
-    <AnchorPane fx:id="anchorpanescreen" maxHeight="-1.0" maxWidth="-1.0" prefHeight="453.0" prefWidth="652.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="anchorpanescreen" maxHeight="-1.0" maxWidth="-1.0" prefHeight="416.0" prefWidth="652.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fx:id="cbtdi" blendMode="MULTIPLY" fitHeight="280.0" fitWidth="256.0" layoutX="394.0" layoutY="152.0" pickOnBounds="true" smooth="false">
+            <ImageView fx:id="cbtdi" blendMode="MULTIPLY" fitHeight="280.0" fitWidth="256.0" layoutX="396.0" layoutY="151.0" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@../../../../../../../OneDrive/Desktop/im/blood info.JPG" />
                </image>
@@ -54,18 +54,17 @@
                   <Image url="@../../../../../../../OneDrive/Desktop/im/DONATE NW'.JPG" />
                </image>
             </ImageView>
-            <ImageView fx:id="symbol" blendMode="MULTIPLY" fitHeight="129.0" fitWidth="652.0" layoutX="-2.0" layoutY="22.0" pickOnBounds="true" smooth="false">
+            <ImageView fx:id="symbol" blendMode="MULTIPLY" fitHeight="127.0" fitWidth="652.0" layoutX="-1.0" layoutY="24.0" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@../../../../../../../OneDrive/Desktop/im/panel.JPG" />
                </image>
             </ImageView>
-            <Label fx:id="bglabel" prefHeight="27.0" prefWidth="645.0" style="-fx-background-color: black;" text=" BLOOD GUARDIANS                     " textFill="WHITE">
+            <Label fx:id="bglabel" layoutY="-3.0" prefHeight="11.0" prefWidth="652.0" style="-fx-background-color: black;" text=" BLOOD GUARDIANS                     " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="addbloodbankopt" layoutX="533.0" mnemonicParsing="false" onAction="#hometoBloodBanksignup" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: GREY;" text="ADD BLOOD BANK" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="533.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="userclickopt" layoutX="412.0" mnemonicParsing="false" onAction="#userbuttonOnAction" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: GREY;" text="USER" AnchorPane.bottomAnchor="417.0" AnchorPane.leftAnchor="412.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0" />
+            <ChoiceBox fx:id="login" layoutX="535.0" prefHeight="25.0" prefWidth="117.0" style="-fx-background-radius: 4;" AnchorPane.bottomAnchor="425.0" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       </children>
     </AnchorPane>
   </children>
