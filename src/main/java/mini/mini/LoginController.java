@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connection1 = connection.getConnection();
 
-        String verifylogin = "select count(1) from admin1_ where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
+        String verifylogin = "select count(1) from users where emailid = '" + username.getText() + "' and password ='" + password.getText() + "'";
 
         try {
             Statement statement = connection1.createStatement();
@@ -122,7 +122,7 @@ public class LoginController implements Initializable {
 
     @FXML
     void hyperlinkdonthaveaccOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("3_blood_bank_sign_up.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("8_user sign up.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
@@ -147,12 +147,5 @@ public class LoginController implements Initializable {
         stage.show();
         stage.setTitle("Home");
     }
-
-
-
-
-
-
-
 }
 
