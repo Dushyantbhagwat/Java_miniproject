@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,36 +34,16 @@ public class userSignupController implements Initializable {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML // fx:id="a"
-    private MenuItem a; // Value injected by FXMLLoader
-
-    @FXML // fx:id="ab"
-    private MenuItem ab; // Value injected by FXMLLoader
-
-    @FXML // fx:id="abm"
-    private MenuItem abm; // Value injected by FXMLLoader
-
     @FXML // fx:id="addresstext"
     private TextArea addresstext; // Value injected by FXMLLoader
 
 
-    @FXML // fx:id="am"
-    private MenuItem am; // Value injected by FXMLLoader
-
     @FXML // fx:id="anchorpanescreen"
     private AnchorPane anchorpanescreen; // Value injected by FXMLLoader
-
-    @FXML // fx:id="b"
-    private MenuItem b; // Value injected by FXMLLoader
-
-    @FXML // fx:id="bloodgroupmenu"
-    private SplitMenuButton bloodgroupmenu; // Value injected by FXMLLoader
 
     @FXML // fx:id="bloodguardianslabel"
     private Label bloodguardianslabel; // Value injected by FXMLLoader
 
-    @FXML // fx:id="bm"
-    private MenuItem bm; // Value injected by FXMLLoader
 
     @FXML // fx:id="button_back"
     private Button button_back; // Value injected by FXMLLoader
@@ -85,11 +66,9 @@ public class userSignupController implements Initializable {
     @FXML // fx:id="fullbackgimage"
     private ImageView fullbackgimage; // Value injected by FXMLLoader
 
-    @FXML // fx:id="o"
-    private MenuItem o; // Value injected by FXMLLoader
+    @FXML // fx:id="bloodgroupchoice"
+    private ChoiceBox<String> bloodgroupchoice; // Value injected by FXMLLoader
 
-    @FXML // fx:id="om"
-    private MenuItem om; // Value injected by FXMLLoader
 
     @FXML // fx:id="passwordtext"
     private TextField passwordtext; // Value injected by FXMLLoader
@@ -109,16 +88,10 @@ public class userSignupController implements Initializable {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert a != null : "fx:id=\"a\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert ab != null : "fx:id=\"ab\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert abm != null : "fx:id=\"abm\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert addresstext != null : "fx:id=\"addresstext\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert am != null : "fx:id=\"am\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert anchorpanescreen != null : "fx:id=\"anchorpanescreen\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert b != null : "fx:id=\"b\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert bloodgroupmenu != null : "fx:id=\"bloodgroupmenu\" was not injected: check your FXML file '8_user sign up.fxml'.";
+        assert bloodgroupchoice != null : "fx:id=\"bloodgroupchoice\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert bloodguardianslabel != null : "fx:id=\"bloodguardianslabel\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert bm != null : "fx:id=\"bm\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert button_back != null : "fx:id=\"button_back\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert confirmtext != null : "fx:id=\"confirmtext\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert contactnumbertext != null : "fx:id=\"contactnumbertext\" was not injected: check your FXML file '8_user sign up.fxml'.";
@@ -126,8 +99,6 @@ public class userSignupController implements Initializable {
         assert emailidtext != null : "fx:id=\"emailidtext\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert emailidtext1 != null : "fx:id=\"emailidtext1\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert fullbackgimage != null : "fx:id=\"fullbackgimage\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert o != null : "fx:id=\"o\" was not injected: check your FXML file '8_user sign up.fxml'.";
-        assert om != null : "fx:id=\"om\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert passwordtext != null : "fx:id=\"passwordtext\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert profiletext != null : "fx:id=\"profiletext\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert registerduser != null : "fx:id=\"registerduser\" was not injected: check your FXML file '8_user sign up.fxml'.";
@@ -140,6 +111,20 @@ public class userSignupController implements Initializable {
         File backFile = new File("im/background.png");
         Image backImage = new Image(backFile.toURI().toString());
         fullbackgimage.setImage(backImage);
+
+        bloodgroupchoice.getItems().addAll("A+","B+","O+","AB+","A-","B-","O-","AB-");
+
+             bloodgroupchoice.setConverter(new StringConverter<String>() {
+                 @Override
+                 public String toString(String s) {
+                     return (s == null) ? "select blood group" : s ;
+                 }
+
+                 @Override
+                 public String fromString(String s) {
+                     return null;
+                 }
+             });
     }
 
     public void signupOnAction(ActionEvent event) {
@@ -167,10 +152,11 @@ public class userSignupController implements Initializable {
             String password = passwordtext.getText();
             String emailid = emailidtext.getText();
             String phonenumber = contactnumbertext.getText();
+            String blood_group = bloodgroupchoice.getValue();
             String address = addresstext.getText();
 
-            String insertFields = "insert into users (name, DOB, password, emailid, phonenumber, address) values ('";
-            String insertValues = name + "','" + DOB + "','" + password + "','" + emailid + "','" + phonenumber + "','" + address + "')";
+            String insertFields = "insert into users (name, DOB, password, emailid, phonenumber, address, blood_group) values ('";
+            String insertValues = name + "','" + DOB + "','" + password + "','" + emailid + "','" + phonenumber + "','" + address + "','" + blood_group + "')";
             String insertToRegister3 = insertFields + insertValues;
 
 
