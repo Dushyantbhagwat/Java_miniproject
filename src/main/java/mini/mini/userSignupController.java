@@ -20,8 +20,7 @@ import javafx.util.StringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -85,6 +84,8 @@ public class userSignupController implements Initializable {
     private Scene scene;
     Timeline timeline;
 
+    Label warning;
+
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -112,64 +113,75 @@ public class userSignupController implements Initializable {
         Image backImage = new Image(backFile.toURI().toString());
         fullbackgimage.setImage(backImage);
 
-        bloodgroupchoice.getItems().addAll("A+","B+","O+","AB+","A-","B-","O-","AB-");
+        bloodgroupchoice.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-");
 
-             bloodgroupchoice.setConverter(new StringConverter<String>() {
-                 @Override
-                 public String toString(String s) {
-                     return (s == null) ? "select blood group" : s ;
-                 }
+        bloodgroupchoice.setConverter(new StringConverter<String>() {
+            @Override
+            public String toString(String s) {
+                return (s == null) ? "select blood group" : s;
+            }
 
-                 @Override
-                 public String fromString(String s) {
-                     return null;
-                 }
-             });
+            @Override
+            public String fromString(String s) {
+                return null;
+            }
+        });
     }
 
-    public void signupOnAction(ActionEvent event) {
-
+    public void signupOnAction(ActionEvent actionEventevent) throws SQLException {
         if (passwordtext.getText().equals(confirmtext.getText())) {
             registeruser();
-        }
-        else {
+        } else {
             registerduser.setText("password does not match!");
 
         }
     }
 
-        public void registeruser(){
+    public void registeruser() throws SQLException {
 
-            LocalDate localDate = dateofbirthtext.getValue();
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String DOB = localDate.format(dateTimeFormatter);
+        LocalDate localDate = dateofbirthtext.getValue();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String DOB = localDate.format(dateTimeFormatter);
 
-            DatabaseConnection connectNow = new DatabaseConnection();
-            Connection connectDB = connectNow.getConnection();
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
 
+        PreparedStatement psinsert = null;
+        PreparedStatement pscheck = null;
+        ResultSet resultSet = null;
 
-            String name = emailidtext1.getText();
-            String password = passwordtext.getText();
-            String emailid = emailidtext.getText();
-            String phonenumber = contactnumbertext.getText();
-            String blood_group = bloodgroupchoice.getValue();
-            String address = addresstext.getText();
+        String name = emailidtext1.getText();
+        String password = passwordtext.getText();
+        String emailid = emailidtext.getText();
+        String phonenumber = contactnumbertext.getText();
+        String blood_group = bloodgroupchoice.getValue();
+        String address = addresstext.getText();
 
-            String insertFields = "insert into users (name, DOB, password, emailid, phonenumber, address, blood_group) values ('";
-            String insertValues = name + "','" + DOB + "','" + password + "','" + emailid + "','" + phonenumber + "','" + address + "','" + blood_group + "')";
-            String insertToRegister3 = insertFields + insertValues;
+        try {
+            pscheck = connectDB.prepareStatement("select * from users where emailid= ?");
+            pscheck.setString(1, emailid);
+            resultSet = pscheck.executeQuery();
+            if (resultSet.isBeforeFirst()) {
+                System.out.println("User Already Exists...");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("YOU CANNOT USE THIS EMAILID.");
+                alert.show();
+            } else {
 
+                String insertFields = "insert into users (name, DOB, password, emailid, phonenumber, address, blood_group) values ('";
+                String insertValues = name + "','" + DOB + "','" + password + "','" + emailid + "','" + phonenumber + "','" + address + "','" + blood_group + "')";
+                String insertToRegister3 = insertFields + insertValues;
 
-            try {
                 Statement statement = connectDB.createStatement();
                 statement.executeUpdate(insertToRegister3);
                 registerduser.setText("You have registered successfully!");
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
+    }
 
     @FXML
     void backTologinOnAction(ActionEvent event) {
@@ -184,9 +196,10 @@ public class userSignupController implements Initializable {
         stage.show();
         stage.setTitle("Login");
     }
+}
 
 
-    }
+
 
 
 
