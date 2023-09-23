@@ -3,7 +3,6 @@ package mini.mini;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -20,8 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -29,9 +28,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class LoginController implements Initializable {
+public class UserLoginController implements Initializable {
 
     @FXML
     private AnchorPane anchorppanelogin;
@@ -62,9 +60,8 @@ public class LoginController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-
+    // This method is called by the FXMLLoader when initialization is complete
     @FXML
-        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert anchorppanelogin != null : "fx:id=\"anchorppanelogin\" was not injected: check your FXML file '2_coomon_login_page.fxml'.";
         assert back != null : "fx:id=\"back\" was not injected: check your FXML file '2_coomon_login_page.fxml'.";
@@ -84,16 +81,16 @@ public class LoginController implements Initializable {
         iamge_.setImage(backImage);
     }
 
-    public void loginbuttonOnAction(ActionEvent event) {
+    public void loginbuttonOnAction(ActionEvent e) throws SQLException {
 
         if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
-            setmessage();
+            setmessage(e);
         } else {
             message.setText("Please enter your username and password");
         }
     }
 
-    public void setmessage() {
+    public void setmessage(ActionEvent e) {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connection1 = connection.getConnection();
 
@@ -105,19 +102,26 @@ public class LoginController implements Initializable {
 
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
-                    message.setText("      Congratulations!   ");
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                    try {
+                        scene = new Scene(fxmlLoader.load());
+                    } catch (IOException event) {
+                        throw new RuntimeException(String.valueOf(e));
+                    }
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setTitle("Dashboard");
+
                 } else {
-                    message.setText("Invalid credentials. Please try again.");
+                    message.setText("Invalid Credentials");
                 }
-
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+        } catch (Exception ep) {
+            ep.printStackTrace();
         }
-
     }
+
 
 
     @FXML

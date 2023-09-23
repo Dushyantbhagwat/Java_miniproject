@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorppanelogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.adminloginController">
+<AnchorPane fx:id="anchorppanelogin1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.adminloginController">
     <children>
-        <ImageView fx:id="iamge_" fitHeight="296.0" fitWidth="642.0" layoutY="106.0" pickOnBounds="true">
+        <ImageView fx:id="backimage" fitHeight="296.0" fitWidth="642.0" layoutY="106.0" pickOnBounds="true">
             <image>
                 <Image url="@../../../../../../../OneDrive/Desktop/im/background.png" />
             </image>
@@ -25,12 +25,12 @@
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></PasswordField>
-        <TextField fx:id="textbloodguardians" editable="false" prefHeight="106.0" prefWidth="642.0" style="-fx-background-color: grey;" text="    BLOOD GUARDIANS">
+        <TextField fx:id="extbloodguardians" editable="false" prefHeight="106.0" prefWidth="642.0" style="-fx-background-color: grey;" text="    BLOOD GUARDIANS">
             <font>
                 <Font name="Gill Sans MT Bold Italic" size="48.0" />
             </font>
         </TextField>
-        <Button fx:id="loginbuton" layoutX="279.0" layoutY="316.0" mnemonicParsing="false" onAction="#loginButtononClick" prefHeight="30.0" prefWidth="84.0" text="Login" />
+        <Button fx:id="loginbuton" layoutX="279.0" layoutY="316.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="30.0" prefWidth="84.0" text="Login" />
         <Label fx:id="diplaymessage" layoutX="202.0" layoutY="279.0" prefHeight="20.0" prefWidth="282.0" textFill="#ef1818">
             <font>
                 <Font name="System Bold" size="14.0" />
@@ -39,7 +39,7 @@
                 <Glow />
             </effect>
         </Label>
-        <Button fx:id="backbutton" layoutX="-4.0" layoutY="-4.0" mnemonicParsing="false" onAction="#backtofirstOnAction" prefHeight="30.0" prefWidth="58.0" style="-fx-background-radius: 7;" text="Back">
+        <Button fx:id="back" layoutX="-4.0" layoutY="-4.0" mnemonicParsing="false" onAction="#backTohomeOnAction" prefHeight="30.0" prefWidth="58.0" style="-fx-background-radius: 7;" text="Back">
             <font>
                 <Font size="14.0" />
             </font>

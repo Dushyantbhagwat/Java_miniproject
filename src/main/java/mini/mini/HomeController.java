@@ -78,7 +78,7 @@ public class HomeController  implements Initializable {
     }
 
     @FXML
-    void userloginOnAction(ActionEvent event) {
+    void userLoginOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
@@ -88,11 +88,11 @@ public class HomeController  implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Lpgin");
+        stage.setTitle("Login");
     }
 
     @FXML
-    void adminloginc(ActionEvent event) {
+    void adminloginOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         try {
@@ -102,7 +102,7 @@ public class HomeController  implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Log");
+        stage.setTitle("Login");
     }
 }
 

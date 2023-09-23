@@ -106,7 +106,8 @@ public class userSignupController implements Initializable {
     private Scene scene;
     Timeline timeline;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert a != null : "fx:id=\"a\" was not injected: check your FXML file '8_user sign up.fxml'.";
         assert ab != null : "fx:id=\"ab\" was not injected: check your FXML file '8_user sign up.fxml'.";
@@ -135,22 +136,24 @@ public class userSignupController implements Initializable {
     }
 
     @Override
-        public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         File backFile = new File("im/background.png");
         Image backImage = new Image(backFile.toURI().toString());
         fullbackgimage.setImage(backImage);
+    }
+
+    public void signupOnAction(ActionEvent event) {
+
+        if (passwordtext.getText().equals(confirmtext.getText())) {
+            registeruser();
         }
+        else {
+            registerduser.setText("password does not match!");
 
-        public void signupOnAction(ActionEvent event){
-
-          if(passwordtext.getText().equals(confirmtext.getText())){
-              registeruser();
-            }else {
-              registerduser.setText("password does not match!");
-          }
         }
+    }
 
-        public void registeruser() {
+        public void registeruser(){
 
             LocalDate localDate = dateofbirthtext.getValue();
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -182,20 +185,24 @@ public class userSignupController implements Initializable {
             }
         }
 
-
-        @FXML
-        void backTologinOnAction(ActionEvent event) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Login");
+    @FXML
+    void backTologinOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Login");
+    }
 
 
-}
+    }
+
+
+
+
+
