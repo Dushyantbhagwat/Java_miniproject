@@ -2,6 +2,7 @@ package com.example.demo7;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,16 +12,19 @@ import static javafx.application.Application.launch;
 
 
 public class main extends Application{
+    @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("4_HOME PAGE ADMIN.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        stage.setTitle("Homepage_admin1");
-        stage.setScene(scene);
-        stage.show();
-    }
+        try {
+            Object root = FXMLLoader.load(getClass().getResource("4_HOME PAGE ADMIN.fxml")); //pass scene name here
+            Scene scene = new Scene((Parent) root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            stage.setTitle("HOME"); // set title of app
 
-    public static void main(String[] args) {
-        launch();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
