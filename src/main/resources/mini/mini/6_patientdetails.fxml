@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.patientDetailsController">
    <top>
       <AnchorPane fx:id="anchorpaneP" prefHeight="29.0" prefWidth="930.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="buttonlogout" layoutX="828.0" layoutY="8.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="87.0" text="Log out">
+            <Button fx:id="buttonlogout" layoutX="829.0" layoutY="8.0" mnemonicParsing="false" onAction="#LogoutButtonOnAction" prefHeight="27.0" prefWidth="80.0" text="Log out">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
@@ -35,7 +35,7 @@
          <children>
             <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="424.0" prefWidth="180.0" style="-fx-background-color: #5A5A5A;">
                <children>
-                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="103.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="103.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="153.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Donor">
+                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="153.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donor">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -59,7 +59,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonbloodrequest" blendMode="OVERLAY" layoutY="253.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="       Blood Requests">
+                  <Button fx:id="buttonbloodrequest" blendMode="OVERLAY" layoutY="253.0" mnemonicParsing="false" onAction="#bloodrequestsButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="       Blood Requests">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -69,22 +69,22 @@
                   </Button>
                   <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="116.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/7F9F2B5D2C931BD100B5204353CAD206/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
+                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="166.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
+                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.5.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="11.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="11.0" layoutY="216.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1EA7E47A7C1E2D4B104E71184ED8290A/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
+                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="iamgebloodrequest" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="266.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/991A355DA32AF42A272E15B7A95456F0/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25..jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -97,14 +97,14 @@
    </right>
    <center>
       <TableView fx:id="tableview" prefHeight="365.0" prefWidth="735.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="tablecolumnname" prefWidth="121.60002136230469" text="NAME" />
+         <columns>
+            <TableColumn fx:id="tablecolumnname" prefWidth="121.60002136230469" text="NAME" />
             <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="93.5999755859375" text="BLOOD GROUP" />
             <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="81.5999755859375" text="DOB" />
             <TableColumn fx:id="tablecolumndisease" prefWidth="120.0" text="USER ID" />
             <TableColumn fx:id="tablecolumncontactno" minWidth="0.0" prefWidth="101.60003662109375" text="CONTACT NO." />
             <TableColumn fx:id="tablecolumndisease1" prefWidth="101.60003662109375" sortType="DESCENDING" text="REPORT" />
-        </columns>
+         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>

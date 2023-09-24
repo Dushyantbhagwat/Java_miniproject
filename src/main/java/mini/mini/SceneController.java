@@ -15,21 +15,6 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
-//    public void homeswitch(ActionEvent event) throws IOException {
-//
-//        root = FXMLLoader.load(getClass().getResource("1_startingpage.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-//    public void loginswitch(ActionEvent event) throws IOException{
-//        root = FXMLLoader.load(getClass().getResource("2_coomon_login_page.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 }
 
 

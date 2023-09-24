@@ -114,7 +114,6 @@ public class userSignupController implements Initializable {
         fullbackgimage.setImage(backImage);
 
         bloodgroupchoice.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-");
-
         bloodgroupchoice.setConverter(new StringConverter<String>() {
             @Override
             public String toString(String s) {
@@ -196,6 +195,7 @@ public class userSignupController implements Initializable {
         stage.show();
         stage.setTitle("Login");
     }
+
 }
 
 

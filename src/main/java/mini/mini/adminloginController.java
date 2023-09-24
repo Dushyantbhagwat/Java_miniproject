@@ -96,7 +96,7 @@ public class adminloginController implements Initializable {
     }
 
 
-    public void validatelogin(ActionEvent e) {
+    public void validatelogin(ActionEvent e) throws RuntimeException {
 
         DatabaseConnection connection = new DatabaseConnection();
         Connection connection1 = connection.getConnection();
@@ -129,8 +129,8 @@ public class adminloginController implements Initializable {
             ep.printStackTrace();
         }
     }
-        @FXML
-        void backTohomeOnAction(ActionEvent event) {
+    @FXML
+    void backTohomeOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("1_startingpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
@@ -145,6 +145,7 @@ public class adminloginController implements Initializable {
 
 
 }
+
 
 
 
@@ -233,13 +234,3 @@ public class adminloginController implements Initializable {
 //        stage.setTitle("Home");
 //    }
 //}
-
-
-
-
-
-
-
-
-
-

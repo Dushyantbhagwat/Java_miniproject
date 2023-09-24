@@ -11,104 +11,104 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpanelAVE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="anchorpanelBG" layoutX="118.0" layoutY="6.0" prefHeight="37.0" prefWidth="754.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Button fx:id="anchorpanello" layoutX="844.0" layoutY="7.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="844.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
-         <font>
-            <Font name="System Bold Italic" size="13.0" />
-         </font>
-      </Button>
-      <SplitPane fx:id="anchorpanelSP" dividerPositions="0.20853080568720375" layoutX="7.0" layoutY="37.0" prefHeight="393.0" prefWidth="930.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
-        <items>
-          <AnchorPane fx:id="anchorpanelAV" prefHeight="394.0" prefWidth="230.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
-               <children>
-                  <Button fx:id="anchorpanelH" blendMode="OVERLAY" layoutY="78.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="  Home">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="anchorpanelD" blendMode="OVERLAY" layoutY="127.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="  Donor">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="anchorpanelP" blendMode="OVERLAY" layoutY="176.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text=" Patient">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="anchorpanelBR" blendMode="OVERLAY" layoutY="226.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="      Blood Requests">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="90.0" pickOnBounds="true" smooth="false">
-                     <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/4E4E53AA080247BC31D0EB4E7AEB07A0/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/144A3F71A03AB7C4F46F9656608EFDB2/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/C54E7837E0CD0CED286CB5995327D1AB/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="iamgebloodrequest" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/B571ECEA16A9824023EE1AF16897A582/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-          <AnchorPane fx:id="anchorpanelARH" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="737.0">
-               <children>
-                  <ImageView fx:id="anchorpanelIV" fitHeight="394.0" fitWidth="733.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../imag/Untitled%20design.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="anchorpanelDD" layoutX="248.0" prefHeight="50.0" prefWidth="177.0" text="DONOR DETAILS">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="anchorpanelTV" editable="true" layoutX="-1.0" layoutY="38.0" prefHeight="354.0" prefWidth="733.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="38.0">
-                    <columns>
-                      <TableColumn fx:id="anchorpanelTCN" prefWidth="117.60003662109375" text="NAME" />
-                      <TableColumn fx:id="anchorpanelTCP" prefWidth="99.99993133544922" text="BLOOD GROUP" />
-                        <TableColumn fx:id="anchorpanelTCBG" prefWidth="90.4000244140625" text="DOB" />
-                        <TableColumn fx:id="anchorpanelTCA" prefWidth="93.60003662109375" text="USER ID" />
-                        <TableColumn fx:id="anchorpanelTCM" prefWidth="109.5999755859375" text="CONTACT NO." />
-                        <TableColumn fx:id="anchorpanelTCA" prefWidth="127.99996948242188" text="REPORT" />
-                        <TableColumn fx:id="anchorpanelTCA1" prefWidth="92.7999267578125" text="ACTION" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children></AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+<AnchorPane fx:id="anchorpanelAVE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.donorController">
+    <children>
+        <Label fx:id="anchorpanelBG" layoutX="118.0" layoutY="6.0" prefHeight="37.0" prefWidth="754.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="anchorpanello" layoutX="844.0" layoutY="7.0" mnemonicParsing="false" onAction="#LogoutButtonOnAction" prefHeight="24.0" prefWidth="72.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="844.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Button>
+        <SplitPane fx:id="anchorpanelSP" dividerPositions="0.20853080568720375" layoutX="7.0" layoutY="37.0" prefHeight="393.0" prefWidth="930.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
+            <items>
+                <AnchorPane fx:id="anchorpanelAV" prefHeight="394.0" prefWidth="230.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
+                    <children>
+                        <Button fx:id="anchorpanelH" blendMode="OVERLAY" layoutY="78.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="190.0" text="  Home">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="anchorpanelD" blendMode="OVERLAY" layoutY="127.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="  Donor">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="anchorpanelP" blendMode="OVERLAY" layoutY="176.0" mnemonicParsing="false" onAction="#PatientButtonOnAction" prefHeight="50.0" prefWidth="190.0" text=" Patient">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="anchorpanelBR" blendMode="OVERLAY" layoutY="226.0" mnemonicParsing="false" onAction="#bloodrequestsButtonOnAction" prefHeight="50.0" prefWidth="190.0" text="      Blood Requests">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="90.0" pickOnBounds="true" smooth="false">
+                            <image>
+                                <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                            </image>
+                        </ImageView>
+                        <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.5.jpg" />
+                            </image>
+                        </ImageView>
+                        <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
+                            </image>
+                        </ImageView>
+                        <ImageView fx:id="iamgebloodrequest" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25..jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="anchorpanelARH" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="737.0">
+                    <children>
+                        <ImageView fx:id="anchorpanelIV" fitHeight="394.0" fitWidth="733.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../imag/Untitled%20design.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="anchorpanelDD" layoutX="248.0" prefHeight="50.0" prefWidth="177.0" text="DONOR DETAILS">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="anchorpanelTV" editable="true" layoutX="-1.0" layoutY="38.0" prefHeight="354.0" prefWidth="733.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="38.0">
+                            <columns>
+                                <TableColumn fx:id="anchorpanelTCN" prefWidth="117.60003662109375" text="NAME" />
+                                <TableColumn fx:id="anchorpanelTCP" prefWidth="99.99993133544922" text="BLOOD GROUP" />
+                                <TableColumn fx:id="anchorpanelTCBG" prefWidth="90.4000244140625" text="DOB" />
+                                <TableColumn fx:id="anchorpanelTCA" prefWidth="93.60003662109375" text="USER ID" />
+                                <TableColumn fx:id="anchorpanelTCM" prefWidth="109.5999755859375" text="CONTACT NO." />
+                                <TableColumn fx:id="anchorpanelTCA" prefWidth="127.99996948242188" text="REPORT" />
+                                <TableColumn fx:id="anchorpanelTCA1" prefWidth="92.7999267578125" text="ACTION" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>
