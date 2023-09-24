@@ -230,7 +230,12 @@ public class AdminHomePageController implements Initializable {
 
     @FXML
     void HomeButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("4_HOME PAGE ADMIN.fxml"));
+
+    }
+
+    @FXML
+    void LogoutButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("login.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
@@ -239,12 +244,7 @@ public class AdminHomePageController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("HomePage_Admin");
-    }
-
-    @FXML
-    void LogoutButtonOnAction(ActionEvent event) {
-
+        stage.setTitle("Logout");
     }
 
     @FXML

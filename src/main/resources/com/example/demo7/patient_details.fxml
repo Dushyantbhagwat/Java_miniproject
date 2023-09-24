@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo7.AdminHomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo7.patientDetailsController">
     <top>
         <AnchorPane fx:id="anchorpaneP" prefHeight="29.0" prefWidth="930.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
             <children>
@@ -22,7 +22,7 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="buttonlogout" layoutX="828.0" layoutY="8.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="87.0" text="Log out">
+                <Button fx:id="buttonlogout" layoutX="828.0" layoutY="8.0" mnemonicParsing="false" onAction="#LogoutButtonOnAction" prefHeight="16.0" prefWidth="87.0" text="Log out">
                     <font>
                         <Font name="System Bold Italic" size="13.0" />
                     </font>
@@ -35,7 +35,7 @@
             <children>
                 <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="424.0" prefWidth="180.0" style="-fx-background-color: #5A5A5A;">
                     <children>
-                        <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="103.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+                        <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="103.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Home">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -43,7 +43,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="153.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Donor">
+                        <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="153.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donor">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -59,7 +59,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="buttonbloodrequest" blendMode="OVERLAY" layoutY="253.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="       Blood Requests">
+                        <Button fx:id="buttonbloodrequest" blendMode="OVERLAY" layoutY="253.0" mnemonicParsing="false" onAction="#bloodrequestsButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="       Blood Requests">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>

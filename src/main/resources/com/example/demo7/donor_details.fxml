@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpanelAVE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo7.AdminHomePageController">
+<AnchorPane fx:id="anchorpanelAVE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo7.donorController">
     <children>
         <Label fx:id="anchorpanelBG" layoutX="118.0" layoutY="6.0" prefHeight="37.0" prefWidth="754.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="anchorpanello" layoutX="844.0" layoutY="7.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="844.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+        <Button fx:id="anchorpanello" layoutX="844.0" layoutY="7.0" mnemonicParsing="false" onAction="#LogoutButtonOnAction" prefHeight="24.0" prefWidth="72.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="844.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
             <font>
                 <Font name="System Bold Italic" size="13.0" />
             </font>
@@ -27,7 +27,7 @@
             <items>
                 <AnchorPane fx:id="anchorpanelAV" prefHeight="394.0" prefWidth="230.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
                     <children>
-                        <Button fx:id="anchorpanelH" blendMode="OVERLAY" layoutY="78.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="  Home">
+                        <Button fx:id="anchorpanelH" blendMode="OVERLAY" layoutY="78.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="190.0" text="  Home">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -43,7 +43,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="anchorpanelP" blendMode="OVERLAY" layoutY="176.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text=" Patient">
+                        <Button fx:id="anchorpanelP" blendMode="OVERLAY" layoutY="176.0" mnemonicParsing="false" onAction="#PatientButtonOnAction" prefHeight="50.0" prefWidth="190.0" text=" Patient">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -51,7 +51,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="anchorpanelBR" blendMode="OVERLAY" layoutY="226.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="190.0" text="      Blood Requests">
+                        <Button fx:id="anchorpanelBR" blendMode="OVERLAY" layoutY="226.0" mnemonicParsing="false" onAction="#bloodrequestsButtonOnAction" prefHeight="50.0" prefWidth="190.0" text="      Blood Requests">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
