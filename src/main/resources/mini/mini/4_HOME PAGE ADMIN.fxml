@@ -2,9 +2,8 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -184,7 +183,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label75" layoutX="24.0" layoutY="71.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="2">
+                  <Label fx:id="label75" layoutX="24.0" layoutY="71.0" prefHeight="18.0" prefWidth="14.0" style="-fx-background-color: white;" text="0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -249,20 +248,8 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton fx:id="bloodgroupmenu" layoutX="407.0" layoutY="84.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="141.0" text="Blood Group">
-                     <items>
-                        <MenuItem fx:id="a" mnemonicParsing="false" text="A+" />
-                        <MenuItem fx:id="b" mnemonicParsing="false" text="B+" />
-                        <MenuItem fx:id="o" mnemonicParsing="false" text="O+" />
-                        <MenuItem fx:id="ab" mnemonicParsing="false" text="AB+" />
-                        <MenuItem fx:id="am" mnemonicParsing="false" text="A-" />
-                        <MenuItem fx:id="bm" mnemonicParsing="false" text="B-" />
-                        <MenuItem fx:id="om" mnemonicParsing="false" text="O-" />
-                        <MenuItem fx:id="abm" mnemonicParsing="false" text="AB-" />
-                     </items>
-                  </SplitMenuButton>
-                  <Button fx:id="addbuttton" layoutX="501.0" layoutY="157.0" mnemonicParsing="false" text="ADD" />
-                  <TextField fx:id="qunatitytext" layoutX="414.0" layoutY="157.0" prefHeight="26.0" prefWidth="70.0" promptText="unit in ml" />
+                  <Button fx:id="addbuttton" layoutX="501.0" layoutY="157.0" mnemonicParsing="false" onAction="#addButtonOnAction" text="ADD" />
+                  <TextField fx:id="qunatitytext" layoutX="414.0" layoutY="157.0" prefHeight="26.0" prefWidth="70.0" />
                   <ImageView fx:id="imagedonor1" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="354.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.5.jpg" />
@@ -283,6 +270,7 @@
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 .jpg" />
                      </image>
                   </ImageView>
+                  <ChoiceBox fx:id="bloodgroup" layoutX="416.0" layoutY="93.0" prefHeight="26.0" prefWidth="128.0" />
                </children></AnchorPane>
          </items>
       </SplitPane>

@@ -14,21 +14,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorPaneFull" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="AnchorPaneFull" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.MakeRequestController">
    <children>
       <Label fx:id="BloodGauridansLabel" prefHeight="38.0" prefWidth="721.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="LogOutButton" layoutX="633.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Log out" AnchorPane.bottomAnchor="419.0" AnchorPane.leftAnchor="633.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0">
+      <Button fx:id="LogOutButton" layoutX="633.0" layoutY="6.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="26.0" prefWidth="74.0" text="Log out" AnchorPane.bottomAnchor="419.0" AnchorPane.leftAnchor="633.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Button>
       <AnchorPane fx:id="AnchorPaneButtons" layoutY="38.0" minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="180.0" style="-fx-background-color: #5A5A5A;">
          <children>
-            <Button fx:id="HomeButton" blendMode="OVERLAY" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+            <Button fx:id="HomeButton" blendMode="OVERLAY" layoutY="90.0" mnemonicParsing="false" onAction="#homebuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="Home">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="BloodRequestButton" blendMode="OVERLAY" layoutY="190.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="        Blood Requests">
+            <Button fx:id="BloodRequestButton" blendMode="OVERLAY" layoutY="190.0" mnemonicParsing="false" onAction="#makerequestbuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="        Blood Requests">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="        Request History">
+            <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="240.0" mnemonicParsing="false" onAction="#requesthistoryOnAction" prefHeight="50.0" prefWidth="180.0" text="        Request History">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/B571ECEA16A9824023EE1AF16897A582/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="HomeButton1" blendMode="OVERLAY" layoutY="140.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Donate">
+            <Button fx:id="HomeButton1" blendMode="OVERLAY" layoutY="140.0" mnemonicParsing="false" onAction="#donatebuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donate">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -8,6 +8,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,9 +25,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
+import javafx.util.StringConverter;
 
 
 public class AdminHomePageController implements Initializable {
+
+    @FXML // fx:id="bloodgroup"
+    private ChoiceBox<String> bloodgroup; // Value injected by FXMLLoader
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -157,8 +163,8 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="label1"
     private Label label1; // Value injected by FXMLLoader
 
-    @FXML // fx:id="label100"
-    private Label label100; // Value injected by FXMLLoader
+    @FXML // fx:id="label75"
+    private Label label75; // Value injected by FXMLLoader
 
     @FXML // fx:id="label2"
     private Label label2; // Value injected by FXMLLoader
@@ -175,8 +181,6 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="label7"
     private Label label7; // Value injected by FXMLLoader
 
-    @FXML // fx:id="label75"
-    private Label label75; // Value injected by FXMLLoader
 
     @FXML // fx:id="label78"
     private Label label78; // Value injected by FXMLLoader
@@ -223,7 +227,8 @@ public class AdminHomePageController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert Abga != null : "fx:id=\"Abga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert Abgm != null : "fx:id=\"Abgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -266,7 +271,7 @@ public class AdminHomePageController implements Initializable {
         assert imagedonor1 != null : "fx:id=\"imagedonor1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label0 != null : "fx:id=\"label0\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label1 != null : "fx:id=\"label1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert label100 != null : "fx:id=\"label100\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
+        assert label75 != null : "fx:id=\"label75\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label2 != null : "fx:id=\"label2\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label25 != null : "fx:id=\"label25\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label38 != null : "fx:id=\"label38\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -287,6 +292,7 @@ public class AdminHomePageController implements Initializable {
         assert totalrequest != null : "fx:id=\"totalrequest\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totalunit != null : "fx:id=\"totalunit\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totalunit1 != null : "fx:id=\"totalunit1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
+        assert bloodgroup != null : "fx:id=\"bloodgroup\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
 
     }
 
@@ -304,7 +310,7 @@ public class AdminHomePageController implements Initializable {
         Image backImage3 = new Image(backFile3.toURI().toString());
         iamgepatient.setImage(backImage3);
 
-        File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
+        File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage4 = new Image(backFile4.toURI().toString());
         iamgebloodrequest.setImage(backImage4);
 
@@ -356,66 +362,308 @@ public class AdminHomePageController implements Initializable {
         Image backImage16 = new Image(backFile16.toURI().toString());
         totalunit1.setImage(backImage16);
 
+        bloodgroup.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-", "Total Donors", "Total Requests", "Approve Requests");
+        bloodgroup.setConverter(new StringConverter<String>() {
+            @Override
+            public String toString(String s) {
+                return (s == null) ? "select blood group" : s;
+            }
+
+            @Override
+            public String fromString(String s) {
+                return null;
+            }
+
+        });
 
     }
 
 
     @FXML
-    void DonorButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+    void addButtonOnAction(ActionEvent event) {
         try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            // Get the selected item from the checkbox
+            String selectedOption = bloodgroup.getValue();
+
+            if (selectedOption != null) {
+                // Assuming label75 is a member variable or field of your class
+                // Initialize it only once, not in every click event
+                if (label75 == null) {
+                    label75 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+                if (label0 == null) {
+                    label0 = new Label("0");
+                }
+
+
+                int increaseAmount,currentValue,newValue;
+
+                switch (selectedOption) {
+
+                    case "A+":
+
+                         increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                         currentValue = Integer.parseInt(label75.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                         newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label75.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "B+":
+                         increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                         currentValue = Integer.parseInt(label0.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                         newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label0.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "O+":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label5.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label5.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "AB+":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label7.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label7.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "A-":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label78.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label78.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "B-":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label87.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label87.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "O-":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label2.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label2.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "AB-":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label1.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label1.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+
+                    case "":
+
+                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+                        // Get the current value from the label
+//                  int currentValue = Integer.parseInt(label75.getText());
+                        currentValue = Integer.parseInt(label75.getText());
+
+                        // Add the selected value to the current value
+                        // You need to convert the selected option to an integer if needed
+//                 int selectedValue = Integer.parseInt(selectedOption);
+                        newValue = currentValue + increaseAmount;
+
+                        // Update the label with the new value
+                        label75.setText(String.valueOf(newValue));
+
+                        // Clear the bloodgroup selection
+                        bloodgroup.getSelectionModel().clearSelection();
+                        qunatitytext.clear();
+                }
+            }
+             else {
+                System.out.println("Please select an option from the ChoiceBox.");
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("Invalid input");
         }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
     }
+
 
     @FXML
-    void LogoutButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Logout");
-    }
+        void DonorButtonOnAction (ActionEvent event){
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-    @FXML
-    void PatientButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("6_patientdetails.fxml"));
-         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Donor");
         }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Patient");
-    }
+
+        @FXML
+        void LogoutButtonOnAction (ActionEvent event){
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Logout");
+        }
+
+        @FXML
+        void PatientButtonOnAction (ActionEvent event){
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("6_patientdetails.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Patient");
+        }
 
 
-    @FXML
-    void bloodrequestsButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        @FXML
+        void bloodrequestsButtonOnAction (ActionEvent event){
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("BloodRequest");
         }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("BloodRequest");
-    }
+
 
 }
