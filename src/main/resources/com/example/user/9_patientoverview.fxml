@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorpanel2BG" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.user.UserController">
+   <children>
+      <Label fx:id="anchorpanel2BGB" layoutX="118.0" layoutY="6.0" prefHeight="37.0" prefWidth="754.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="anchorpanel2LO" layoutX="649.0" layoutY="7.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="91.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="649.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <SplitPane fx:id="anchorpanel2SP" dividerPositions="0.24348750664540134" layoutX="29.0" layoutY="34.0" prefHeight="396.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+        <items>
+          <AnchorPane fx:id="anchorpanel2AA" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="328.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
+               <children>
+                  <Button fx:id="anchorpanel2H" blendMode="OVERLAY" layoutY="106.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="anchorpanel2RH" blendMode="OVERLAY" layoutY="256.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="       Request History">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fx:id="homesymbol" blendMode="MULTIPLY" fitHeight="26.0" fitWidth="26.0" layoutX="15.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/7F9F2B5D2C931BD100B5204353CAD206/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bloodrequestsymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/B571ECEA16A9824023EE1AF16897A582/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/FB2FCD534B0FF3BBED73CC51DF620323/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="anchorpanel2H1" blendMode="OVERLAY" layoutY="156.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Donate">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fx:id="donatesymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="17.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image%202023-09-02%20at%2022.26.04.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="anchorpanel2L" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="434.0" style="-fx-background-color: D3D3D3;">
+               <children>
+                  <ImageView fx:id="imagefull" fitHeight="396.0" fitWidth="567.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../imag/Untitled%20design.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="anchorpanel2RM" layoutX="4.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="   Request Made">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2PR" layoutX="144.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Pending Request">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2AR" layoutX="284.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Approved Request">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2RR" layoutX="422.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Rejected Request">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2RMNO" layoutX="118.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2PRNO" layoutX="258.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2ARNO" layoutX="398.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="anchorpanel2RRNO" layoutX="536.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
