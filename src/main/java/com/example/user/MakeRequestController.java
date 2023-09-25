@@ -81,7 +81,7 @@ public class MakeRequestController implements Initializable {
     private TextField specifyreasonTextField; // Value injected by FXMLLoader
 
     @FXML
-    void BloodRequestButtonOnAction(ActionEvent event) {
+    void makerequestbuttonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("10_Patient Requesting for blood.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -98,7 +98,7 @@ public class MakeRequestController implements Initializable {
     }
 
     @FXML
-    void DonateButtonOnAction(ActionEvent event) {
+    void donatebuttonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("12_DONOR PAGE.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -115,7 +115,7 @@ public class MakeRequestController implements Initializable {
     }
 
     @FXML
-    void HomeButtonOnAction(ActionEvent event) {
+    void homebuttonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("9_patientoverview.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -133,7 +133,7 @@ public class MakeRequestController implements Initializable {
     }
 
     @FXML
-    void RequestHistoryButtonOnAction(ActionEvent event) {
+    void requesthistoryOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("10_Patient Requesting for blood.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -147,6 +147,23 @@ public class MakeRequestController implements Initializable {
         stage.show();
         stage.setTitle("Donor");
 
+
+    }
+
+    @FXML
+    void loginbuttonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("2_coomon_login_page.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
 
     }
 

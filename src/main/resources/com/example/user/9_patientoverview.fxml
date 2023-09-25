@@ -16,7 +16,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="anchorpanel2LO" layoutX="649.0" layoutY="7.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="91.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="649.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+      <Button fx:id="anchorpanel2LO" layoutX="649.0" layoutY="7.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="91.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="649.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -25,7 +25,7 @@
         <items>
           <AnchorPane fx:id="anchorpanel2AA" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="328.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="anchorpanel2H" blendMode="OVERLAY" layoutY="106.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+                  <Button fx:id="anchorpanel2H" blendMode="OVERLAY" layoutY="106.0" mnemonicParsing="false" onAction="#homebuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
+                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" onAction="#makerequestbuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -41,7 +41,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="anchorpanel2RH" blendMode="OVERLAY" layoutY="256.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="       Request History">
+                  <Button fx:id="anchorpanel2RH" blendMode="OVERLAY" layoutY="256.0" mnemonicParsing="false" onAction="#requesthistoryOnAction" prefHeight="50.0" prefWidth="180.0" text="       Request History">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/FB2FCD534B0FF3BBED73CC51DF620323/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="anchorpanel2H1" blendMode="OVERLAY" layoutY="156.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Donate">
+                  <Button fx:id="anchorpanel2H1" blendMode="OVERLAY" layoutY="156.0" mnemonicParsing="false" onAction="#donatebuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donate">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

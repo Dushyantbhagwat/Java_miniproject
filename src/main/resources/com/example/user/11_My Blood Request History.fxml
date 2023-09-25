@@ -18,7 +18,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="LogOutButton" layoutX="788.0" layoutY="7.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="77.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="788.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+      <Button fx:id="LogOutButton" layoutX="788.0" layoutY="7.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="77.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="788.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -27,7 +27,7 @@
         <items>
           <AnchorPane fx:id="AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="218.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="homeButton" blendMode="OVERLAY" layoutY="109.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="178.0" text="Home">
+                  <Button fx:id="homeButton" blendMode="OVERLAY" layoutY="109.0" mnemonicParsing="false" onAction="#homeButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -35,7 +35,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="homeButton1" blendMode="OVERLAY" layoutX="-1.0" layoutY="159.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="178.0" text="Donate">
+                  <Button fx:id="homeButton1" blendMode="OVERLAY" layoutX="-1.0" layoutY="159.0" mnemonicParsing="false" onAction="#DonateButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="Donate">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="MakeRequestButton" blendMode="OVERLAY" layoutX="-1.0" layoutY="211.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="178.0" text="   Make Request">
+                  <Button fx:id="MakeRequestButton" blendMode="OVERLAY" layoutX="-1.0" layoutY="211.0" mnemonicParsing="false" onAction="#MakeRequestButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="   Make Request">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="261.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="178.0" text="    Request History">
+                  <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="261.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="    Request History">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

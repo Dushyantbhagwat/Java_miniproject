@@ -4,14 +4,19 @@ package com.example.user;
  * Sample Skeleton for '12_DONOR PAGE (1).fxml' Controller Class
  */
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class DonatepageController implements Initializable {
 
@@ -48,6 +53,53 @@ public class DonatepageController implements Initializable {
 
     @FXML
     void DonateButtonOnAction(ActionEvent event) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("2_coomon_login_page.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Donor");
+
+        }
+    @FXML
+    void loginbuttonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("2_coomon_login_page.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
+    }
+
+    @FXML
+    void HomeButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("9_patientoverview.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
 
     }
 

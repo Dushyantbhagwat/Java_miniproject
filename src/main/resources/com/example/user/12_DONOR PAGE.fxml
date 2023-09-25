@@ -18,7 +18,7 @@
         <items>
           <AnchorPane blendMode="MULTIPLY" minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="822.0" style="-fx-background-color: GREY;">
                <children>
-                  <Button layoutX="322.0" layoutY="578.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: plane white;" text="DONATE" textFill="#181515">
+                  <Button fx:id="DonateButton" layoutX="322.0" layoutY="578.0" mnemonicParsing="false" onAction="#DonateButtonOnAction" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: plane white;" text="DONATE" textFill="#181515">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -26,7 +26,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <CheckBox layoutX="155.0" layoutY="594.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="149.0" text="I'm not a robot">
+                  <CheckBox layoutX="155.0" layoutY="594.0" mnemonicParsing="false" onAction="#Checkbox1OnAction" prefHeight="20.0" prefWidth="149.0" text="I'm not a robot">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -34,7 +34,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </CheckBox>
-                  <CheckBox layoutX="531.0" layoutY="594.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="139.0" text="I have read the " textFill="#232121">
+                  <CheckBox layoutX="531.0" layoutY="594.0" mnemonicParsing="false" onAction="#Checkbox2OnAction" prefHeight="20.0" prefWidth="139.0" text="I have read the " textFill="#232121">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="anchorpanello" layoutX="729.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" text="Log out">
+                  <Button fx:id="anchorpanello" layoutX="729.0" layoutY="2.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="72.0" text="Log out">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
@@ -80,6 +80,11 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Hyperlink>
+                  <Button fx:id="homebutton" layoutX="589.0" layoutY="4.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="26.0" prefWidth="72.0" text="Home">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
         </items>

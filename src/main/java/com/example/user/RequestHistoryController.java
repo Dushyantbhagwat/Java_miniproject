@@ -168,6 +168,23 @@ public class RequestHistoryController implements Initializable {
 
     }
 
+    @FXML
+    void loginbuttonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("2_coomon_login_page.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
+    }
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert AnchorPane != null : "fx:id=\"AnchorPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";

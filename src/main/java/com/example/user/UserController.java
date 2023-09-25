@@ -113,7 +113,7 @@ public class UserController implements Initializable {
 
     @FXML
     void homebuttonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource(""));
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("9_patientoverview.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Scene scene;
@@ -130,7 +130,7 @@ public class UserController implements Initializable {
 
     @FXML
     void loginbuttonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource(""));
+        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("2_coomon_login_page.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Scene scene;
