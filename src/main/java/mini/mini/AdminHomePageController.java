@@ -31,6 +31,7 @@ import javafx.util.StringConverter;
 
 public class AdminHomePageController implements Initializable {
 
+    public Label label100;
     @FXML // fx:id="bloodgroup"
     private ChoiceBox<String> bloodgroup; // Value injected by FXMLLoader
 
@@ -445,6 +446,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "B+":
                          increaseAmount = Integer.parseInt(qunatitytext.getText());
@@ -463,6 +465,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "O+":
 
@@ -482,6 +485,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "AB+":
 
@@ -501,6 +505,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "A-":
 
@@ -520,6 +525,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "B-":
 
@@ -539,6 +545,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "O-":
 
@@ -558,6 +565,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "AB-":
 
@@ -577,6 +585,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
 
                     case "":
 
@@ -596,6 +605,7 @@ public class AdminHomePageController implements Initializable {
                         // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
+                        updateTotalLabel(increaseAmount);
                 }
             }
              else {
@@ -606,6 +616,27 @@ public class AdminHomePageController implements Initializable {
         }
     }
 
+    @FXML
+    void updateTotalLabel(int increaseAmount) {
+        try {
+            // Assuming label100 is a member variable or field of your class
+            // Initialize it only once, not in every click event
+            if (label100 == null) {
+                label100 = new Label("0");
+            }
+
+            // Get the current value from the label
+            int currentValue = Integer.parseInt(label100.getText());
+
+            // Add the increaseAmount to the current value
+            int newValue = currentValue + increaseAmount;
+
+            // Update the label with the new value
+            label100.setText(String.valueOf(newValue));
+        } catch (NumberFormatException ex) {
+            System.out.println("Invalid input");
+        }
+    }
 
     @FXML
         void DonorButtonOnAction (ActionEvent event){

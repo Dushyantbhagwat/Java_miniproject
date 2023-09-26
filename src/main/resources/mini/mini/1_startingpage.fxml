@@ -46,17 +46,17 @@
       <children>
             <ImageView fx:id="cbtdi" blendMode="MULTIPLY" fitHeight="280.0" fitWidth="256.0" layoutX="396.0" layoutY="151.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../../../../../../OneDrive/Desktop/im/blood info.JPG" />
+                  <Image url="@../../../../../../../Downloads/blood%20info.JPG" />
                </image>
             </ImageView>
             <ImageView fx:id="obbcs" blendMode="MULTIPLY" fitHeight="280.0" fitWidth="400.0" layoutX="-1.0" layoutY="154.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../../../../../../OneDrive/Desktop/im/DONATE NW'.JPG" />
+                  <Image url="@../../../../../../../Downloads/DONATE%20NW'.JPG" />
                </image>
             </ImageView>
             <ImageView fx:id="symbol" blendMode="MULTIPLY" fitHeight="127.0" fitWidth="652.0" layoutX="-1.0" layoutY="24.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../../../../../../OneDrive/Desktop/im/panel.JPG" />
+                  <Image url="@../../../../../../../Downloads/panel.JPG" />
                </image>
             </ImageView>
             <Label fx:id="bglabel" layoutY="-3.0" prefHeight="11.0" prefWidth="652.0" style="-fx-background-color: black;" text=" BLOOD GUARDIANS                     " textFill="WHITE">
