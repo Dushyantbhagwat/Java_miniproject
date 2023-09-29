@@ -50,5 +50,6 @@
             <Glow />
          </effect>
       </Hyperlink>
+      <Hyperlink fx:id="forgotpass" layoutX="457.0" layoutY="287.0" onAction="#forgOnAction" text="forgot" />
    </children>
 </AnchorPane>

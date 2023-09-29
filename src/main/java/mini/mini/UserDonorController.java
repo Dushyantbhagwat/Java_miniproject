@@ -4,6 +4,7 @@ package mini.mini;
  * Sample Skeleton for '12_DONOR PAGE (1).fxml' Controller Class
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
     public class UserDonorController implements Initializable {
@@ -115,6 +117,8 @@ import javafx.stage.Stage;
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
 
         }
     }

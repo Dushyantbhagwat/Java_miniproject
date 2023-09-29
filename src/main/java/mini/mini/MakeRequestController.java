@@ -4,6 +4,7 @@ package mini.mini;
  * Sample Skeleton for '10_Patient Requesting for blood.fxml' Controller Class
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -191,6 +193,23 @@ import javafx.stage.Stage;
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+            File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
+            Image backImage1 = new Image(backFile1.toURI().toString());
+            homesymbol.setImage(backImage1);
+
+            File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
+            Image backImage2 = new Image(backFile2.toURI().toString());
+            donatesymbol.setImage(backImage2);
+
+            File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+            Image backImage4 = new Image(backFile4.toURI().toString());
+            bloodrequestsymbol.setImage(backImage4);
+
+            File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
+            Image backImage5 = new Image(backFile5.toURI().toString());
+            requesthistorysybol.setImage(backImage5);
 
         }
     }

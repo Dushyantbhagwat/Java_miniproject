@@ -56,7 +56,7 @@
                   </ImageView>
                   <ImageView fx:id="bloodrequestsymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/B571ECEA16A9824023EE1AF16897A582/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.58.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">

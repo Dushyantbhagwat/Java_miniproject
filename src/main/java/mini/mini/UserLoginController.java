@@ -57,6 +57,9 @@ public class UserLoginController implements Initializable {
 
     @FXML
     private TextField username;
+
+    @FXML
+    private Hyperlink forgotpass;
     private Stage stage;
     private Scene scene;
 
@@ -127,6 +130,20 @@ public class UserLoginController implements Initializable {
     @FXML
     void hyperlinkdonthaveaccOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("8_user sign up.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Register");
+    }
+
+    @FXML
+    void forgOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ForgotPassword.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
