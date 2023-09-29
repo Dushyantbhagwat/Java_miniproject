@@ -289,7 +289,7 @@ public class MakeRequestController implements Initializable {
         String blood_group = BloodGroupchoice.getValue();
         try {
             String insertFields = "insert into patient (name, dob, blood_group, report) values ('";
-            String insertValues = name + "','" + dob + "','" + blood_group + "','" + "')";
+            String insertValues = name + "','" + dob + "','" + blood_group + "','" + report + "')";
             String insertToRegister = insertFields + insertValues;
 
             Statement statement = connectDB.createStatement();
