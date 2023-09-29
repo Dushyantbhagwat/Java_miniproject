@@ -7,6 +7,11 @@ package mini.mini;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,22 +19,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import javafx.util.StringConverter;
 
-    public class MakeRequestController implements Initializable {
+
+public class MakeRequestController implements Initializable {
+
 
         @FXML // ResourceBundle that was given to the FXMLLoader
         private ResourceBundle resources;
-
-        @FXML // URL location of the FXML file that was given to the FXMLLoader
-        private URL location;
 
         @FXML // fx:id="AnchorPaneButtons"
         private AnchorPane AnchorPaneButtons; // Value injected by FXMLLoader
@@ -46,8 +50,6 @@ import javafx.stage.Stage;
         @FXML // fx:id="BloodRequestButton"
         private Button BloodRequestButton; // Value injected by FXMLLoader
 
-        @FXML // fx:id="DonateButton"
-        private Button DonateButton; // Value injected by FXMLLoader
 
         @FXML // fx:id="HomeButton"
         private Button HomeButton; // Value injected by FXMLLoader
@@ -79,10 +81,24 @@ import javafx.stage.Stage;
         @FXML // fx:id="requesthistorysybol"
         private ImageView requesthistorysybol; // Value injected by FXMLLoader
 
-        @FXML // fx:id="specifyreasonTextField"
-        private TextField specifyreasonTextField; // Value injected by FXMLLoader
+    @FXML
+    private Hyperlink filess;
+    @FXML
+    private ChoiceBox<String> BloodGroupchoice;
 
-        @FXML
+    @FXML
+    private DatePicker dobid;
+
+    @FXML
+    private Label labelfile;
+    private Object primaryStage;
+
+
+    @FXML
+    private Label message;
+    private javafx.stage.Window Window;
+
+    @FXML
         void makerequestbuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -176,7 +192,6 @@ import javafx.stage.Stage;
             assert BloodGauridansLabel != null : "fx:id=\"BloodGauridansLabel\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert BloodGroupMenuButton != null : "fx:id=\"BloodGroupMenuButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert BloodRequestButton != null : "fx:id=\"BloodRequestButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
-            assert DonateButton != null : "fx:id=\"DonateButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert HomeButton != null : "fx:id=\"HomeButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert LogOutButton != null : "fx:id=\"LogOutButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert PatientNameTextField != null : "fx:id=\"PatientNameTextField\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
@@ -187,7 +202,6 @@ import javafx.stage.Stage;
             assert imagefull != null : "fx:id=\"imagefull\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert requestButton != null : "fx:id=\"requestButton\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
             assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
-            assert specifyreasonTextField != null : "fx:id=\"specifyreasonTextField\" was not injected: check your FXML file '10_Patient Requesting for blood.fxml'.";
 
         }
 
@@ -211,5 +225,81 @@ import javafx.stage.Stage;
             Image backImage5 = new Image(backFile5.toURI().toString());
             requesthistorysybol.setImage(backImage5);
 
+            BloodGroupchoice.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-");
+            BloodGroupchoice.setConverter(new StringConverter<String>() {
+                @Override
+                public String toString(String s) {
+                    return (s == null) ? "select blood group" : s;
+                }
+
+                @Override
+                public String fromString(String s) {
+                    return null;
+                }
+            });
+
         }
+
+
+
+
+@FXML
+        void filesetOnAction(ActionEvent event){
+             FileChooser fileChooser = new FileChooser();
+                 fileChooser.setTitle("Open File");
+
+            // Show the FileChooser dialog
+            File selectedFile = fileChooser.showOpenDialog((Window)primaryStage);
+
+            if (selectedFile != null) {
+                // Process the selected file here
+                labelfile.setText("report added");
+                System.out.println("Selected File: " + selectedFile.getAbsolutePath());
+            } else {
+                // User canceled the operation
+                System.out.println("File selection canceled.");
+            }
+        }
+
+
+    public void requestButtonOnAction(ActionEvent actionEventevent) throws SQLException {
+        if (PatientNameTextField.getText()!=null && dobid.getValue()!=null)
+        {
+            request();
+        }
+        else {
+            message.setText("please provide the above asked information!");
+        }
+    }
+
+    public void request() throws SQLException
+    {
+        LocalDate localDate = dobid.getValue();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dob = localDate.format(dateTimeFormatter);
+
+
+        ActionEvent ActionEvent = null;
+        filesetOnAction(ActionEvent);
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String name= PatientNameTextField.getText();
+        String blood_group = BloodGroupchoice.getValue();
+        try {
+            String insertFields = "insert into patient (name, dob, blood_group, report) values ('";
+            String insertValues = name + "','" + dob + "','" + blood_group + "','" + report + "')";
+            String insertToRegister = insertFields + insertValues;
+
+            Statement statement = connectDB.createStatement();
+            statement.executeUpdate(insertToRegister);
+            message.setText("Request has been successfully made");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
     }
