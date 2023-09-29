@@ -31,7 +31,7 @@
             <Font name="Gill Sans MT Bold Italic" size="48.0" />
          </font>
       </TextField>
-      <Button fx:id="buttonlogin" layoutX="279.0" layoutY="314.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="30.0" prefWidth="84.0" text="Login" />
+      <Button fx:id="buttonlogin" layoutX="279.0" layoutY="313.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="30.0" prefWidth="84.0" text="Login" />
       <Label fx:id="message" layoutX="202.0" layoutY="279.0" prefHeight="20.0" prefWidth="282.0" textFill="#ef1818">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -50,6 +50,9 @@
             <Glow />
          </effect>
       </Hyperlink>
-      <Hyperlink fx:id="forgotpass" layoutX="457.0" layoutY="287.0" onAction="#forgOnAction" text="forgot" />
+      <Hyperlink fx:id="forgotpass" layoutX="273.0" layoutY="254.0" onAction="#forgOnAction" prefHeight="24.0" prefWidth="107.0" text="forgot password?">
+         <effect>
+            <Glow />
+         </effect></Hyperlink>
    </children>
 </AnchorPane>
