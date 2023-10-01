@@ -43,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="MakeRequestButton" blendMode="OVERLAY" layoutX="-1.0" layoutY="211.0" mnemonicParsing="false" onAction="#MakeRequestButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="   Make Request">
+                  <Button fx:id="MakeRequestButton" blendMode="OVERLAY" layoutX="-1.0" layoutY="211.0" mnemonicParsing="false" onAction="#requestOnAction" prefHeight="50.0" prefWidth="178.0" text="   Make Request">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -83,7 +83,7 @@
             </AnchorPane>
           <AnchorPane fx:id="UnderLabelAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="610.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="MyBloodRequestlabel" layoutX="247.0" layoutY="14.0" prefHeight="65.0" prefWidth="180.0" text="My Blood Request">
+                  <Label fx:id="MyBloodRequestlabel" layoutX="238.0" prefHeight="65.0" prefWidth="180.0" text="My Blood Request">
                      <font>
                         <Font name="Gill Sans MT Bold" size="20.0" />
                      </font>
@@ -91,16 +91,14 @@
                   <TableView fx:id="tableView" layoutY="73.0" prefHeight="314.0" prefWidth="694.0" tableMenuButtonVisible="true">
                     <columns>
                       <TableColumn fx:id="TColumnPatientName" prefWidth="97.59996336698532" text="Patient Name" />
-                      <TableColumn fx:id="TcolumnAge" prefWidth="52.79998779296875" text="Age" />
-                        <TableColumn fx:id="TcoulmnReason" prefWidth="75.0" text="Reason" />
+                      <TableColumn fx:id="TcolumnAge" prefWidth="52.79998779296875" text="DOB" />
                         <TableColumn fx:id="TColumnBloodgrp" prefWidth="87.19999694824219" text="Blood grp" />
-                        <TableColumn fx:id="TColumnDate" prefWidth="92.79998779296875" text="Date" />
-                        <TableColumn fx:id="TColumnStatus" prefWidth="92.0" text="Status" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <Button fx:id="refreshbutton" layoutY="46.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-radius: 78;" text="Refresh" />
                </children></AnchorPane>
         </items>
       </SplitPane>

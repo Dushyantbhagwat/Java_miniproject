@@ -1,6 +1,7 @@
 package mini.mini;
 
 import java.sql.*;
+import java.sql.DriverManager;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 
@@ -10,18 +11,18 @@ public class DatabaseConnection {
     public Connection databaselink;
 
     public Connection getConnection() {
-        String databaseName = "miniproject";
+        String databaseName = "mini_project";
         String databaseUser = "root";
-        String databasepassword = "1937rbpynky@";
-        String url = "jdbc:mysql://localhost:3306/" + databaseName;
+        String databasePassword = "haunting363@";
+        String url = "jdbc:mysql://localhost/" + databaseName;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            databaselink = DriverManager.getConnection(url, databaseUser, databasepassword);
+            databaselink = DriverManager.getConnection(url, databaseUser, databasePassword);
 
         } catch (Exception e) {
             e.printStackTrace();
-//            e.getCause();
+            e.getCause();
             System.out.println("not done");
         }
         return databaselink;

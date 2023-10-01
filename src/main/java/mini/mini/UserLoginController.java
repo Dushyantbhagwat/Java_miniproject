@@ -97,7 +97,7 @@ public class UserLoginController implements Initializable {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connection1 = connection.getConnection();
 
-        String verifylogin = "select count(1) from users where emailid = '" + username.getText() + "' and password ='" + password.getText() + "'";
+        String verifylogin = "select count(1) from users where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
 
         try {
             Statement statement = connection1.createStatement();

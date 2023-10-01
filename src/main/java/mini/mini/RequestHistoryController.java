@@ -7,7 +7,18 @@ package mini.mini;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +30,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 
 public class RequestHistoryController implements Initializable {
 
@@ -41,9 +54,6 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="BloodGaurdiansLabel"
     private Label BloodGaurdiansLabel; // Value injected by FXMLLoader
 
-    @FXML // fx:id="DonateButton"
-    private Button DonateButton; // Value injected by FXMLLoader
-
     @FXML // fx:id="LogOutButton"
     private Button LogOutButton; // Value injected by FXMLLoader
 
@@ -60,22 +70,16 @@ public class RequestHistoryController implements Initializable {
     private SplitPane SplitPane; // Value injected by FXMLLoader
 
     @FXML // fx:id="TColumnBloodgrp"
-    private TableColumn<?, ?> TColumnBloodgrp; // Value injected by FXMLLoader
-
-    @FXML // fx:id="TColumnDate"
-    private TableColumn<?, ?> TColumnDate; // Value injected by FXMLLoader
+    private TableColumn<Refresh,String> TColumnBloodgrp; // Value injected by FXMLLoader
 
     @FXML // fx:id="TColumnPatientName"
-    private TableColumn<?, ?> TColumnPatientName; // Value injected by FXMLLoader
+    private TableColumn<Refresh,String> TColumnPatientName; // Value injected by FXMLLoader
 
-    @FXML // fx:id="TColumnStatus"
-    private TableColumn<?, ?> TColumnStatus; // Value injected by FXMLLoader
+//    @FXML // fx:id="TColumnStatus"
+//    private TableColumn<DataItem,String> TColumnStatus; // Value injected by FXMLLoader
 
     @FXML // fx:id="TcolumnAge"
-    private TableColumn<?, ?> TcolumnAge; // Value injected by FXMLLoader
-
-    @FXML // fx:id="TcoulmnReason"
-    private TableColumn<?, ?> TcoulmnReason; // Value injected by FXMLLoader
+    private TableColumn<Refresh, LocalDate> TcolumnAge; // Value injected by FXMLLoader
 
     @FXML // fx:id="UnderLabelAnchorPane"
     private AnchorPane UnderLabelAnchorPane; // Value injected by FXMLLoader
@@ -89,130 +93,51 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="homeButton"
     private Button homeButton; // Value injected by FXMLLoader
 
+    @FXML // fx:id="homeButton1"
+    private Button homeButton1; // Value injected by FXMLLoader
+
     @FXML // fx:id="homesymbol"
     private ImageView homesymbol; // Value injected by FXMLLoader
+
+    @FXML // fx:id="refreshbutton"
+    private Button refreshbutton; // Value injected by FXMLLoader
 
     @FXML // fx:id="requesthistorysybol"
     private ImageView requesthistorysybol; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableView"
-    private TableView<?> tableView; // Value injected by FXMLLoader
-
-    @FXML
-    void DonateButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-
-    }
-
-    @FXML
-    void MakeRequestButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-
-
-    }
-
-    @FXML
-    void RequestHistoryButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-
-    }
-
-    @FXML
-    void homeButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-    }
-
-    @FXML
-    void loginbuttonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-    }
+    private TableView<Refresh> tableView; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert AnchorPane != null : "fx:id=\"AnchorPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert AnchorPanefull != null : "fx:id=\"AnchorPanefull\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert BloodGaurdiansLabel != null : "fx:id=\"BloodGaurdiansLabel\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-        assert DonateButton != null : "fx:id=\"DonateButton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert LogOutButton != null : "fx:id=\"LogOutButton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert MakeRequestButton != null : "fx:id=\"MakeRequestButton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert MyBloodRequestlabel != null : "fx:id=\"MyBloodRequestlabel\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert RequestHistoryButton != null : "fx:id=\"RequestHistoryButton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert SplitPane != null : "fx:id=\"SplitPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TColumnBloodgrp != null : "fx:id=\"TColumnBloodgrp\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-        assert TColumnDate != null : "fx:id=\"TColumnDate\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TColumnPatientName != null : "fx:id=\"TColumnPatientName\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-        assert TColumnStatus != null : "fx:id=\"TColumnStatus\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
+//        assert TColumnStatus != null : "fx:id=\"TColumnStatus\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TcolumnAge != null : "fx:id=\"TcolumnAge\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-        assert TcoulmnReason != null : "fx:id=\"TcoulmnReason\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert UnderLabelAnchorPane != null : "fx:id=\"UnderLabelAnchorPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert bloodrequestsymbol != null : "fx:id=\"bloodrequestsymbol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert donatesymbol != null : "fx:id=\"donatesymbol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
+        assert homeButton1 != null : "fx:id=\"homeButton1\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert homesymbol != null : "fx:id=\"homesymbol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
+        assert refreshbutton != null : "fx:id=\"refreshbutton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
 
     }
+
+    private Stage stage;
+    private Scene scene;
+
+    ObservableList<Refresh> RefreshObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -233,6 +158,265 @@ public class RequestHistoryController implements Initializable {
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());
         requesthistorysybol.setImage(backImage5);
+    }
 
+
+        public void refreshButtonOnAction(ActionEvent actionEventevent) throws SQLException {
+
+                refBu();
+        }
+
+
+public void refBu() throws SQLException {
+
+    DatabaseConnection connectNow = new DatabaseConnection();
+    Connection connectDB = connectNow.getConnection();
+
+    String refreshQuesry = "select name, dob, bloodgroup from patient";
+
+    try {
+
+        Statement statement = connectDB.createStatement();
+        ResultSet queryOutput = statement.executeQuery(refreshQuesry);
+
+        while (queryOutput.next()) {
+
+            String queryName = queryOutput.getString("name");
+
+            String queryDob = queryOutput.getString("dob");
+
+            LocalDate dob = LocalDate.parse(queryDob);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+            String formattedDob = dob.format(formatter);
+
+            String queryBloodgroup = queryOutput.getString("bloodgroup");
+
+
+            RefreshObservableList.add(new Refresh(queryName, formattedDob, queryBloodgroup));
+        }
+
+        TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+
+        tableView.setItems(RefreshObservableList);
+
+    } catch (SQLException e) {
+        Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+        e.printStackTrace();
     }
 }
+
+
+
+    @FXML
+    void DonateButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
+
+    }
+
+    @FXML
+    void requestOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Request");
+
+    }
+
+    @FXML
+    void RequestHistoryButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
+
+    }
+
+    @FXML
+    void homeButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Home");
+
+    }
+
+    @FXML
+    void loginbuttonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public void refreshButtonOnAction(ActionEvent e) throws SQLException {
+//
+//        refresh(e);
+//    }
+//
+//    public void refresh(ActionEvent e) throws RuntimeException {
+//
+//        DatabaseConnection connection = new DatabaseConnection();
+//        Connection connection1 = connection.getConnection();
+//
+//        String query = "select name, dob, bloodgroup from patient";
+//
+//        try {
+//            Statement statement = connection1.createStatement();
+//            ResultSet resultSet = statement.executeQuery(query);
+//
+//            while (resultSet.next()) {
+//                String value1 = resultSet.getString("name");
+//                String value2 = resultSet.getString("dob");
+//                String value3 = resultSet.getString("bloodgroup");
+//
+//                tableView.getItems().add(new DataItem(value1, value2, value3));
+//            }
+//
+//            resultSet.close();
+//            statement.close();
+//        } catch (SQLException exception) {
+//            exception.printStackTrace();
+//        }
+//    }
+//
+//    public static class DataItem {
+//        private final String name;
+//        private final String dob;
+//
+//        private final String bloodgroup;
+//
+//        public DataItem(String name, String dob, String bloodgroup) {
+//            this.name = name;
+//            this.dob = dob;
+//            this.bloodgroup = bloodgroup;
+//        }
+//
+//
+//        public String getTColumnPatientName() {
+//            return name;
+//        }
+//
+//        public String getDob() {
+//            return dob;
+//        }
+//
+//        public String getBloodgroup() {
+//            return bloodgroup;
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+

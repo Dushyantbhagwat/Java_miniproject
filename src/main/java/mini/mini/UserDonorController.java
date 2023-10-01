@@ -43,6 +43,9 @@ import javafx.stage.Stage;
         @FXML // fx:id="anchorpanello"
         private Button anchorpanello; // Value injected by FXMLLoader
 
+        private Stage stage;
+        private Scene scene;
+
         @FXML
         void Checkbox1OnAction(ActionEvent event) {
 
@@ -57,9 +60,7 @@ import javafx.stage.Stage;
         void DonateButtonOnAction(ActionEvent event) {
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("(9_patientoverview.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -73,9 +74,7 @@ import javafx.stage.Stage;
         @FXML
         void loginbuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -90,9 +89,7 @@ import javafx.stage.Stage;
         @FXML
         void HomeButtonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {

@@ -111,7 +111,7 @@ public class ForgotPasswordController implements Initializable {
             Connection connection1 = connection.getConnection();
 
             System.out.println("inside if");
-            String verifylogin = "select count(1) from users where  emailid  = '" + email.getText() + "' and phonenumber = '" + mobno.getText() + "'";
+            String verifylogin = "select count(1) from users where  email_id  = '" + email.getText() + "' and phone_number = '" + mobno.getText() + "'";
             Statement statement = null;
             try {
                 statement = connection1.createStatement();
@@ -122,7 +122,7 @@ public class ForgotPasswordController implements Initializable {
                         System.out.println("inside if");
                         try {
                             System.out.println("Inside try");
-                            String insertUserDetails = "UPDATE `miniproject`.`users` SET `password` = '" + new_password.getText() + "' WHERE (`emailid` = '" + email.getText() + "')\n";
+                            String insertUserDetails = "UPDATE `mini_project`.`users` SET `password` = '" + new_password.getText() + "' WHERE (`email_id` = '" + email.getText() + "')\n";
                             statement = connection1.createStatement();
                             int b = statement.executeUpdate(insertUserDetails);
                             if (b == 1) {

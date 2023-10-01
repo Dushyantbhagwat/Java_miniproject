@@ -107,25 +107,24 @@ public class adminloginController implements Initializable {
         try {
             Statement statement = connection1.createStatement();
             ResultSet queryResult = statement.executeQuery(verifylogin);
+                while (queryResult.next()) {
+                    if (queryResult.getInt(1) == 1) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("4_HOME PAGE ADMIN.fxml"));
+                        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                        try {
+                            scene = new Scene(fxmlLoader.load());
+                        } catch (IOException event) {
+                            throw new RuntimeException(String.valueOf(e));
+                        }
+                        stage.setScene(scene);
+                        stage.show();
+                        stage.setTitle("Dashboard");
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("4_HOME PAGE ADMIN.fxml"));
-                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-                    try {
-                        scene = new Scene(fxmlLoader.load());
-                    } catch (IOException event) {
-                        throw new RuntimeException(String.valueOf(e));
+                    } else {
+                        diplaymessage.setText("Invalid Credentials");
                     }
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setTitle("Dashboard");
-
-                } else {
-                    diplaymessage.setText("Invalid Credentials");
                 }
-            }
-        } catch (Exception ep) {
+        }catch (Exception ep) {
             ep.printStackTrace();
         }
     }

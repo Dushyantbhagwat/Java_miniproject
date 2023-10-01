@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" onAction="#makerequestbuttonOnAction" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
+                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" onAction="#requestOnAction" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

@@ -103,9 +103,7 @@ public class UserOverviewController implements Initializable{
         @FXML
         void donatebuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -120,9 +118,7 @@ public class UserOverviewController implements Initializable{
         @FXML
         void homebuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -151,29 +147,26 @@ public class UserOverviewController implements Initializable{
 
         }
 
-        @FXML
-        void makerequestbuttonOnAction(ActionEvent event) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            Scene scene;
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
 
+    @FXML
+    void requestOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Request");
 
+    }
         @FXML
         void requesthistoryOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("11_My Blood Request History.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            Scene scene;
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {

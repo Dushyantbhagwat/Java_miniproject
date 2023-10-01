@@ -6,6 +6,9 @@ package mini.mini;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -363,7 +366,7 @@ public class AdminHomePageController implements Initializable {
         Image backImage16 = new Image(backFile16.toURI().toString());
         totalunit1.setImage(backImage16);
 
-        bloodgroup.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-", "Total Donors", "Total Requests", "Approve Requests");
+        bloodgroup.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-");
         bloodgroup.setConverter(new StringConverter<String>() {
             @Override
             public String toString(String s) {
@@ -387,7 +390,6 @@ public class AdminHomePageController implements Initializable {
             String selectedOption = bloodgroup.getValue();
 
             if (selectedOption != null) {
-                // Assuming label75 is a member variable or field of your class
                 // Initialize it only once, not in every click event
                 if (label75 == null) {
                     label75 = new Label("0");
@@ -395,34 +397,24 @@ public class AdminHomePageController implements Initializable {
                 if (label0 == null) {
                     label0 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label5== null) {
+                    label5 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label7 == null) {
+                    label7 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label78 == null) {
+                    label78 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label87 == null) {
+                    label87 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label2 == null) {
+                    label2 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
+                if (label1 == null) {
+                    label1 = new Label("0");
                 }
-                if (label0 == null) {
-                    label0 = new Label("0");
-                }
-                if (label0 == null) {
-                    label0 = new Label("0");
-                }
-                if (label0 == null) {
-                    label0 = new Label("0");
-                }
-
 
                 int increaseAmount,currentValue,newValue;
 
@@ -431,92 +423,55 @@ public class AdminHomePageController implements Initializable {
                     case "A+":
 
                          increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                          currentValue = Integer.parseInt(label75.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                          newValue = currentValue + increaseAmount;
 
-                        // Update the label with the new value
-                        label75.setText(String.valueOf(newValue));
+                         label75.setText(String.valueOf(newValue));
+                         bloodgroup.getSelectionModel().clearSelection();
+                         qunatitytext.clear();
 
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-
+                         updateTotalLabel(increaseAmount);
+                         break;
                     case "B+":
-                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
-                         currentValue = Integer.parseInt(label0.getText());
 
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
+                         increaseAmount = Integer.parseInt(qunatitytext.getText());
+                         currentValue = Integer.parseInt(label0.getText());
                          newValue = currentValue + increaseAmount;
 
-                        // Update the label with the new value
-                        label0.setText(String.valueOf(newValue));
+                         label0.setText(String.valueOf(newValue));
+                         bloodgroup.getSelectionModel().clearSelection();
+                         qunatitytext.clear();
 
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-
+                         updateTotalLabel(increaseAmount);
+                        break;
                     case "O+":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label5.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
-                        // Update the label with the new value
                         label5.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
 
+                        updateTotalLabel(increaseAmount);
+                        break;
                     case "AB+":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label7.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
-                        // Update the label with the new value
                         label7.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
 
+                        updateTotalLabel(increaseAmount);
+                        break;
                     case "A-":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label78.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
                         // Update the label with the new value
@@ -526,17 +481,11 @@ public class AdminHomePageController implements Initializable {
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
                         updateTotalLabel(increaseAmount);
-
+                        break;
                     case "B-":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label87.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
                         // Update the label with the new value
@@ -546,17 +495,11 @@ public class AdminHomePageController implements Initializable {
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
                         updateTotalLabel(increaseAmount);
-
+                        break;
                     case "O-":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label2.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
                         // Update the label with the new value
@@ -566,17 +509,11 @@ public class AdminHomePageController implements Initializable {
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
                         updateTotalLabel(increaseAmount);
-
+                        break;
                     case "AB-":
 
                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
                         currentValue = Integer.parseInt(label1.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
                         newValue = currentValue + increaseAmount;
 
                         // Update the label with the new value
@@ -586,26 +523,7 @@ public class AdminHomePageController implements Initializable {
                         bloodgroup.getSelectionModel().clearSelection();
                         qunatitytext.clear();
                         updateTotalLabel(increaseAmount);
-
-                    case "":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        // Get the current value from the label
-//                  int currentValue = Integer.parseInt(label75.getText());
-                        currentValue = Integer.parseInt(label75.getText());
-
-                        // Add the selected value to the current value
-                        // You need to convert the selected option to an integer if needed
-//                 int selectedValue = Integer.parseInt(selectedOption);
-                        newValue = currentValue + increaseAmount;
-
-                        // Update the label with the new value
-                        label75.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
+                        break;
                 }
             }
              else {
@@ -627,8 +545,6 @@ public class AdminHomePageController implements Initializable {
 
             // Get the current value from the label
             int currentValue = Integer.parseInt(label100.getText());
-
-            // Add the increaseAmount to the current value
             int newValue = currentValue + increaseAmount;
 
             // Update the label with the new value
@@ -638,7 +554,7 @@ public class AdminHomePageController implements Initializable {
         }
     }
 
-    @FXML
+         @FXML
         void DonorButtonOnAction (ActionEvent event){
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
