@@ -7,10 +7,7 @@ package mini.mini;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -162,56 +159,57 @@ public class RequestHistoryController implements Initializable {
 
 
         public void refreshButtonOnAction(ActionEvent actionEventevent) throws SQLException {
-
-                refBu();
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+                refBu(loggedInUserId);
         }
 
 
-public void refBu() throws SQLException {
+public void refBu(int loggedInUserId) throws SQLException {
 
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
 
-
-    String refreshQuesry = "SELECT users.name, patient_table.bloodgroup, patient_table.dob " +
+    String refreshQuery = "SELECT users.name, patient_table.bloodgroup, patient_table.dob " +
             "FROM users " +
-            "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
+            "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
+            "WHERE users.user_id ='" + loggedInUserId + "'";
 
+    if (loggedInUserId != -1) {
+        try {
 
-    try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(refreshQuery);
 
-        Statement statement = connectDB.createStatement();
-        ResultSet queryOutput = statement.executeQuery(refreshQuesry);
+            while (queryOutput.next()) {
 
-        while (queryOutput.next()) {
+                String queryName = queryOutput.getString("name");
 
-            String queryName = queryOutput.getString("name");
+                String queryDob = queryOutput.getString("dob");
 
-            String queryDob = queryOutput.getString("dob");
+                LocalDate dob = LocalDate.parse(queryDob);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                String formattedDob = dob.format(formatter);
 
-            LocalDate dob = LocalDate.parse(queryDob);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-            String formattedDob = dob.format(formatter);
+                String queryBloodgroup = queryOutput.getString("bloodgroup");
 
-            String queryBloodgroup = queryOutput.getString("bloodgroup");
+                RefreshObservableList.add(new Refresh(queryName, formattedDob, queryBloodgroup));
+            }
 
+            TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+            TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
+            TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
 
-            RefreshObservableList.add(new Refresh(queryName, formattedDob, queryBloodgroup));
+            tableView.setItems(RefreshObservableList);
+
+        } catch (SQLException e) {
+            Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
         }
-
-        TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
-        TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
-
-        tableView.setItems(RefreshObservableList);
-
-    } catch (SQLException e) {
-        Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
-        e.printStackTrace();
+    } else {
+        System.out.println("error");
     }
 }
-
 
 
     @FXML

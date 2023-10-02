@@ -12,6 +12,7 @@ public class AdminPatient  {
     String email_id;
 
     String address;
+
     public AdminPatient(String name, String dob, String bloodgroup, String phone_number,String email_id, String address) {
         this.name = name;
         this.dob = dob;
