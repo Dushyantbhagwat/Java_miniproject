@@ -75,11 +75,11 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="TColumnPatientName"
     private TableColumn<Refresh,String> TColumnPatientName; // Value injected by FXMLLoader
 
-//    @FXML // fx:id="TColumnStatus"
-//    private TableColumn<DataItem,String> TColumnStatus; // Value injected by FXMLLoader
-
     @FXML // fx:id="TcolumnAge"
     private TableColumn<Refresh, LocalDate> TcolumnAge; // Value injected by FXMLLoader
+
+    @FXML // fx:id="TcolumnReport"
+    private TableColumn<Refresh, ?> TcolumnReport; // Value injected by FXMLLoader
 
     @FXML // fx:id="UnderLabelAnchorPane"
     private AnchorPane UnderLabelAnchorPane; // Value injected by FXMLLoader
@@ -131,7 +131,7 @@ public class RequestHistoryController implements Initializable {
         assert refreshbutton != null : "fx:id=\"refreshbutton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-
+        assert TcolumnReport != null : "fx:id=\"TcolumnReport\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
     }
 
     private Stage stage;
@@ -172,7 +172,7 @@ public void refBu() throws SQLException {
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
-    String refreshQuesry = "select name, dob, bloodgroup from patient";
+    String refreshQuesry = "select name, dob, bloodgroup from patient_table";
 
     try {
 

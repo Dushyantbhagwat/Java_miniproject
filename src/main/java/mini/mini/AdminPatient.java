@@ -1,25 +1,20 @@
 package mini.mini;
 
-import java.net.URL;
-import java.time.LocalDate;
-public class Refresh {
+public class AdminPatient  {
 
     String name;
     String dob;
+
     String bloodgroup;
+    String phone_number;
 
-//    URL report;
-
-    public Refresh(String name, String dob, String bloodgroup) {
+    public AdminPatient(String name, String dob, String bloodgroup, String phone_number) {
+//        super();
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
-
+        this.phone_number = phone_number;
     }
-
-//    public Refresh() {
-//
-//    }
 
     public String getName() {
         return name;
@@ -45,5 +40,11 @@ public class Refresh {
         this.bloodgroup = bloodgroup;
     }
 
+    public String getPhone_number() {
+        return phone_number;
+    }
 
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
 }

@@ -186,18 +186,25 @@ public class MakeRequestController  implements Initializable {
             String bloodgroup = bloodgroupchoice.getValue();
             InputStream report = new FileInputStream(medical.getText());
 
-            try {
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+            if (loggedInUserId != -1) {
 
-                String insertFields = "insert into patient(name, dob, bloodgroup, report) values ('";
-                String inserValues = name + "','" + dob + "','" + bloodgroup + "','" + report + "')";
-                String insertToRegister4 = insertFields + inserValues;
+                try {
 
-                Statement statement = connectDB.createStatement();
-                statement.executeUpdate(insertToRegister4);
-                message.setText("You  request for blood has been made!");
+                    String insertFields = "insert into patient_table(name, dob, bloodgroup, report, user_id) values ('";
+                    String inserValues = name + "','" + dob + "','" + bloodgroup + "','" + report + "','" + loggedInUserId + "')";
+                    String insertToRegister4 = insertFields + inserValues;
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+                    Statement statement = connectDB.createStatement();
+                    statement.executeUpdate(insertToRegister4);
+
+                    message.setText("You  request for blood has been made!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                System.out.println("error");
             }
 
         }

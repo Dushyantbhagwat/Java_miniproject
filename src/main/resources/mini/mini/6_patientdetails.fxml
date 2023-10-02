@@ -87,6 +87,7 @@
                         <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25..jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="refbo" layoutX="90.0" layoutY="381.0" mnemonicParsing="false" onAction="#reButtononAction" text="REfresh" />
                </children>
             </AnchorPane>
          </children>
@@ -101,9 +102,7 @@
             <TableColumn fx:id="tablecolumnname" prefWidth="121.60002136230469" text="NAME" />
             <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="93.5999755859375" text="BLOOD GROUP" />
             <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="81.5999755859375" text="DOB" />
-            <TableColumn fx:id="tablecolumndisease" prefWidth="120.0" text="USER ID" />
             <TableColumn fx:id="tablecolumncontactno" minWidth="0.0" prefWidth="101.60003662109375" text="CONTACT NO." />
-            <TableColumn fx:id="tablecolumndisease1" prefWidth="101.60003662109375" sortType="DESCENDING" text="REPORT" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

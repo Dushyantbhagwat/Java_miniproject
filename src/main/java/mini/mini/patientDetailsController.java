@@ -7,8 +7,18 @@ package mini.mini;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -76,25 +87,24 @@ public class patientDetailsController implements Initializable {
         private Slider sliderP; // Value injected by FXMLLoader
 
         @FXML // fx:id="tablecolumnage"
-        private TableColumn<?, ?> tablecolumnage; // Value injected by FXMLLoader
+        private TableColumn<AdminPatient, LocalDate> tablecolumnage; // Value injected by FXMLLoader
 
         @FXML // fx:id="tablecolumnbloodgroup"
-        private TableColumn<?, ?> tablecolumnbloodgroup; // Value injected by FXMLLoader
+        private TableColumn<AdminPatient,String> tablecolumnbloodgroup; // Value injected by FXMLLoader
 
         @FXML // fx:id="tablecolumncontactno"
-        private TableColumn<?, ?> tablecolumncontactno; // Value injected by FXMLLoader
+        private TableColumn<AdminPatient,String> tablecolumncontactno; // Value injected by FXMLLoader
 
-        @FXML // fx:id="tablecolumndisease"
-        private TableColumn<?, ?> tablecolumndisease; // Value injected by FXMLLoader
-
-        @FXML // fx:id="tablecolumndisease1"
-        private TableColumn<?, ?> tablecolumndisease1; // Value injected by FXMLLoader
+    @FXML // fx:id="refbo"
+    private Button refbo; // Value injected by FXMLLoader
 
         @FXML // fx:id="tablecolumnname"
-        private TableColumn<?, ?> tablecolumnname; // Value injected by FXMLLoader
+        private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
 
         @FXML // fx:id="tableview"
-        private TableView<?> tableview; // Value injected by FXMLLoader
+        private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
+
+    ObservableList<AdminPatient> AdminPatientObservableList = FXCollections.observableArrayList();
 
         @FXML // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
@@ -114,11 +124,9 @@ public class patientDetailsController implements Initializable {
             assert tablecolumnage != null : "fx:id=\"tablecolumnage\" was not injected: check your FXML file 'patient_details.fxml'.";
             assert tablecolumnbloodgroup != null : "fx:id=\"tablecolumnbloodgroup\" was not injected: check your FXML file 'patient_details.fxml'.";
             assert tablecolumncontactno != null : "fx:id=\"tablecolumncontactno\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumndisease != null : "fx:id=\"tablecolumndisease\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumndisease1 != null : "fx:id=\"tablecolumndisease1\" was not injected: check your FXML file 'patient_details.fxml'.";
             assert tablecolumnname != null : "fx:id=\"tablecolumnname\" was not injected: check your FXML file 'patient_details.fxml'.";
             assert tableview != null : "fx:id=\"tableview\" was not injected: check your FXML file 'patient_details.fxml'.";
-
+            assert refbo != null : "fx:id=\"refbo\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         }
 
         @Override
@@ -139,6 +147,66 @@ public class patientDetailsController implements Initializable {
             Image backImage4 = new Image(backFile4.toURI().toString());
             iamgebloodrequest.setImage(backImage4);
         }
+
+            public void reButtononAction(ActionEvent event) throws SQLException{
+                         display();
+        }
+
+        public void display() throws SQLException {
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String refreshQuesry = "SELECT patient_table.name, patient_table.dob, patient_table.bloodgroup, users.phone_number " +
+                                        "FROM table1 patient_table " +
+                                        "INNER JOIN table2 users ON patient_table.patient_id = users.user_id " +
+                                        "WHERE patient_table.patient_id = ?";
+
+        try {
+
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(refreshQuesry);
+
+            while (queryOutput.next()) {
+
+                String query_Name = queryOutput.getString("name");
+
+                String queryBlood_group = queryOutput.getString("bloodgroup");
+
+                String query_Dob = queryOutput.getString("dob");
+
+                String queryContactno = queryOutput.getString("phone_number");
+
+                LocalDate dob = LocalDate.parse(query_Dob);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                String formatted_Dob = dob.format(formatter);
+
+
+                AdminPatientObservableList.add(new AdminPatient(query_Name, queryBlood_group, formatted_Dob, queryContactno));
+            }
+
+            tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
+            tablecolumnage.setCellValueFactory(new PropertyValueFactory<>("dob"));
+            tablecolumnbloodgroup.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+            tablecolumncontactno.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
+
+            tableview.setItems(AdminPatientObservableList);
+
+        } catch (SQLException e) {
+            Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     @FXML
     void DonorButtonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));

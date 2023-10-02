@@ -90,9 +90,10 @@
                   </Label>
                   <TableView fx:id="tableView" layoutY="73.0" prefHeight="314.0" prefWidth="694.0" tableMenuButtonVisible="true">
                     <columns>
-                      <TableColumn fx:id="TColumnPatientName" prefWidth="97.59996336698532" text="Patient Name" />
-                      <TableColumn fx:id="TcolumnAge" prefWidth="52.79998779296875" text="DOB" />
-                        <TableColumn fx:id="TColumnBloodgrp" prefWidth="87.19999694824219" text="Blood grp" />
+                      <TableColumn fx:id="TColumnPatientName" prefWidth="165.6000518798828" text="Patient Name" />
+                      <TableColumn fx:id="TcolumnAge" prefWidth="120.800048828125" text="DOB" />
+                        <TableColumn fx:id="TColumnBloodgrp" prefWidth="118.39996337890625" text="Blood Group" />
+                        <TableColumn fx:id="TcolumnReport" prefWidth="278.40008544921875" text="Report" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

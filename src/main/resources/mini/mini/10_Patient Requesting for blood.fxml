@@ -93,6 +93,6 @@
       <DatePicker fx:id="dobid" layoutX="262.0" layoutY="129.0" prefHeight="26.0" prefWidth="327.0" promptText="date of birth (mm/dd/yyyy)" />
       <Label fx:id="message" layoutX="308.0" layoutY="358.0" prefHeight="18.0" prefWidth="246.0" />
       <ChoiceBox fx:id="bloodgroupchoice" layoutX="262.0" layoutY="232.0" prefHeight="26.0" prefWidth="327.0" />
-      <Button fx:id="medical" layoutX="399.0" layoutY="180.0" mnemonicParsing="false" onAction="#filesetOnAction" text="Add Medical Report" />
+      <Button fx:id="medical" layoutX="358.0" layoutY="180.0" mnemonicParsing="false" onAction="#filesetOnAction" text="Add Medical Report" />
    </children>
 </AnchorPane>

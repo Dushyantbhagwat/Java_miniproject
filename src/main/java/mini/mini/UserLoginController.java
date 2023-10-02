@@ -17,10 +17,7 @@ import javafx.scene.Node;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
@@ -63,6 +60,8 @@ public class UserLoginController implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    public int loggedInUserId;
+
     // This method is called by the FXMLLoader when initialization is complete
     @FXML
     void initialize() {
@@ -84,46 +83,128 @@ public class UserLoginController implements Initializable {
         iamge_.setImage(backImage);
     }
 
-    public void loginbuttonOnAction(ActionEvent e) throws SQLException {
+//    public void loginbuttonOnAction(ActionEvent e) throws SQLException {
+//
+//        if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
+//            setmessage(e);
+//        } else {
+//            message.setText("Please enter your username and password");
+//        }
+//    }
+//
+//    public void setmessage(ActionEvent e) {
+//        DatabaseConnection connection = new DatabaseConnection();
+//        Connection connection1 = connection.getConnection();
+//
+//        String verifylogin = "select count(1) from users where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
+//
+//        try {
+//            Statement statement = connection1.createStatement();
+//            ResultSet queryResult = statement.executeQuery(verifylogin);
+//
+//            while (queryResult.next()) {
+//                int userId = queryResult.getInt("user_id");
+//                CurrentUser.setLoggedInUser(userId);
+//                if (queryResult.getInt(1) == 1) {
+//                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+//                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+//                    try {
+//                        scene = new Scene(fxmlLoader.load());
+//                    } catch (IOException event) {
+//                        throw new RuntimeException(String.valueOf(e));
+//                    }
+//                    stage.setScene(scene);
+//                    stage.show();
+//                    stage.setTitle("Dashboard");
+//
+//                } else {
+//                    message.setText("Invalid Credentials");
+//                }
+//            }
+//        } catch (Exception ep) {
+//            ep.printStackTrace();
+//        }
+//    }
 
-        if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
-            setmessage(e);
+
+    public void loginButtonOnAction(ActionEvent e) throws SQLException {
+        if (!username.getText().isBlank() && !password.getText().isBlank()) {
+            int userId = authenticateUser(username.getText(), password.getText()); // Retrieve user ID
+            if (userId != -1) {
+                AuthService.getInstance().login(userId);
+                changeSceneToDashboard(e);
+            }else {
+                message.setText("Invalid username or password");
+            }
+
         } else {
             message.setText("Please enter your username and password");
         }
     }
 
-    public void setmessage(ActionEvent e) {
+    public int authenticateUser(String username, String password) {
+        int userId=-1;
         DatabaseConnection connection = new DatabaseConnection();
         Connection connection1 = connection.getConnection();
 
-        String verifylogin = "select count(1) from users where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
+
+
+
+        String verifyLogin = "SELECT user_id FROM users WHERE email_id = ? AND password = ?";
 
         try {
-            Statement statement = connection1.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifylogin);
+            PreparedStatement preparedStatement = connection1.prepareStatement(verifyLogin);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-                    try {
-                        scene = new Scene(fxmlLoader.load());
-                    } catch (IOException event) {
-                        throw new RuntimeException(String.valueOf(e));
-                    }
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setTitle("Dashboard");
+            ResultSet queryResult = preparedStatement.executeQuery();
 
-                } else {
-                    message.setText("Invalid Credentials");
-                }
+            if (queryResult.next()) {
+
+                // Store the user ID in CurrentUser or another appropriate location
+//                userId = queryResult.getInt("user_id");
+                return queryResult.getInt("user_id");
+//                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+//                stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+//                try {
+//                    scene = new Scene(fxmlLoader.load());
+//                } catch (IOException event) {
+//                    throw new RuntimeException(String.valueOf(e));
+//                }
+//                stage.setScene(scene);
+//                stage.show();
+//                stage.setTitle("Dashboard");
+            } else {
+                return -1;
+//                message.setText("Invalid Credentials");
             }
-        } catch (Exception ep) {
-            ep.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return -1;
         }
+//        return userId;
     }
+
+    private void changeSceneToDashboard(ActionEvent e) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+        Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+
+        try {
+                scene = new Scene(fxmlLoader.load());
+        } catch (IOException event) {
+            throw new RuntimeException(String.valueOf(e));
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Dashboard");
+        }
+
+
+
+
+
+
+
 
 
 
