@@ -2,18 +2,23 @@ package mini.mini;
 
 public class AdminPatient  {
 
+
     String name;
     String dob;
 
     String bloodgroup;
     String phone_number;
 
-    public AdminPatient(String name, String dob, String bloodgroup, String phone_number) {
-//        super();
+    String email_id;
+
+    String address;
+    public AdminPatient(String name, String dob, String bloodgroup, String phone_number,String email_id, String address) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
         this.phone_number = phone_number;
+        this.email_id = email_id;
+        this.address = address;
     }
 
     public String getName() {
@@ -46,5 +51,21 @@ public class AdminPatient  {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public String getEmail_id() {
+        return email_id;
+    }
+
+    public void setEmail_id(String email_id) {
+        this.email_id = email_id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

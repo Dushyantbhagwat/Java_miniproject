@@ -166,7 +166,7 @@ public class MakeRequestController  implements Initializable {
     }
 
     public void requestButtonOnAction(ActionEvent actionEventevent) throws SQLException, FileNotFoundException {
-        if (PatientNameTextField != null && dobid != null && bloodgroupchoice != null) {
+        if ( dobid.getValue() != null && bloodgroupchoice.getValue() != null) {
             makingrequest();
         } else {
             message.setText("enter all above asked information");
@@ -182,7 +182,6 @@ public class MakeRequestController  implements Initializable {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
-            String name = PatientNameTextField.getText();
             String bloodgroup = bloodgroupchoice.getValue();
             InputStream report = new FileInputStream(medical.getText());
 
@@ -191,8 +190,8 @@ public class MakeRequestController  implements Initializable {
 
                 try {
 
-                    String insertFields = "insert into patient_table(name, dob, bloodgroup, report, user_id) values ('";
-                    String inserValues = name + "','" + dob + "','" + bloodgroup + "','" + report + "','" + loggedInUserId + "')";
+                    String insertFields = "insert into patient_table(dob, bloodgroup, report, user_id) values ('";
+                    String inserValues = dob + "','" + bloodgroup + "','" + report + "','" + loggedInUserId + "')";
                     String insertToRegister4 = insertFields + inserValues;
 
                     Statement statement = connectDB.createStatement();

@@ -172,7 +172,12 @@ public void refBu() throws SQLException {
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
-    String refreshQuesry = "select name, dob, bloodgroup from patient_table";
+
+
+    String refreshQuesry = "SELECT users.name, patient_table.bloodgroup, patient_table.dob " +
+            "FROM users " +
+            "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
+
 
     try {
 

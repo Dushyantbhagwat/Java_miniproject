@@ -37,97 +37,112 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class patientDetailsController implements Initializable {
-        private Stage stage;
 
-        private Scene scene;
+    @FXML // ResourceBundle that was given to the FXMLLoader
+    private ResourceBundle resources;
 
-        @FXML // ResourceBundle that was given to the FXMLLoader
-        private ResourceBundle resources;
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    private URL location;
 
-        @FXML // URL location of the FXML file that was given to the FXMLLoader
-        private URL location;
+    @FXML // fx:id="anchorpaneP"
+    private AnchorPane anchorpaneP; // Value injected by FXMLLoader
 
-        @FXML // fx:id="anchorpaneP"
-        private AnchorPane anchorpaneP; // Value injected by FXMLLoader
+    @FXML // fx:id="anchorpaneSP"
+    private AnchorPane anchorpaneSP; // Value injected by FXMLLoader
 
-        @FXML // fx:id="anchorpaneSP"
-        private AnchorPane anchorpaneSP; // Value injected by FXMLLoader
+    @FXML // fx:id="buttonbloodrequest"
+    private Button buttonbloodrequest; // Value injected by FXMLLoader
 
-        @FXML // fx:id="buttonbloodrequest"
-        private Button buttonbloodrequest; // Value injected by FXMLLoader
+    @FXML // fx:id="buttondonor"
+    private Button buttondonor; // Value injected by FXMLLoader
 
-        @FXML // fx:id="buttondonor"
-        private Button buttondonor; // Value injected by FXMLLoader
+    @FXML // fx:id="buttonhome"
+    private Button buttonhome; // Value injected by FXMLLoader
 
-        @FXML // fx:id="buttonhome"
-        private Button buttonhome; // Value injected by FXMLLoader
+    @FXML // fx:id="buttonlogout"
+    private Button buttonlogout; // Value injected by FXMLLoader
 
-        @FXML // fx:id="buttonlogout"
-        private Button buttonlogout; // Value injected by FXMLLoader
+    @FXML // fx:id="buttonpatient"
+    private Button buttonpatient; // Value injected by FXMLLoader
 
-        @FXML // fx:id="buttonpatient"
-        private Button buttonpatient; // Value injected by FXMLLoader
+    @FXML // fx:id="iamgebloodrequest"
+    private ImageView iamgebloodrequest; // Value injected by FXMLLoader
 
-        @FXML // fx:id="iamgebloodrequest"
-        private ImageView iamgebloodrequest; // Value injected by FXMLLoader
+    @FXML // fx:id="iamgehome"
+    private ImageView iamgehome; // Value injected by FXMLLoader
 
-        @FXML // fx:id="iamgehome"
-        private ImageView iamgehome; // Value injected by FXMLLoader
+    @FXML // fx:id="iamgepatient"
+    private ImageView iamgepatient; // Value injected by FXMLLoader
 
-        @FXML // fx:id="iamgepatient"
-        private ImageView iamgepatient; // Value injected by FXMLLoader
+    @FXML // fx:id="imagedonor"
+    private ImageView imagedonor; // Value injected by FXMLLoader
 
-        @FXML // fx:id="imagedonor"
-        private ImageView imagedonor; // Value injected by FXMLLoader
-
-        @FXML // fx:id="labelBG"
-        private Label labelBG; // Value injected by FXMLLoader
-
-        @FXML // fx:id="sliderP"
-        private Slider sliderP; // Value injected by FXMLLoader
-
-        @FXML // fx:id="tablecolumnage"
-        private TableColumn<AdminPatient, LocalDate> tablecolumnage; // Value injected by FXMLLoader
-
-        @FXML // fx:id="tablecolumnbloodgroup"
-        private TableColumn<AdminPatient,String> tablecolumnbloodgroup; // Value injected by FXMLLoader
-
-        @FXML // fx:id="tablecolumncontactno"
-        private TableColumn<AdminPatient,String> tablecolumncontactno; // Value injected by FXMLLoader
+    @FXML // fx:id="labelBG"
+    private Label labelBG; // Value injected by FXMLLoader
 
     @FXML // fx:id="refbo"
     private Button refbo; // Value injected by FXMLLoader
 
-        @FXML // fx:id="tablecolumnname"
-        private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
+    @FXML // fx:id="sliderP"
+    private Slider sliderP; // Value injected by FXMLLoader
 
-        @FXML // fx:id="tableview"
-        private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
+    @FXML // fx:id="tablecolumnage"
+    private TableColumn<AdminPatient, String> tablecolumnage; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumnbloodgroup"
+    private TableColumn<AdminPatient,LocalDate> tablecolumnbloodgroup; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumncontactno"
+    private TableColumn<AdminPatient,String> tablecolumncontactno; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumncontactno1"
+    private TableColumn<AdminPatient,String> tablecolumncontactno1; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumncontactno2"
+    private TableColumn<AdminPatient,String> tablecolumncontactno2; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumncontactno3"
+    private TableColumn<AdminPatient,?> tablecolumncontactno3; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tablecolumnname"
+    private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
+
+    @FXML // fx:id="tableview"
+    private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
+
+    private Stage stage;
+    private Scene scene;
+
+    @FXML // This method is called by the FXMLLoader when initialization is complete
+    void initialize() {
+        assert anchorpaneP != null : "fx:id=\"anchorpaneP\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert anchorpaneSP != null : "fx:id=\"anchorpaneSP\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttonbloodrequest != null : "fx:id=\"buttonbloodrequest\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttondonor != null : "fx:id=\"buttondonor\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttonhome != null : "fx:id=\"buttonhome\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttonlogout != null : "fx:id=\"buttonlogout\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttonpatient != null : "fx:id=\"buttonpatient\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert iamgebloodrequest != null : "fx:id=\"iamgebloodrequest\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert iamgepatient != null : "fx:id=\"iamgepatient\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert imagedonor != null : "fx:id=\"imagedonor\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert labelBG != null : "fx:id=\"labelBG\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert refbo != null : "fx:id=\"refbo\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert sliderP != null : "fx:id=\"sliderP\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumnage != null : "fx:id=\"tablecolumnage\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumnbloodgroup != null : "fx:id=\"tablecolumnbloodgroup\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumncontactno != null : "fx:id=\"tablecolumncontactno\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumncontactno1 != null : "fx:id=\"tablecolumncontactno1\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumncontactno2 != null : "fx:id=\"tablecolumncontactno2\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumncontactno3 != null : "fx:id=\"tablecolumncontactno3\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tablecolumnname != null : "fx:id=\"tablecolumnname\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert tableview != null : "fx:id=\"tableview\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+
+    }
 
     ObservableList<AdminPatient> AdminPatientObservableList = FXCollections.observableArrayList();
 
-        @FXML // This method is called by the FXMLLoader when initialization is complete
-        void initialize() {
-            assert anchorpaneP != null : "fx:id=\"anchorpaneP\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert anchorpaneSP != null : "fx:id=\"anchorpaneSP\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert buttonbloodrequest != null : "fx:id=\"buttonbloodrequest\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert buttondonor != null : "fx:id=\"buttondonor\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert buttonhome != null : "fx:id=\"buttonhome\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert buttonlogout != null : "fx:id=\"buttonlogout\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert buttonpatient != null : "fx:id=\"buttonpatient\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert iamgebloodrequest != null : "fx:id=\"iamgebloodrequest\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert iamgepatient != null : "fx:id=\"iamgepatient\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert imagedonor != null : "fx:id=\"imagedonor\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert labelBG != null : "fx:id=\"labelBG\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert sliderP != null : "fx:id=\"sliderP\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumnage != null : "fx:id=\"tablecolumnage\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumnbloodgroup != null : "fx:id=\"tablecolumnbloodgroup\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumncontactno != null : "fx:id=\"tablecolumncontactno\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tablecolumnname != null : "fx:id=\"tablecolumnname\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert tableview != null : "fx:id=\"tableview\" was not injected: check your FXML file 'patient_details.fxml'.";
-            assert refbo != null : "fx:id=\"refbo\" was not injected: check your FXML file '6_patientdetails.fxml'.";
-        }
+
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -148,24 +163,26 @@ public class patientDetailsController implements Initializable {
             iamgebloodrequest.setImage(backImage4);
         }
 
+
+
             public void reButtononAction(ActionEvent event) throws SQLException{
                          display();
-        }
+                }
 
         public void display() throws SQLException {
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String refreshQuesry = "SELECT patient_table.name, patient_table.dob, patient_table.bloodgroup, users.phone_number " +
-                                        "FROM table1 patient_table " +
-                                        "INNER JOIN table2 users ON patient_table.patient_id = users.user_id " +
-                                        "WHERE patient_table.patient_id = ?";
+         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, patient_table.bloodgroup, patient_table.dob " +
+                    "FROM users " +
+                    "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
 
-        try {
+
+            try {
 
             Statement statement = connectDB.createStatement();
-            ResultSet queryOutput = statement.executeQuery(refreshQuesry);
+            ResultSet queryOutput = statement.executeQuery(refreshQuery);
 
             while (queryOutput.next()) {
 
@@ -177,18 +194,24 @@ public class patientDetailsController implements Initializable {
 
                 String queryContactno = queryOutput.getString("phone_number");
 
+                String queryEmail = queryOutput.getString("email_id");
+
+                String queryAddress = queryOutput.getString("address");
+
                 LocalDate dob = LocalDate.parse(query_Dob);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
                 String formatted_Dob = dob.format(formatter);
 
 
-                AdminPatientObservableList.add(new AdminPatient(query_Name, queryBlood_group, formatted_Dob, queryContactno));
+                AdminPatientObservableList.add(new AdminPatient(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress));
             }
 
             tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
-            tablecolumnage.setCellValueFactory(new PropertyValueFactory<>("dob"));
-            tablecolumnbloodgroup.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+            tablecolumnage.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+            tablecolumnbloodgroup.setCellValueFactory(new PropertyValueFactory<>("dob"));
             tablecolumncontactno.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
+            tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
+            tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
 
             tableview.setItems(AdminPatientObservableList);
 
