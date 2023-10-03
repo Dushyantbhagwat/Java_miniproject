@@ -79,6 +79,7 @@
                                 <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25..jpg" />
                             </image>
                         </ImageView>
+                  <Button fx:id="refresh" layoutX="95.0" layoutY="353.0" mnemonicParsing="false" onAction="#reButtononAction" text="refresh" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="anchorpanelARH" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="737.0">
@@ -98,10 +99,10 @@
                                 <TableColumn fx:id="anchorpanelTCN" prefWidth="117.60003662109375" text="NAME" />
                                 <TableColumn fx:id="anchorpanelTCP" prefWidth="99.99993133544922" text="BLOOD GROUP" />
                                 <TableColumn fx:id="anchorpanelTCBG" prefWidth="90.4000244140625" text="DOB" />
-                                <TableColumn fx:id="anchorpanelTCA" prefWidth="93.60003662109375" text="USER ID" />
                                 <TableColumn fx:id="anchorpanelTCM" prefWidth="109.5999755859375" text="CONTACT NO." />
-                                <TableColumn fx:id="anchorpanelTCA" prefWidth="127.99996948242188" text="REPORT" />
-                                <TableColumn fx:id="anchorpanelTCA1" prefWidth="92.7999267578125" text="ACTION" />
+                                <TableColumn fx:id="anchorpanelTCA" prefWidth="127.99996948242188" text="EMAIL ID" />
+                        <TableColumn fx:id="anchorpanelTCA1" prefWidth="127.99996948242188" text="ADDRESS" />
+                        <TableColumn fx:id="anchorpanelTCA11" prefWidth="127.99996948242188" text="REPORT" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

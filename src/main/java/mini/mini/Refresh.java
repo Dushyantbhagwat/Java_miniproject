@@ -8,18 +8,17 @@ public class Refresh {
     String dob;
     String bloodgroup;
 
+    byte[] report;
+
 //    URL report;
 
-    public Refresh(String name, String dob, String bloodgroup) {
+    public Refresh(String name, String dob, String bloodgroup, byte[] report) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
+        this.report = report;
 
     }
-
-//    public Refresh() {
-//
-//    }
 
     public String getName() {
         return name;
@@ -45,5 +44,11 @@ public class Refresh {
         this.bloodgroup = bloodgroup;
     }
 
+    public byte[] getReport() {
+        return report;
+    }
 
+    public void setReport(byte[] report) {
+        this.report = report;
+    }
 }

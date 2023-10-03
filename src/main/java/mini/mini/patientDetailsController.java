@@ -5,6 +5,7 @@ package mini.mini;
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -165,19 +166,22 @@ public class patientDetailsController implements Initializable {
 
 
 
-            public void reButtononAction(ActionEvent event) throws SQLException{
-                         display();
+            public void reButtononAction(ActionEvent actionEventevent) throws SQLException{
+                try {
+                    display();
+                } catch (Exception e) {
+                    e.printStackTrace(); // Print the stack trace for debugging
                 }
+            }
 
         public void display() throws SQLException {
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, patient_table.bloodgroup, patient_table.dob, patient_table.report " +
+         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
                     "FROM users " +
                     "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
-
 
             try {
 
@@ -191,6 +195,12 @@ public class patientDetailsController implements Initializable {
                 String queryBlood_group = queryOutput.getString("bloodgroup");
 
                 String query_Dob = queryOutput.getString("dob");
+                System.out.println("query_Dob: " + query_Dob);
+
+
+                LocalDate dob = LocalDate.parse(query_Dob);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                String formatted_Dob = dob.format(formatter);
 
                 String queryContactno = queryOutput.getString("phone_number");
 
@@ -198,9 +208,7 @@ public class patientDetailsController implements Initializable {
 
                 String queryAddress = queryOutput.getString("address");
 
-                LocalDate dob = LocalDate.parse(query_Dob);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-                String formatted_Dob = dob.format(formatter);
+
 
                 byte[] pdfData = queryOutput.getBytes("report");
 

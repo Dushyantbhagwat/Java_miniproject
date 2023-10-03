@@ -170,7 +170,7 @@ public void refBu(int loggedInUserId) throws SQLException {
     Connection connectDB = connectNow.getConnection();
 
 
-    String refreshQuery = "SELECT users.name, patient_table.bloodgroup, patient_table.dob " +
+    String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report " +
             "FROM users " +
             "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
             "WHERE users.user_id ='" + loggedInUserId + "'";
@@ -189,16 +189,19 @@ public void refBu(int loggedInUserId) throws SQLException {
 
                 LocalDate dob = LocalDate.parse(queryDob);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-                String formattedDob = dob.format(formatter);
+                String formatted_Dob = dob.format(formatter);
 
                 String queryBloodgroup = queryOutput.getString("bloodgroup");
 
-                RefreshObservableList.add(new Refresh(queryName, formattedDob, queryBloodgroup));
+                byte[] pdfData = queryOutput.getBytes("report");
+
+                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
             }
 
             TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
             TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
             TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+            TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
 
             tableView.setItems(RefreshObservableList);
 

@@ -51,6 +51,12 @@ import javafx.stage.Stage;
         @FXML // fx:id="anchorpanello"
         private Button anchorpanello; // Value injected by FXMLLoader
 
+        @FXML // fx:id="RULES1"
+        private Button RULES1; // Value injected by FXMLLoader
+
+        @FXML // fx:id="message"
+        private Label message; // Value injected by FXMLLoader
+
         private Stage stage;
         private Scene scene;
 
@@ -112,7 +118,8 @@ import javafx.stage.Stage;
             assert anchorpanelBG != null : "fx:id=\"anchorpanelBG\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanello != null : "fx:id=\"anchorpanello\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
-
+            assert RULES1 != null : "fx:id=\"RULES1\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
+            assert message != null : "fx:id=\"message\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
         }
 
         @Override
@@ -125,7 +132,7 @@ import javafx.stage.Stage;
         }
 
 
-        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException, FileNotFoundException {
+        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException {
 
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
@@ -141,6 +148,8 @@ import javafx.stage.Stage;
                     Statement statement = connectDB.createStatement();
                     statement.executeUpdate(insertToRegister5);
 
+                    message.setText("You  request to donate  blood has been made!");
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -149,5 +158,33 @@ import javafx.stage.Stage;
             }
 
         }
+
+        public void requestbuttonOnAction(ActionEvent actionEventevrnt) throws SQLException{
+
+
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+            if (loggedInUserId != -1) {
+                try {
+
+                    String insertFields = "insert into patient_table(user_id) values ('";
+                    String inserValues = loggedInUserId + "')";
+                    String insertToRegister5 = insertFields + inserValues;
+
+                    Statement statement = connectDB.createStatement();
+                    statement.executeUpdate(insertToRegister5);
+
+                    message.setText("You  request for blood has been made!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                System.out.println("error");
+            }
+        }
+
 
     }

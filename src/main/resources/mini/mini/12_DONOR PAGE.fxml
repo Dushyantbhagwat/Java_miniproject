@@ -51,6 +51,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="RULES1" layoutX="597.0" layoutY="551.0" mnemonicParsing="false" onAction="#requestbuttonOnAction" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: FF2712;" text=" BLOOD REQUEST" textFill="#181515">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="message" layoutX="334.0" layoutY="569.0" prefHeight="18.0" prefWidth="218.0" />
                </children>
             </AnchorPane>
          </items>
