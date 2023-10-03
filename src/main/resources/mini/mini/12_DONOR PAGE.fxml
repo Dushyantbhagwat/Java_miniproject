@@ -20,7 +20,7 @@
                         <Image url="@../../../../../im/bgdonor.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="DonateButton" layoutX="29.0" layoutY="550.0" mnemonicParsing="false" onAction="#DonateButtonOnAction" prefHeight="54.0" prefWidth="118.0" style="-fx-background-color: FF2712;" text="DONATE" textFill="#181515">
+                  <Button fx:id="DonateButton" layoutX="29.0" layoutY="550.0" mnemonicParsing="false" onAction="#donateButtonOnAction" prefHeight="54.0" prefWidth="118.0" style="-fx-background-color: FF2712;" text="DONATE" textFill="#181515">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>

@@ -5,8 +5,12 @@ package mini.mini;
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,24 +56,9 @@ import javafx.stage.Stage;
 
 
         @FXML
-        void DonateButtonOnAction(ActionEvent event) {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("(9_patientoverview.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
-
-        }
-        @FXML
         void loginbuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -84,7 +73,7 @@ import javafx.stage.Stage;
         @FXML
         void HomeButtonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -101,7 +90,7 @@ import javafx.stage.Stage;
         void ShowrulesOnAction(ActionEvent event) {
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("13_rules for donation.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -114,7 +103,8 @@ import javafx.stage.Stage;
         }
 
 
-        @FXML // This method is called by the FXMLLoader when initialization is complete
+        @FXML
+            // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
             assert Checkbox1 != null : "fx:id=\"Checkbox1\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert Checkbox2 != null : "fx:id=\"Checkbox2\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
@@ -133,4 +123,31 @@ import javafx.stage.Stage;
             iamgehome.setImage(backImage1);
 
         }
+
+
+        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException, FileNotFoundException {
+
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+            if (loggedInUserId != -1) {
+                try {
+
+                    String insertFields = "insert into donor(user_id) values ('";
+                    String inserValues = loggedInUserId + "')";
+                    String insertToRegister5 = insertFields + inserValues;
+
+                    Statement statement = connectDB.createStatement();
+                    statement.executeUpdate(insertToRegister5);
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                System.out.println("error");
+            }
+
+        }
+
     }

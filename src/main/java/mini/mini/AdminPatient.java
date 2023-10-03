@@ -13,13 +13,16 @@ public class AdminPatient  {
 
     String address;
 
-    public AdminPatient(String name, String dob, String bloodgroup, String phone_number,String email_id, String address) {
+    byte[] report;
+
+    public AdminPatient(String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
         this.phone_number = phone_number;
         this.email_id = email_id;
         this.address = address;
+        this.report = report;
     }
 
     public String getName() {
@@ -68,5 +71,13 @@ public class AdminPatient  {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public byte[] getReport() {
+        return report;
+    }
+
+    public void setReport(byte[] report) {
+        this.report = report;
     }
 }

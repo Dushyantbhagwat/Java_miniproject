@@ -102,7 +102,7 @@ public class patientDetailsController implements Initializable {
     private TableColumn<AdminPatient,String> tablecolumncontactno2; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumncontactno3"
-    private TableColumn<AdminPatient,?> tablecolumncontactno3; // Value injected by FXMLLoader
+    private TableColumn<?,?> tablecolumncontactno3; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumnname"
     private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
@@ -174,7 +174,7 @@ public class patientDetailsController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, patient_table.bloodgroup, patient_table.dob " +
+         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, patient_table.bloodgroup, patient_table.dob, patient_table.report " +
                     "FROM users " +
                     "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
 
@@ -202,8 +202,11 @@ public class patientDetailsController implements Initializable {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
                 String formatted_Dob = dob.format(formatter);
 
+                byte[] pdfData = queryOutput.getBytes("report");
 
-                AdminPatientObservableList.add(new AdminPatient(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress));
+
+
+                AdminPatientObservableList.add(new AdminPatient(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
             }
 
             tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -212,6 +215,7 @@ public class patientDetailsController implements Initializable {
             tablecolumncontactno.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
             tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
             tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
+            tablecolumncontactno3.setCellValueFactory(new PropertyValueFactory<>("report"));
 
             tableview.setItems(AdminPatientObservableList);
 
