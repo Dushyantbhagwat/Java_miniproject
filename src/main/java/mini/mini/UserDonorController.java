@@ -18,9 +18,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
     public class UserDonorController implements Initializable {
+
+        @FXML // fx:id="iamgehome"
+        private ImageView iamgehome; // Value injected by FXMLLoader
 
         @FXML // ResourceBundle that was given to the FXMLLoader
         private ResourceBundle resources;
@@ -46,15 +50,6 @@ import javafx.stage.Stage;
         private Stage stage;
         private Scene scene;
 
-        @FXML
-        void Checkbox1OnAction(ActionEvent event) {
-
-        }
-
-        @FXML
-        void Checkbox2OnAction(ActionEvent event) {
-
-        }
 
         @FXML
         void DonateButtonOnAction(ActionEvent event) {
@@ -102,6 +97,23 @@ import javafx.stage.Stage;
 
         }
 
+        @FXML
+        void ShowrulesOnAction(ActionEvent event) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("13_rules for donation.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Rules");
+
+        }
+
+
         @FXML // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
             assert Checkbox1 != null : "fx:id=\"Checkbox1\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
@@ -109,13 +121,16 @@ import javafx.stage.Stage;
             assert DonateButton != null : "fx:id=\"DonateButton\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanelBG != null : "fx:id=\"anchorpanelBG\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanello != null : "fx:id=\"anchorpanello\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
+            assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
 
         }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+            File backFile1 = new File("im/bgdonor.jpg");
+            Image backImage1 = new Image(backFile1.toURI().toString());
+            iamgehome.setImage(backImage1);
 
         }
     }

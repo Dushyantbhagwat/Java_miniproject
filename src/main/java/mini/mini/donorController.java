@@ -135,7 +135,7 @@ public class donorController implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-            File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
+            File backFile1 = new File("bgdonor.jpg");
             Image backImage1 = new Image(backFile1.toURI().toString());
             iamgehome.setImage(backImage1);
 
@@ -150,6 +150,7 @@ public class donorController implements Initializable {
             File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
             Image backImage4 = new Image(backFile4.toURI().toString());
             iamgebloodrequest.setImage(backImage4);
+
         }
 
     @FXML
