@@ -20,7 +20,7 @@
                         <Image url="@../../../../../im/bgdonor.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="DonateButton" layoutX="29.0" layoutY="550.0" mnemonicParsing="false" onAction="#donateButtonOnAction" prefHeight="54.0" prefWidth="118.0" style="-fx-background-color: FF2712;" text="DONATE" textFill="#181515">
+                  <Button fx:id="DonateButton" layoutX="28.0" layoutY="550.0" mnemonicParsing="false" onAction="#donateButtonOnAction" prefHeight="54.0" prefWidth="118.0" style="-fx-background-color: FF2712;" text="DONATE" textFill="#181515">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
@@ -33,17 +33,17 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="anchorpanello" layoutX="729.0" layoutY="2.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="72.0" text="Log out">
+                  <Button fx:id="anchorpanello" layoutX="741.0" layoutY="4.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="27.0" prefWidth="72.0" text="Log out">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="homebutton" layoutX="589.0" layoutY="4.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="26.0" prefWidth="72.0" text="Home">
+                  <Button fx:id="homebutton" layoutX="657.0" layoutY="5.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="26.0" prefWidth="72.0" text="Home">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="RULES" layoutX="155.0" layoutY="550.0" mnemonicParsing="false" onAction="#ShowrulesOnAction" prefHeight="54.0" prefWidth="130.0" style="-fx-background-color: FF2712;" text=" RULES" textFill="#181515">
+                  <Button fx:id="RULES" layoutX="156.0" layoutY="550.0" mnemonicParsing="false" onAction="#ShowrulesOnAction" prefHeight="54.0" prefWidth="130.0" style="-fx-background-color: FF2712;" text=" RULES" textFill="#181515">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="RULES1" layoutX="597.0" layoutY="551.0" mnemonicParsing="false" onAction="#requestbuttonOnAction" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: FF2712;" text=" BLOOD REQUEST" textFill="#181515">
+                  <Button fx:id="RULES1" layoutX="602.0" layoutY="551.0" mnemonicParsing="false" onAction="#requestbuttonOnAction" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: FF2712;" text=" BLOOD REQUEST" textFill="#181515">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
@@ -59,7 +59,10 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="message" layoutX="334.0" layoutY="569.0" prefHeight="18.0" prefWidth="218.0" />
+                  <Label fx:id="message" layoutX="334.0" layoutY="569.0" prefHeight="18.0" prefWidth="218.0" textFill="#0ca1c7">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
          </items>

@@ -6,6 +6,8 @@ package mini.mini;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
@@ -41,6 +43,9 @@ public class RequestHistoryController implements Initializable {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+
+    @FXML // fx:id="pdfopner"
+    private Button pdfopner; // Value injected by FXMLLoader
 
     @FXML // fx:id="AnchorPane"
     private AnchorPane AnchorPane; // Value injected by FXMLLoader
@@ -127,6 +132,7 @@ public class RequestHistoryController implements Initializable {
         assert homesymbol != null : "fx:id=\"homesymbol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert refreshbutton != null : "fx:id=\"refreshbutton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
+        assert pdfopner != null : "fx:id=\"pdfopner\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TcolumnReport != null : "fx:id=\"TcolumnReport\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
     }
@@ -148,9 +154,9 @@ public class RequestHistoryController implements Initializable {
         Image backImage2 = new Image(backFile2.toURI().toString());
         donatesymbol.setImage(backImage2);
 
-        File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
-        Image backImage4 = new Image(backFile4.toURI().toString());
-        bloodrequestsymbol.setImage(backImage4);
+//        File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+//        Image backImage4 = new Image(backFile4.toURI().toString());
+//        bloodrequestsymbol.setImage(backImage4);
 
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());
@@ -214,83 +220,97 @@ public void refBu(int loggedInUserId) throws SQLException {
     }
 }
 
-
     @FXML
-    void DonateButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    void PdfopnerOnAction(ActionEvent event) {
+        String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
+        // Replace "YOUR_FILE_ID" with the actual ID of your Google Drive file
         try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            // Handle any exceptions here
         }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-
     }
 
-    @FXML
-    void requestOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+            @FXML
+            void DonateButtonOnAction (ActionEvent event){
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage.setScene(scene);
+                stage.show();
+                stage.setTitle("Donor");
+
+
+            }
+
+//            @FXML
+//            void requestOnAction (ActionEvent event){
+//                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                try {
+//                    scene = new Scene(fxmlLoader.load());
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                stage.setScene(scene);
+//                stage.show();
+//                stage.setTitle("Request");
+//
+//            }
+
+            @FXML
+            void RequestHistoryButtonOnAction (ActionEvent event){
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage.setScene(scene);
+                stage.show();
+                stage.setTitle("Donor");
+
+
+            }
+
+            @FXML
+            void homeButtonOnAction (ActionEvent event){
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage.setScene(scene);
+                stage.show();
+                stage.setTitle("Home");
+
+            }
+
+            @FXML
+            void loginbuttonOnAction (ActionEvent event){
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage.setScene(scene);
+                stage.show();
+                stage.setTitle("Donor");
+
+            }
         }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Request");
 
-    }
-
-    @FXML
-    void RequestHistoryButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-
-    }
-
-    @FXML
-    void homeButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Home");
-
-    }
-
-    @FXML
-    void loginbuttonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Donor");
-
-    }
 
 
 
@@ -420,7 +440,7 @@ public void refBu(int loggedInUserId) throws SQLException {
 
 
 
-}
+
 
 
 

@@ -43,15 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="MakeRequestButton" blendMode="OVERLAY" layoutX="-1.0" layoutY="211.0" mnemonicParsing="false" onAction="#requestOnAction" prefHeight="50.0" prefWidth="178.0" text="   Make Request">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="261.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="    Request History">
+                  <Button fx:id="RequestHistoryButton" blendMode="OVERLAY" layoutY="211.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="178.0" text="    Request History">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -69,12 +61,7 @@
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image%202023-09-02%20at%2022.26.04.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="bloodrequestsymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/B571ECEA16A9824023EE1AF16897A582/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/FB2FCD534B0FF3BBED73CC51DF620323/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                      </image>
@@ -83,7 +70,7 @@
             </AnchorPane>
           <AnchorPane fx:id="UnderLabelAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="610.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="MyBloodRequestlabel" layoutX="238.0" prefHeight="65.0" prefWidth="180.0" text="My Blood Request">
+                  <Label fx:id="MyBloodRequestlabel" layoutX="238.0" layoutY="-3.0" prefHeight="65.0" prefWidth="180.0" text="My Blood Request">
                      <font>
                         <Font name="Gill Sans MT Bold" size="20.0" />
                      </font>
@@ -99,7 +86,8 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="refreshbutton" layoutY="46.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-radius: 78;" text="Refresh" />
+                  <Button fx:id="refreshbutton" layoutX="1.0" layoutY="46.0" mnemonicParsing="false" onAction="#refreshButtonOnAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-radius: 78;" text="Refresh" />
+                  <Button fx:id="pdfopner" layoutX="82.0" layoutY="46.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-radius: 78;" text="Open Report" />
                </children></AnchorPane>
         </items>
       </SplitPane>

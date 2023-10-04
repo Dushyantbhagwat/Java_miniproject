@@ -16,7 +16,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="anchorpanel2LO" layoutX="649.0" layoutY="7.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="91.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="649.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+      <Button fx:id="anchorpanel2LO" layoutX="659.0" layoutY="7.0" mnemonicParsing="false" onAction="#loginbuttonOnAction" prefHeight="24.0" prefWidth="81.0" text="Log out" AnchorPane.bottomAnchor="399.0" AnchorPane.leftAnchor="659.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -33,15 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="anchorpanel2MR" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" onAction="#requestOnAction" prefHeight="50.0" prefWidth="180.0" text="      Make Request">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="anchorpanel2RH" blendMode="OVERLAY" layoutY="256.0" mnemonicParsing="false" onAction="#requesthistoryOnAction" prefHeight="50.0" prefWidth="180.0" text="       Request History">
+                  <Button fx:id="anchorpanel2RH" blendMode="OVERLAY" layoutY="206.0" mnemonicParsing="false" onAction="#requesthistoryOnAction" prefHeight="50.0" prefWidth="180.0" text="       Request History">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -54,12 +46,7 @@
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/7F9F2B5D2C931BD100B5204353CAD206/WhatsApp%20Image%202023-09-02%20at%2022.26.00.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="bloodrequestsymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.58.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="requesthistorysybol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/FB2FCD534B0FF3BBED73CC51DF620323/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                      </image>
@@ -74,7 +61,7 @@
                   </Button>
                   <ImageView fx:id="donatesymbol" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="17.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image%202023-09-02%20at%2022.26.04.jpg" />
+                        <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image 2023-09-02 at 22.26.04.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="Hlabel" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: transperent;" textFill="#fffdfd">
@@ -86,9 +73,9 @@
             </AnchorPane>
             <AnchorPane fx:id="anchorpanel2L" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="434.0" style="-fx-background-color: D3D3D3;">
                <children>
-                  <ImageView fx:id="imagefull" fitHeight="545.0" fitWidth="575.0" layoutY="-99.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="imagefull" fitHeight="545.0" fitWidth="575.0" layoutY="-98.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../../../im/Your%20paragraph%20text%20(1).png" />
+                        <Image url="@../../../../../im/Your paragraph text (1).png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>

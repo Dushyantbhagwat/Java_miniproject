@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpaneA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.AdminHomePageController">
+<AnchorPane fx:id="anchorpaneA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.AdminHomePageController">
    <children>
       <Label fx:id="labelBG" layoutX="118.0" layoutY="6.0" prefHeight="37.0" prefWidth="754.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
@@ -22,7 +27,7 @@
          <items>
             <AnchorPane fx:id="anchorpanesplit" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="328.0" style="-fx-background-color: #5A5A5A;" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="78.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
+                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="107.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -30,7 +35,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="127.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donor">
+                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="157.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donor">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -38,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="177.0" mnemonicParsing="false" onAction="#PatientButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Patient">
+                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="207.0" mnemonicParsing="false" onAction="#PatientButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Patient">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -46,30 +51,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonbloodrequest" blendMode="OVERLAY" layoutY="227.0" mnemonicParsing="false" onAction="#bloodrequestsButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="     Blood Requests">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="16.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.5.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.56.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="iamgebloodrequest" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25..jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="90.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="117.0" pickOnBounds="true" smooth="false">
                      <image>
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.59.jpg" />
                      </image>

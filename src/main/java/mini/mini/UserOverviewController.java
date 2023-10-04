@@ -151,20 +151,20 @@ public class UserOverviewController implements Initializable{
 
 
 
-    @FXML
-    void requestOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Request");
-
-    }
+//    @FXML
+//    void requestOnAction(ActionEvent event) {
+//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
+//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        try {
+//            scene = new Scene(fxmlLoader.load());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        stage.setScene(scene);
+//        stage.show();
+//        stage.setTitle("Request");
+//
+//    }
         @FXML
         void requesthistoryOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("11_My Blood Request History.fxml"));
@@ -212,7 +212,7 @@ public class UserOverviewController implements Initializable{
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-            File backFile6 = new File("im/Your%20paragraph%20text%20(1).png");
+            File backFile6 = new File("im/Your paragraph text (1).png");
             Image backImage6 = new Image(backFile6.toURI().toString());
             imagefull.setImage(backImage6);
 
@@ -224,9 +224,9 @@ public class UserOverviewController implements Initializable{
             Image backImage2 = new Image(backFile2.toURI().toString());
             donatesymbol.setImage(backImage2);
 
-            File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
-            Image backImage4 = new Image(backFile4.toURI().toString());
-            bloodrequestsymbol.setImage(backImage4);
+//            File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+//            Image backImage4 = new Image(backFile4.toURI().toString());
+//            bloodrequestsymbol.setImage(backImage4);
 
             File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
             Image backImage5 = new Image(backFile5.toURI().toString());

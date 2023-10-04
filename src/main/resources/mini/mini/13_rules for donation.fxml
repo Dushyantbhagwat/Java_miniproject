@@ -18,7 +18,7 @@
             <Image url="@../../../../../im/Screenshot 2023-09-02 201914.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="closebutton" layoutX="672.0" layoutY="674.0" mnemonicParsing="false" onAction="#closeOnAction" prefHeight="24.0" prefWidth="85.0" text="Close" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="672.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="674.0">
+      <Button fx:id="closebutton" layoutX="-3.0" layoutY="-1.0" mnemonicParsing="false" onAction="#closeOnAction" prefHeight="26.0" prefWidth="64.0" style="-fx-background-radius: 6;" text="Close" AnchorPane.bottomAnchor="673.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="696.0" AnchorPane.topAnchor="-1.0">
          <font>
             <Font size="14.0" />
          </font>

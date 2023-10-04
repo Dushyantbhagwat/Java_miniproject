@@ -7,6 +7,8 @@ package mini.mini;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -47,6 +49,8 @@ public class patientDetailsController implements Initializable {
 
     @FXML // fx:id="anchorpaneP"
     private AnchorPane anchorpaneP; // Value injected by FXMLLoader
+    @FXML // fx:id="pdf"
+    private Button pdf; // Value injected by FXMLLoader
 
     @FXML // fx:id="anchorpaneSP"
     private AnchorPane anchorpaneSP; // Value injected by FXMLLoader
@@ -236,7 +240,17 @@ public class patientDetailsController implements Initializable {
 
 
 
-
+    @FXML
+    void PdfopnerOnAction(ActionEvent event) {
+        String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
+        // Replace "YOUR_FILE_ID" with the actual ID of your Google Drive file
+        try {
+            java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            // Handle any exceptions here
+        }
+    }
 
 
 

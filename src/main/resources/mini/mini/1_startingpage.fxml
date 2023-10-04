@@ -64,11 +64,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="admin" blendMode="RED" layoutX="568.0" layoutY="-2.0" mnemonicParsing="false" onAction="#adminloginOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: FF0000;" text="Admin">
+            <Button fx:id="admin" blendMode="RED" layoutX="568.0" layoutY="-1.0" mnemonicParsing="false" onAction="#adminloginOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: FF0000;" text="Admin">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="user" layoutX="482.0" layoutY="-3.0" mnemonicParsing="false" onAction="#userLoginOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: FF0000;" text="User">
+            <Button fx:id="user" layoutX="472.0" layoutY="-2.0" mnemonicParsing="false" onAction="#userLoginOnAction" prefHeight="18.0" prefWidth="92.0" style="-fx-background-color: FF0000;" text="User">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
