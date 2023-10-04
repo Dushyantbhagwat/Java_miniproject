@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.RulesController">
    <children>
       <ImageView fx:id="rules" blendMode="DARKEN" fitHeight="343.0" fitWidth="757.0" pickOnBounds="true">
          <image>
-            <Image url="@../imag/Screenshot%202023-09-02%20195811.jpg" />
+            <Image url="@../../../../../im/Screenshot 2023-09-02 195811.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="rules1" blendMode="DARKEN" fitHeight="356.0" fitWidth="757.0" layoutY="341.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@../imag/Screenshot%202023-09-02%20201914.jpg" />
+            <Image url="@../../../../../im/Screenshot 2023-09-02 201914.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="closebutton" layoutX="672.0" layoutY="674.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="85.0" text="Close" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="672.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="674.0">
+      <Button fx:id="closebutton" layoutX="672.0" layoutY="674.0" mnemonicParsing="false" onAction="#closeOnAction" prefHeight="24.0" prefWidth="85.0" text="Close" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="672.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="674.0">
          <font>
             <Font size="14.0" />
          </font>

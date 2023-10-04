@@ -7,10 +7,7 @@ package mini.mini;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -75,11 +72,11 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="TColumnPatientName"
     private TableColumn<Refresh,String> TColumnPatientName; // Value injected by FXMLLoader
 
-//    @FXML // fx:id="TColumnStatus"
-//    private TableColumn<DataItem,String> TColumnStatus; // Value injected by FXMLLoader
-
     @FXML // fx:id="TcolumnAge"
     private TableColumn<Refresh, LocalDate> TcolumnAge; // Value injected by FXMLLoader
+
+    @FXML // fx:id="TcolumnReport"
+    private TableColumn<Refresh, ?> TcolumnReport; // Value injected by FXMLLoader
 
     @FXML // fx:id="UnderLabelAnchorPane"
     private AnchorPane UnderLabelAnchorPane; // Value injected by FXMLLoader
@@ -131,7 +128,7 @@ public class RequestHistoryController implements Initializable {
         assert refreshbutton != null : "fx:id=\"refreshbutton\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-
+        assert TcolumnReport != null : "fx:id=\"TcolumnReport\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
     }
 
     private Stage stage;
@@ -162,51 +159,60 @@ public class RequestHistoryController implements Initializable {
 
 
         public void refreshButtonOnAction(ActionEvent actionEventevent) throws SQLException {
-
-                refBu();
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+                refBu(loggedInUserId);
         }
 
 
-public void refBu() throws SQLException {
+public void refBu(int loggedInUserId) throws SQLException {
 
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
-    String refreshQuesry = "select name, dob, bloodgroup from patient";
 
-    try {
+    String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report " +
+            "FROM users " +
+            "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
+            "WHERE users.user_id ='" + loggedInUserId + "'";
 
-        Statement statement = connectDB.createStatement();
-        ResultSet queryOutput = statement.executeQuery(refreshQuesry);
+    if (loggedInUserId != -1) {
+        try {
 
-        while (queryOutput.next()) {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(refreshQuery);
 
-            String queryName = queryOutput.getString("name");
+            while (queryOutput.next()) {
 
-            String queryDob = queryOutput.getString("dob");
+                String queryName = queryOutput.getString("name");
 
-            LocalDate dob = LocalDate.parse(queryDob);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-            String formattedDob = dob.format(formatter);
+                String queryDob = queryOutput.getString("dob");
 
-            String queryBloodgroup = queryOutput.getString("bloodgroup");
+                LocalDate dob = LocalDate.parse(queryDob);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                String formatted_Dob = dob.format(formatter);
 
+                String queryBloodgroup = queryOutput.getString("bloodgroup");
 
-            RefreshObservableList.add(new Refresh(queryName, formattedDob, queryBloodgroup));
+                byte[] pdfData = queryOutput.getBytes("report");
+
+                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
+            }
+
+            TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+            TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
+            TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+            TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
+
+            tableView.setItems(RefreshObservableList);
+
+        } catch (SQLException e) {
+            Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
         }
-
-        TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
-        TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
-
-        tableView.setItems(RefreshObservableList);
-
-    } catch (SQLException e) {
-        Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
-        e.printStackTrace();
+    } else {
+        System.out.println("error");
     }
 }
-
 
 
     @FXML

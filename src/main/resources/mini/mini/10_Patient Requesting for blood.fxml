@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -84,15 +83,14 @@
             <Image url="@../imag/Untitled design.png" />
          </image>
       </ImageView>
-      <TextField fx:id="PatientNameTextField" layoutX="258.0" layoutY="63.0" prefHeight="32.0" prefWidth="334.0" promptText="patient name   (BLOCK LETTERS)" />
       <Button fx:id="requestButton" layoutX="352.0" layoutY="385.0" mnemonicParsing="false" onAction="#requestButtonOnAction" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #FFCCCB;" text="REQUEST" textFill="#181515">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <DatePicker fx:id="dobid" layoutX="262.0" layoutY="129.0" prefHeight="26.0" prefWidth="327.0" promptText="date of birth (mm/dd/yyyy)" />
+      <DatePicker fx:id="dobid" layoutX="262.0" layoutY="115.0" prefHeight="26.0" prefWidth="327.0" promptText="date of birth (mm/dd/yyyy)" />
       <Label fx:id="message" layoutX="308.0" layoutY="358.0" prefHeight="18.0" prefWidth="246.0" />
-      <ChoiceBox fx:id="bloodgroupchoice" layoutX="262.0" layoutY="232.0" prefHeight="26.0" prefWidth="327.0" />
-      <Button fx:id="medical" layoutX="399.0" layoutY="180.0" mnemonicParsing="false" onAction="#filesetOnAction" text="Add Medical Report" />
+      <ChoiceBox fx:id="bloodgroupchoice" layoutX="262.0" layoutY="243.0" prefHeight="26.0" prefWidth="327.0" />
+      <Button fx:id="medical" layoutX="324.0" layoutY="174.0" mnemonicParsing="false" onAction="#filesetOnAction" text="Add Medical Report" />
    </children>
 </AnchorPane>

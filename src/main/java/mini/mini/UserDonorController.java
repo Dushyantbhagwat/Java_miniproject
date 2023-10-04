@@ -5,8 +5,12 @@ package mini.mini;
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +22,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
     public class UserDonorController implements Initializable {
+
+        @FXML // fx:id="iamgehome"
+        private ImageView iamgehome; // Value injected by FXMLLoader
 
         @FXML // ResourceBundle that was given to the FXMLLoader
         private ResourceBundle resources;
@@ -43,38 +51,20 @@ import javafx.stage.Stage;
         @FXML // fx:id="anchorpanello"
         private Button anchorpanello; // Value injected by FXMLLoader
 
+        @FXML // fx:id="RULES1"
+        private Button RULES1; // Value injected by FXMLLoader
+
+        @FXML // fx:id="message"
+        private Label message; // Value injected by FXMLLoader
+
         private Stage stage;
         private Scene scene;
 
-        @FXML
-        void Checkbox1OnAction(ActionEvent event) {
 
-        }
-
-        @FXML
-        void Checkbox2OnAction(ActionEvent event) {
-
-        }
-
-        @FXML
-        void DonateButtonOnAction(ActionEvent event) {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("(9_patientoverview.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
-
-        }
         @FXML
         void loginbuttonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -89,7 +79,7 @@ import javafx.stage.Stage;
         @FXML
         void HomeButtonOnAction(ActionEvent event) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
@@ -102,20 +92,99 @@ import javafx.stage.Stage;
 
         }
 
-        @FXML // This method is called by the FXMLLoader when initialization is complete
+        @FXML
+        void ShowrulesOnAction(ActionEvent event) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("13_rules for donation.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Rules");
+
+        }
+
+
+        @FXML
+            // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
             assert Checkbox1 != null : "fx:id=\"Checkbox1\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert Checkbox2 != null : "fx:id=\"Checkbox2\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert DonateButton != null : "fx:id=\"DonateButton\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanelBG != null : "fx:id=\"anchorpanelBG\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanello != null : "fx:id=\"anchorpanello\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
-
+            assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
+            assert RULES1 != null : "fx:id=\"RULES1\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
+            assert message != null : "fx:id=\"message\" was not injected: check your FXML file '12_DONOR PAGE.fxml'.";
         }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+            File backFile1 = new File("im/bgdonor.jpg");
+            Image backImage1 = new Image(backFile1.toURI().toString());
+            iamgehome.setImage(backImage1);
 
         }
+
+
+        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException {
+
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+            if (loggedInUserId != -1) {
+                try {
+
+                    String insertFields = "insert into donor(user_id) values ('";
+                    String inserValues = loggedInUserId + "')";
+                    String insertToRegister5 = insertFields + inserValues;
+
+                    Statement statement = connectDB.createStatement();
+                    statement.executeUpdate(insertToRegister5);
+
+                    message.setText("You  request to donate  blood has been made!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                System.out.println("error");
+            }
+
+        }
+
+        public void requestbuttonOnAction(ActionEvent actionEventevrnt) throws SQLException{
+
+
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+            if (loggedInUserId != -1) {
+                try {
+
+                    String insertFields = "insert into patient_table(user_id) values ('";
+                    String inserValues = loggedInUserId + "')";
+                    String insertToRegister5 = insertFields + inserValues;
+
+                    Statement statement = connectDB.createStatement();
+                    statement.executeUpdate(insertToRegister5);
+
+                    message.setText("You  request for blood has been made!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                System.out.println("error");
+            }
+        }
+
+
     }
