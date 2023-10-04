@@ -26,6 +26,11 @@ import java.util.ResourceBundle;
 
 public class ForgotPasswordController implements Initializable {
 
+    @FXML // fx:id="background"
+    private ImageView background; // Value injected by FXMLLoader
+
+    @FXML // fx:id="forimage"
+    private ImageView forimage; // Value injected by FXMLLoader
     @FXML
     private TextField email;
 
@@ -64,8 +69,7 @@ public class ForgotPasswordController implements Initializable {
     @FXML
     private Button subitid;
 
-    @FXML
-    private ImageView forimage;
+
 
 
     public void onSubmitButtonClick(ActionEvent event){
@@ -191,6 +195,12 @@ public class ForgotPasswordController implements Initializable {
         File backFile75 = new File("im/password-reset-service-2023-01-04 00-00-00-2023-06-17 02-19-41.png");
         Image backImage75 = new Image(backFile75.toURI().toString());
         forimage.setImage(backImage75);
+
+        File backFile10 = new File("im/background.png");
+        Image backImage10 = new Image(backFile10.toURI().toString());
+        background.setImage(backImage10);
+
+
     }
 }
 
