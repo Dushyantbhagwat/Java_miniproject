@@ -77,55 +77,20 @@
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/1D555E50176E6118302A769D399C1457/WhatsApp%20Image%202023-09-02%20at%2022.26.04.jpg" />
                      </image>
                   </ImageView>
+                  <Label fx:id="Hlabel" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="142.0" style="-fx-background-color: transperent;" textFill="#fffdfd">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="anchorpanel2L" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="434.0" style="-fx-background-color: D3D3D3;">
                <children>
-                  <ImageView fx:id="imagefull" fitHeight="396.0" fitWidth="567.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="imagefull" fitHeight="545.0" fitWidth="575.0" layoutY="-99.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../imag/Untitled%20design.png" />
+                        <Image url="@../../../../../im/Your%20paragraph%20text%20(1).png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="anchorpanel2RM" layoutX="4.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="   Request Made">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2PR" layoutX="144.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Pending Request">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2AR" layoutX="284.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Approved Request">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2RR" layoutX="422.0" layoutY="38.0" prefHeight="64.0" prefWidth="130.0" style="-fx-background-color: WHITE;" text="  Rejected Request">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2RMNO" layoutX="118.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2PRNO" layoutX="258.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2ARNO" layoutX="398.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="anchorpanel2RRNO" layoutX="536.0" layoutY="80.0" prefHeight="8.0" prefWidth="15.0" text="0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
                </children></AnchorPane>
          </items>
       </SplitPane>

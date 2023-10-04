@@ -34,6 +34,8 @@ public class UserOverviewController implements Initializable{
         @FXML // fx:id="anchorpanel2AA"
         private AnchorPane anchorpanel2AA; // Value injected by FXMLLoader
 
+        @FXML // fx:id="Hlabel"
+        private Label Hlabel; // Value injected by FXMLLoader
         @FXML // fx:id="anchorpanel2AR"
         private Label anchorpanel2AR; // Value injected by FXMLLoader
 
@@ -204,11 +206,15 @@ public class UserOverviewController implements Initializable{
             assert makerequestbutton != null : "fx:id=\"makerequestbutton\" was not injected: check your FXML file '9_patientoverview.fxml'.";
             assert requesthistory != null : "fx:id=\"requesthistory\" was not injected: check your FXML file '9_patientoverview.fxml'.";
             assert requesthistorysybol != null : "fx:id=\"requesthistorysybol\" was not injected: check your FXML file '9_patientoverview.fxml'.";
-
+            assert imagefull != null : "fx:id=\"imagefull\" was not injected: check your FXML file '9_patientoverview.fxml'.";
         }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            File backFile6 = new File("im/Your%20paragraph%20text%20(1).png");
+            Image backImage6 = new Image(backFile6.toURI().toString());
+            imagefull.setImage(backImage6);
 
             File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
             Image backImage1 = new Image(backFile1.toURI().toString());
