@@ -87,7 +87,7 @@
                         <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25..jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="refbo" layoutX="90.0" layoutY="381.0" mnemonicParsing="false" onAction="#reButtononAction" text="REfresh" />
+                  <Button fx:id="refbo" layoutX="90.0" layoutY="381.0" mnemonicParsing="false" onAction="#reButtononAction" text="Refresh" />
                </children>
             </AnchorPane>
          </children>
