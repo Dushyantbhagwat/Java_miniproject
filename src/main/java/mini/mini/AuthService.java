@@ -4,6 +4,9 @@ package mini.mini;
         private static AuthService instance;
         private int loggedInUserId = -1; // Default value when no user is logged in
 
+        private String loggedINUsername;
+        private String loggedInUsername;
+
         private AuthService() {
             // Private constructor to prevent direct instantiation
         }
@@ -15,7 +18,7 @@ package mini.mini;
             return instance;
         }
 
-        public void login(int userId) {
+        public void login(int userId, String loggedInUsername) {
             loggedInUserId = userId;
         }
 
@@ -26,8 +29,20 @@ package mini.mini;
         public int getLoggedInUserId() {
             return loggedInUserId;
         }
-    }
 
+
+        public String getLoggedINUsername(){
+                return loggedINUsername;
+        }
+
+        public String getLoggedInUsername() {
+            return loggedINUsername;
+        }
+
+        public void setLoggedInUsername(String loggedInUsername) {
+            this.loggedInUsername = loggedInUsername;
+        }
+    }
 
 
 

@@ -50,7 +50,7 @@
             <Font name="Cambria Bold" size="13.0" />
          </font></TextField>
       <Button fx:id="button_back" layoutY="34.0" mnemonicParsing="false" onAction="#backTologinOnAction" prefHeight="27.0" prefWidth="66.0" text="Back" />
-      <Label fx:id="registerduser" layoutX="479.0" layoutY="594.0" prefHeight="18.0" prefWidth="193.0" textFill="#0ca1c7">
+      <Label fx:id="registerduser" layoutX="479.0" layoutY="594.0" prefHeight="20.0" prefWidth="232.0" textFill="#0ca1c7">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -61,5 +61,7 @@
       <DatePicker fx:id="date" layoutX="225.0" layoutY="242.0" prefHeight="26.0" prefWidth="314.0" promptText="yyyy-mm-dd" style="-fx-background-radius: 4;" />
       <ChoiceBox fx:id="bloodchoice" layoutX="226.0" layoutY="291.0" prefHeight="26.0" prefWidth="314.0" style="-fx-background-radius: 10;" />
       <Button fx:id="REPORTFILES" layoutX="424.0" layoutY="549.0" mnemonicParsing="false" onAction="#filesetOnAction" prefHeight="26.0" prefWidth="119.0" style="-fx-background-radius: 10;" text="MEFDICAL REPORT" />
+      <Label fx:id="nameLabel" layoutX="14.0" layoutY="89.0" prefHeight="18.0" prefWidth="178.0" />
+      <Label fx:id="emailLabel" layoutX="27.0" layoutY="143.0" prefHeight="18.0" prefWidth="178.0" />
    </children>
 </AnchorPane>

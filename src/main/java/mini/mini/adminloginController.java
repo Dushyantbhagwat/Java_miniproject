@@ -65,8 +65,7 @@ public class adminloginController implements Initializable {
 
     private ActionEvent e;
 
-    @FXML
-        // This method is called by the FXMLLoader when initialization is complete
+    @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert anchorppanelogin1 != null : "fx:id=\"anchorppanelogin1\" was not injected: check your FXML file 'adminlogin.fxml'.";
         assert back != null : "fx:id=\"back\" was not injected: check your FXML file 'adminlogin.fxml'.";

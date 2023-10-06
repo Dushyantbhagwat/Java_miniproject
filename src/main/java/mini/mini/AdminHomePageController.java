@@ -34,10 +34,6 @@ import javafx.util.StringConverter;
 
 public class AdminHomePageController implements Initializable {
 
-    public Label label100;
-    @FXML // fx:id="bloodgroup"
-    private ChoiceBox<String> bloodgroup; // Value injected by FXMLLoader
-
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -53,14 +49,8 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="AnchorPane"
     private AnchorPane AnchorPane; // Value injected by FXMLLoader
 
-    @FXML // fx:id="a"
-    private MenuItem a; // Value injected by FXMLLoader
-
     @FXML // fx:id="aapprovedrequest"
     private Label aapprovedrequest; // Value injected by FXMLLoader
-
-    @FXML // fx:id="ab"
-    private MenuItem ab; // Value injected by FXMLLoader
 
     @FXML // fx:id="abbga"
     private Label abbga; // Value injected by FXMLLoader
@@ -68,17 +58,11 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="abbgm"
     private Label abbgm; // Value injected by FXMLLoader
 
-    @FXML // fx:id="abm"
-    private MenuItem abm; // Value injected by FXMLLoader
-
     @FXML // fx:id="addbuttton"
     private Button addbuttton; // Value injected by FXMLLoader
 
     @FXML // fx:id="addstocktectlabel"
     private Label addstocktectlabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="am"
-    private MenuItem am; // Value injected by FXMLLoader
 
     @FXML // fx:id="anchorpaneA"
     private AnchorPane anchorpaneA; // Value injected by FXMLLoader
@@ -88,9 +72,6 @@ public class AdminHomePageController implements Initializable {
 
     @FXML // fx:id="apprivedrequest1"
     private ImageView apprivedrequest1; // Value injected by FXMLLoader
-
-    @FXML // fx:id="b"
-    private MenuItem b; // Value injected by FXMLLoader
 
     @FXML // fx:id="bbga"
     private Label bbga; // Value injected by FXMLLoader
@@ -122,14 +103,8 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="blodrop8"
     private ImageView blodrop8; // Value injected by FXMLLoader
 
-    @FXML // fx:id="bloodgroupmenu"
-    private SplitMenuButton bloodgroupmenu; // Value injected by FXMLLoader
-
-    @FXML // fx:id="bm"
-    private MenuItem bm; // Value injected by FXMLLoader
-
-    @FXML // fx:id="buttonbloodrequest"
-    private Button buttonbloodrequest; // Value injected by FXMLLoader
+    @FXML // fx:id="bloodgroup"
+    private ChoiceBox<String> bloodgroup; // Value injected by FXMLLoader
 
     @FXML // fx:id="buttondonor"
     private Button buttondonor; // Value injected by FXMLLoader
@@ -142,9 +117,6 @@ public class AdminHomePageController implements Initializable {
 
     @FXML // fx:id="buttonpatient"
     private Button buttonpatient; // Value injected by FXMLLoader
-
-    @FXML // fx:id="iamgebloodrequest"
-    private ImageView iamgebloodrequest; // Value injected by FXMLLoader
 
     @FXML // fx:id="iamgebloodrequest1"
     private ImageView iamgebloodrequest1; // Value injected by FXMLLoader
@@ -167,8 +139,8 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="label1"
     private Label label1; // Value injected by FXMLLoader
 
-    @FXML // fx:id="label75"
-    private Label label75; // Value injected by FXMLLoader
+    @FXML // fx:id="label100"
+    private Label label100; // Value injected by FXMLLoader
 
     @FXML // fx:id="label2"
     private Label label2; // Value injected by FXMLLoader
@@ -185,6 +157,8 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="label7"
     private Label label7; // Value injected by FXMLLoader
 
+    @FXML // fx:id="label75"
+    private Label label75; // Value injected by FXMLLoader
 
     @FXML // fx:id="label78"
     private Label label78; // Value injected by FXMLLoader
@@ -198,17 +172,11 @@ public class AdminHomePageController implements Initializable {
     @FXML // fx:id="labelBG"
     private Label labelBG; // Value injected by FXMLLoader
 
-    @FXML // fx:id="o"
-    private MenuItem o; // Value injected by FXMLLoader
-
     @FXML // fx:id="obga"
     private Label obga; // Value injected by FXMLLoader
 
     @FXML // fx:id="obgm"
     private Label obgm; // Value injected by FXMLLoader
-
-    @FXML // fx:id="om"
-    private MenuItem om; // Value injected by FXMLLoader
 
     @FXML // fx:id="qunatitytext"
     private TextField qunatitytext; // Value injected by FXMLLoader
@@ -230,26 +198,19 @@ public class AdminHomePageController implements Initializable {
 
     private Stage stage;
     private Scene scene;
-
-    @FXML
-        // This method is called by the FXMLLoader when initialization is complete
+    @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert Abga != null : "fx:id=\"Abga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert Abgm != null : "fx:id=\"Abgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert AnchorPane != null : "fx:id=\"AnchorPane\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert a != null : "fx:id=\"a\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert aapprovedrequest != null : "fx:id=\"aapprovedrequest\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert ab != null : "fx:id=\"ab\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert abbga != null : "fx:id=\"abbga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert abbgm != null : "fx:id=\"abbgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert abm != null : "fx:id=\"abm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert addbuttton != null : "fx:id=\"addbuttton\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert addstocktectlabel != null : "fx:id=\"addstocktectlabel\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert am != null : "fx:id=\"am\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert anchorpaneA != null : "fx:id=\"anchorpaneA\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert anchorpanesplit != null : "fx:id=\"anchorpanesplit\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert apprivedrequest1 != null : "fx:id=\"apprivedrequest1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert b != null : "fx:id=\"b\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert bbga != null : "fx:id=\"bbga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert bbgm != null : "fx:id=\"bbgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert blodrop1 != null : "fx:id=\"blodrop1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -260,14 +221,11 @@ public class AdminHomePageController implements Initializable {
         assert blodrop6 != null : "fx:id=\"blodrop6\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert blodrop7 != null : "fx:id=\"blodrop7\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert blodrop8 != null : "fx:id=\"blodrop8\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert bloodgroupmenu != null : "fx:id=\"bloodgroupmenu\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert bm != null : "fx:id=\"bm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert buttonbloodrequest != null : "fx:id=\"buttonbloodrequest\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
+        assert bloodgroup != null : "fx:id=\"bloodgroup\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert buttondonor != null : "fx:id=\"buttondonor\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert buttonhome != null : "fx:id=\"buttonhome\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert buttonlogout != null : "fx:id=\"buttonlogout\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert buttonpatient != null : "fx:id=\"buttonpatient\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert iamgebloodrequest != null : "fx:id=\"iamgebloodrequest\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert iamgebloodrequest1 != null : "fx:id=\"iamgebloodrequest1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert iamgepatient != null : "fx:id=\"iamgepatient\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -275,7 +233,7 @@ public class AdminHomePageController implements Initializable {
         assert imagedonor1 != null : "fx:id=\"imagedonor1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label0 != null : "fx:id=\"label0\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label1 != null : "fx:id=\"label1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert label75 != null : "fx:id=\"label75\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
+        assert label100 != null : "fx:id=\"label100\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label2 != null : "fx:id=\"label2\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label25 != null : "fx:id=\"label25\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label38 != null : "fx:id=\"label38\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -286,17 +244,14 @@ public class AdminHomePageController implements Initializable {
         assert label87 != null : "fx:id=\"label87\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert label99 != null : "fx:id=\"label99\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert labelBG != null : "fx:id=\"labelBG\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert o != null : "fx:id=\"o\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert obga != null : "fx:id=\"obga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert obgm != null : "fx:id=\"obgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert om != null : "fx:id=\"om\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert qunatitytext != null : "fx:id=\"qunatitytext\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert splitpaneA != null : "fx:id=\"splitpaneA\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totaldonors != null : "fx:id=\"totaldonors\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totalrequest != null : "fx:id=\"totalrequest\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totalunit != null : "fx:id=\"totalunit\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert totalunit1 != null : "fx:id=\"totalunit1\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
-        assert bloodgroup != null : "fx:id=\"bloodgroup\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
 
     }
 
@@ -313,10 +268,6 @@ public class AdminHomePageController implements Initializable {
         File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
         Image backImage3 = new Image(backFile3.toURI().toString());
         iamgepatient.setImage(backImage3);
-
-        File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
-        Image backImage4 = new Image(backFile4.toURI().toString());
-        iamgebloodrequest.setImage(backImage4);
 
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.26.00.jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());

@@ -163,9 +163,9 @@ public class patientDetailsController implements Initializable {
             Image backImage3 = new Image(backFile3.toURI().toString());
             iamgepatient.setImage(backImage3);
 
-            File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
-            Image backImage4 = new Image(backFile4.toURI().toString());
-            iamgebloodrequest.setImage(backImage4);
+//            File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
+//            Image backImage4 = new Image(backFile4.toURI().toString());
+//            iamgebloodrequest.setImage(backImage4);
         }
 
 

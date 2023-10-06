@@ -59,9 +59,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="message" layoutX="334.0" layoutY="569.0" prefHeight="18.0" prefWidth="218.0" textFill="#0ca1c7">
+                  <Label fx:id="message" layoutX="321.0" layoutY="570.0" prefHeight="19.0" prefWidth="255.0" textFill="#088f8f">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Label>
                </children>
             </AnchorPane>
