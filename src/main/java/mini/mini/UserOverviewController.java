@@ -178,6 +178,7 @@ public class UserOverviewController implements Initializable {
             throw new RuntimeException(e);
         }
         stage.setScene(scene);
+//        scene.getStylesheets().add("/style.css");
         stage.show();
         stage.setTitle("Donor");
 
