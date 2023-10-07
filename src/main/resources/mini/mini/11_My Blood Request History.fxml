@@ -75,7 +75,7 @@
                         <Font name="Gill Sans MT Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableView" layoutY="73.0" prefHeight="314.0" prefWidth="694.0" tableMenuButtonVisible="true">
+                  <TableView fx:id="tableView" layoutY="73.0" prefHeight="314.0" prefWidth="694.0" stylesheets="@style.css" tableMenuButtonVisible="true">
                     <columns>
                       <TableColumn fx:id="TColumnPatientName" prefWidth="165.6000518798828" text="Patient Name" />
                       <TableColumn fx:id="TcolumnAge" prefWidth="120.800048828125" text="DOB" />

@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,6 +118,7 @@ public class patientDetailsController implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    private TableColumn<AdminPatient, AdminPatient.Options> optionsColumn;
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -163,10 +165,11 @@ public class patientDetailsController implements Initializable {
             Image backImage3 = new Image(backFile3.toURI().toString());
             iamgepatient.setImage(backImage3);
 
-//            File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
-//            Image backImage4 = new Image(backFile4.toURI().toString());
-//            iamgebloodrequest.setImage(backImage4);
+//            initializeOptionsColumn();
+
         }
+
+
 
 
 
@@ -235,7 +238,13 @@ public class patientDetailsController implements Initializable {
             Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
+            
     }
+
+//private void initializeOptionsColumn() {
+//    optionsColumn.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(new AdminPatient.Options()));
+//    optionsColumn.setCellFactory(new AdminPatient.Options.TableCellFactory());
+//}
 
 
 

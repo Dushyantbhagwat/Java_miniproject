@@ -1,6 +1,9 @@
 package mini.mini;
-
-public class AdminPatient  {
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.util.Callback;
+public class AdminPatient {
 
 
     String name;
@@ -15,7 +18,9 @@ public class AdminPatient  {
 
     byte[] report;
 
-    public AdminPatient(String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
+//    private String options;
+
+    public AdminPatient(String name, String dob, String bloodgroup, String phone_number, String email_id, String address, byte[] report) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
@@ -23,6 +28,7 @@ public class AdminPatient  {
         this.email_id = email_id;
         this.address = address;
         this.report = report;
+//        this.options = options;
     }
 
     public String getName() {
@@ -80,4 +86,57 @@ public class AdminPatient  {
     public void setReport(byte[] report) {
         this.report = report;
     }
+
+
+//    public static class Options {
+//        private Button editButton;
+//        private Button deleteButton;
+//
+//        public Options() {
+//            editButton = new Button("Edit");
+//            deleteButton = new Button("Delete");
+//
+//            // Add action handlers for the buttons here
+//            editButton.setOnAction(event -> handleEdit());
+//            deleteButton.setOnAction(event -> handleDelete());
+//        }
+//
+//        // Define actions for the Edit and Delete buttons
+//        private void handleEdit() {
+//            // Implement the edit logic here
+//        }
+//
+//        private void handleDelete() {
+//            // Implement the delete logic here
+//        }
+//
+//        // Create a TableCell for the Options column
+//        public static class TableCellFactory implements Callback<TableColumn<AdminPatient, Options>, TableCell<AdminPatient, Options>> {
+//            @Override
+//            public TableCell<AdminPatient, Options> call(TableColumn<AdminPatient, Options> param) {
+//                return new TableCell<AdminPatient, Options>() {
+//                    @Override
+//                    protected void updateItem(Options item, boolean empty) {
+//                        super.updateItem(item, empty);
+//                        if (empty || item == null) {
+//                            setGraphic(null);
+//                        } else {
+//                            setGraphic(item.getEditButton());
+//                        }
+//                    }
+//                };
+//            }
+//        }
+//
+//        public Button getEditButton() {
+//            return editButton;
+//        }
+//
+//        public Button getDeleteButton() {
+//            return deleteButton;
+//        }
+//    }
 }
+
+
+

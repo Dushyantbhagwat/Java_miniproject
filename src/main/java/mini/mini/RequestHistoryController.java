@@ -187,6 +187,8 @@ public void refBu(int loggedInUserId) throws SQLException {
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(refreshQuery);
 
+            int rowIndex = 0; // Initialize rowIndex
+
             while (queryOutput.next()) {
 
                 String queryName = queryOutput.getString("name");
@@ -203,6 +205,7 @@ public void refBu(int loggedInUserId) throws SQLException {
 
                 RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
             }
+
 
             TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
             TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
