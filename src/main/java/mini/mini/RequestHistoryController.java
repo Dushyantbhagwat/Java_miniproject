@@ -35,6 +35,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 
 public class RequestHistoryController implements Initializable {
 
@@ -172,6 +174,7 @@ public class RequestHistoryController implements Initializable {
 
 public void refBu(int loggedInUserId) throws SQLException {
 
+
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
@@ -186,6 +189,7 @@ public void refBu(int loggedInUserId) throws SQLException {
 
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(refreshQuery);
+
 
             while (queryOutput.next()) {
 
@@ -202,12 +206,17 @@ public void refBu(int loggedInUserId) throws SQLException {
                 byte[] pdfData = queryOutput.getBytes("report");
 
                 RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
+
+
             }
 
             TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
             TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
             TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
             TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
+
+
+
 
             tableView.setItems(RefreshObservableList);
 
