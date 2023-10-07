@@ -1,7 +1,5 @@
 package mini.mini;
 
-import java.net.URL;
-import java.time.LocalDate;
 public class Refresh {
 
     String name;
@@ -10,7 +8,6 @@ public class Refresh {
 
     byte[] report;
 
-//    URL report;
 
     public Refresh(String name, String dob, String bloodgroup, byte[] report) {
         this.name = name;
@@ -51,4 +48,5 @@ public class Refresh {
     public void setReport(byte[] report) {
         this.report = report;
     }
+
 }

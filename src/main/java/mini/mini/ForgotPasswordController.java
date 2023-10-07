@@ -40,20 +40,12 @@ public class ForgotPasswordController implements Initializable {
     @FXML
     private Label errorEmail;
 
-    @FXML
-    private Label errorFavAnimal;
 
     @FXML
     private Label errorMobNo;
 
     @FXML
     private Label errorPassword;
-
-    @FXML
-    private Label errorUsername;
-
-    @FXML
-    private TextField favanimal;
 
     @FXML
     private TextField mobno;
@@ -64,12 +56,24 @@ public class ForgotPasswordController implements Initializable {
     @FXML
     private PasswordField new_password1;
 
-    @FXML
-    private TextField username;
-    @FXML
-    private Button subitid;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        File backFile75 = new File("im/password-reset-service-2023-01-04 00-00-00-2023-06-17 02-19-41.png");
+        Image backImage75 = new Image(backFile75.toURI().toString());
+        forimage.setImage(backImage75);
+
+        File backFile10 = new File("im/background.png");
+        Image backImage10 = new Image(backFile10.toURI().toString());
+        background.setImage(backImage10);
+
+
+    }
 
 
     public void onSubmitButtonClick(ActionEvent event){
@@ -173,9 +177,6 @@ public class ForgotPasswordController implements Initializable {
         }
     }
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     public void switchToHome(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
@@ -190,17 +191,6 @@ public class ForgotPasswordController implements Initializable {
         stage.setTitle("Login");
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        File backFile75 = new File("im/password-reset-service-2023-01-04 00-00-00-2023-06-17 02-19-41.png");
-        Image backImage75 = new Image(backFile75.toURI().toString());
-        forimage.setImage(backImage75);
 
-        File backFile10 = new File("im/background.png");
-        Image backImage10 = new Image(backFile10.toURI().toString());
-        background.setImage(backImage10);
-
-
-    }
 }
 

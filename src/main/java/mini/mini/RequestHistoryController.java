@@ -112,6 +112,9 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="tableView"
     private TableView<Refresh> tableView; // Value injected by FXMLLoader
 
+    private Stage stage;
+    private Scene scene;
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert AnchorPane != null : "fx:id=\"AnchorPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
@@ -124,7 +127,6 @@ public class RequestHistoryController implements Initializable {
         assert SplitPane != null : "fx:id=\"SplitPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TColumnBloodgrp != null : "fx:id=\"TColumnBloodgrp\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TColumnPatientName != null : "fx:id=\"TColumnPatientName\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
-//        assert TColumnStatus != null : "fx:id=\"TColumnStatus\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert TcolumnAge != null : "fx:id=\"TcolumnAge\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert UnderLabelAnchorPane != null : "fx:id=\"UnderLabelAnchorPane\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
         assert bloodrequestsymbol != null : "fx:id=\"bloodrequestsymbol\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
@@ -139,8 +141,6 @@ public class RequestHistoryController implements Initializable {
         assert TcolumnReport != null : "fx:id=\"TcolumnReport\" was not injected: check your FXML file '11_My Blood Request History.fxml'.";
     }
 
-    private Stage stage;
-    private Scene scene;
 
     ObservableList<Refresh> RefreshObservableList = FXCollections.observableArrayList();
 
@@ -155,10 +155,6 @@ public class RequestHistoryController implements Initializable {
         File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
         Image backImage2 = new Image(backFile2.toURI().toString());
         donatesymbol.setImage(backImage2);
-
-//        File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
-//        Image backImage4 = new Image(backFile4.toURI().toString());
-//        bloodrequestsymbol.setImage(backImage4);
 
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());
@@ -205,8 +201,9 @@ public void refBu(int loggedInUserId) throws SQLException {
 
                 byte[] pdfData = queryOutput.getBytes("report");
 
-                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
 
+
+                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
 
             }
 
@@ -214,8 +211,6 @@ public void refBu(int loggedInUserId) throws SQLException {
             TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
             TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
             TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
-
-
 
 
             tableView.setItems(RefreshObservableList);
@@ -257,21 +252,6 @@ public void refBu(int loggedInUserId) throws SQLException {
 
 
             }
-
-//            @FXML
-//            void requestOnAction (ActionEvent event){
-//                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-//                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                try {
-//                    scene = new Scene(fxmlLoader.load());
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                stage.setScene(scene);
-//                stage.show();
-//                stage.setTitle("Request");
-//
-//            }
 
             @FXML
             void RequestHistoryButtonOnAction (ActionEvent event){
@@ -318,140 +298,5 @@ public void refBu(int loggedInUserId) throws SQLException {
                 stage.setTitle("Donor");
 
             }
-        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public void refreshButtonOnAction(ActionEvent e) throws SQLException {
-//
-//        refresh(e);
-//    }
-//
-//    public void refresh(ActionEvent e) throws RuntimeException {
-//
-//        DatabaseConnection connection = new DatabaseConnection();
-//        Connection connection1 = connection.getConnection();
-//
-//        String query = "select name, dob, bloodgroup from patient";
-//
-//        try {
-//            Statement statement = connection1.createStatement();
-//            ResultSet resultSet = statement.executeQuery(query);
-//
-//            while (resultSet.next()) {
-//                String value1 = resultSet.getString("name");
-//                String value2 = resultSet.getString("dob");
-//                String value3 = resultSet.getString("bloodgroup");
-//
-//                tableView.getItems().add(new DataItem(value1, value2, value3));
-//            }
-//
-//            resultSet.close();
-//            statement.close();
-//        } catch (SQLException exception) {
-//            exception.printStackTrace();
-//        }
-//    }
-//
-//    public static class DataItem {
-//        private final String name;
-//        private final String dob;
-//
-//        private final String bloodgroup;
-//
-//        public DataItem(String name, String dob, String bloodgroup) {
-//            this.name = name;
-//            this.dob = dob;
-//            this.bloodgroup = bloodgroup;
-//        }
-//
-//
-//        public String getTColumnPatientName() {
-//            return name;
-//        }
-//
-//        public String getDob() {
-//            return dob;
-//        }
-//
-//        public String getBloodgroup() {
-//            return bloodgroup;
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

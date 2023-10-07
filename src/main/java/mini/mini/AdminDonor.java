@@ -80,6 +80,4 @@ public class AdminDonor {
         this.report = report;
     }
 
-
-
 }

@@ -163,9 +163,6 @@ public class patientDetailsController implements Initializable {
             Image backImage3 = new Image(backFile3.toURI().toString());
             iamgepatient.setImage(backImage3);
 
-//            File backFile4= new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
-//            Image backImage4 = new Image(backFile4.toURI().toString());
-//            iamgebloodrequest.setImage(backImage4);
         }
 
 
@@ -212,10 +209,7 @@ public class patientDetailsController implements Initializable {
 
                 String queryAddress = queryOutput.getString("address");
 
-
-
                 byte[] pdfData = queryOutput.getBytes("report");
-
 
 
                 AdminPatientObservableList.add(new AdminPatient(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
@@ -243,12 +237,12 @@ public class patientDetailsController implements Initializable {
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
         String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
-        // Replace "YOUR_FILE_ID" with the actual ID of your Google Drive file
+        // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
         try {
             java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
-            // Handle any exceptions here
+            // Handling any exceptions here
         }
     }
 
@@ -298,19 +292,20 @@ public class patientDetailsController implements Initializable {
         stage.show();
         stage.setTitle("Login");
     }
-    @FXML
-    void bloodrequestsButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("BloodRequest");
-    }
+
+//    @FXML
+//    void bloodrequestsButtonOnAction(ActionEvent event) {
+//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        try {
+//            scene = new Scene(fxmlLoader.load());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        stage.setScene(scene);
+//        stage.show();
+//        stage.setTitle("BloodRequest");
+//    }
 
 }
 

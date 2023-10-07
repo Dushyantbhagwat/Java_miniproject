@@ -202,47 +202,5 @@ public class UserLoginController implements Initializable {
     }
 
 
-    //    public void loginbuttonOnAction(ActionEvent e) throws SQLException {
-//
-//        if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
-//            setmessage(e);
-//        } else {
-//            message.setText("Please enter your username and password");
-//        }
-//    }
-//
-//    public void setmessage(ActionEvent e) {
-//        DatabaseConnection connection = new DatabaseConnection();
-//        Connection connection1 = connection.getConnection();
-//
-//        String verifylogin = "select count(1) from users where email_id = '" + username.getText() + "' and password ='" + password.getText() + "'";
-//
-//        try {
-//            Statement statement = connection1.createStatement();
-//            ResultSet queryResult = statement.executeQuery(verifylogin);
-//
-//            while (queryResult.next()) {
-//                int userId = queryResult.getInt("user_id");
-//                CurrentUser.setLoggedInUser(userId);
-//                if (queryResult.getInt(1) == 1) {
-//                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-//                    stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-//                    try {
-//                        scene = new Scene(fxmlLoader.load());
-//                    } catch (IOException event) {
-//                        throw new RuntimeException(String.valueOf(e));
-//                    }
-//                    stage.setScene(scene);
-//                    stage.show();
-//                    stage.setTitle("Dashboard");
-//
-//                } else {
-//                    message.setText("Invalid Credentials");
-//                }
-//            }
-//        } catch (Exception ep) {
-//            ep.printStackTrace();
-//        }
-//    }
 }
 

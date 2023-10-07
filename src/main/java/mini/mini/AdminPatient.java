@@ -2,7 +2,6 @@ package mini.mini;
 
 public class AdminPatient  {
 
-
     String name;
     String dob;
 
@@ -80,4 +79,5 @@ public class AdminPatient  {
     public void setReport(byte[] report) {
         this.report = report;
     }
+
 }

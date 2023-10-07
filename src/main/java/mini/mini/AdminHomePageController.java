@@ -198,6 +198,7 @@ public class AdminHomePageController implements Initializable {
 
     private Stage stage;
     private Scene scene;
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert Abga != null : "fx:id=\"Abga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -549,19 +550,18 @@ public class AdminHomePageController implements Initializable {
         }
 
 
-        @FXML
-        void bloodrequestsButtonOnAction (ActionEvent event){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("BloodRequest");
-        }
-
+//        @FXML
+//        void bloodrequestsButtonOnAction (ActionEvent event){
+//            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+//            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            try {
+//                scene = new Scene(fxmlLoader.load());
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//            stage.setScene(scene);
+//            stage.show();
+//            stage.setTitle("BloodRequest");
+//        }
 
 }

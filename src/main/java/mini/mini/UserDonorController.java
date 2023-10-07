@@ -62,54 +62,6 @@ import javafx.stage.Stage;
 
 
         @FXML
-        void loginbuttonOnAction(ActionEvent event) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
-
-        }
-
-        @FXML
-        void HomeButtonOnAction(ActionEvent event) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
-
-
-        }
-
-        @FXML
-        void ShowrulesOnAction(ActionEvent event) {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("13_rules for donation.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Rules");
-
-        }
-
-
-        @FXML
             // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
             assert Checkbox1 != null : "fx:id=\"Checkbox1\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
@@ -185,6 +137,56 @@ import javafx.stage.Stage;
                 System.out.println("error");
             }
         }
+
+
+        @FXML
+        void loginbuttonOnAction(ActionEvent event) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Donor");
+
+        }
+
+        @FXML
+        void HomeButtonOnAction(ActionEvent event) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Donor");
+
+
+        }
+
+        @FXML
+        void ShowrulesOnAction(ActionEvent event) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("13_rules for donation.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Rules");
+
+        }
+
+
 
 
     }

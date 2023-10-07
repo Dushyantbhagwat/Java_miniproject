@@ -42,6 +42,7 @@ package mini.mini;
         public void setLoggedInUsername(String loggedInUsername) {
             this.loggedInUsername = loggedInUsername;
         }
+
     }
 
 

@@ -41,6 +41,7 @@ public class RulesController implements Initializable {
     private Stage stage;
 
     private Scene scene;
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert closebutton != null : "fx:id=\"closebutton\" was not injected: check your FXML file '13_rules for donation.fxml'.";
@@ -61,7 +62,6 @@ public class RulesController implements Initializable {
         Image backImage2 = new Image(backFile2.toURI().toString());
         rules1.setImage(backImage2);
 
-
     }
 
     @FXML
@@ -79,4 +79,5 @@ public class RulesController implements Initializable {
         stage.setTitle("Rules");
 
     }
+
 }

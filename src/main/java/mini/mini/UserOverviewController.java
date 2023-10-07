@@ -153,21 +153,6 @@ public class UserOverviewController implements Initializable {
 
     }
 
-
-    //    @FXML
-//    void requestOnAction(ActionEvent event) {
-//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("10_Patient Requesting for blood.fxml"));
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        try {
-//            scene = new Scene(fxmlLoader.load());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        stage.setScene(scene);
-//        stage.show();
-//        stage.setTitle("Request");
-//
-//    }
     @FXML
     void requesthistoryOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("11_My Blood Request History.fxml"));
@@ -217,12 +202,6 @@ public class UserOverviewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        String loggedINUsername = AuthService.getInstance().getLoggedINUsername();
-//        updateUsernameLabel(loggedINUsername);
-
-
-//        String loggedINUsername = AuthService.getInstance().getLoggedInUsername(); // Correct method name
-//        updateUsernameLabel(loggedINUsername);
 
         File backFile6 = new File("im/Your paragraph text (1).png");
         Image backImage6 = new Image(backFile6.toURI().toString());
@@ -236,40 +215,11 @@ public class UserOverviewController implements Initializable {
         Image backImage2 = new Image(backFile2.toURI().toString());
         donatesymbol.setImage(backImage2);
 
-//            File backFile4 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
-//            Image backImage4 = new Image(backFile4.toURI().toString());
-//            bloodrequestsymbol.setImage(backImage4);
 
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());
         requesthistorysybol.setImage(backImage5);
 
-//            AuthService.getInstance().getLoggedINUsername();
-//
-//            String getLoggedInUsername = mess.setText("" +
-
     }
-//    public void updateUsernameLabel(String loggedINUsername) {
-//        String loggedInUsername = AuthService.getInstance().getLoggedINUsername();
-//        if (loggedINUsername != null) {
-//            mess.setText("Welcome, " + loggedINUsername);
-//        } else {
-//            mess.setText("Not logged in"); // Handle the case when no user is logged in
-//        }
-
-
-
-//    public void updateUsernameLabel(String loggedINUsername) {
-//        if (loggedINUsername != null) {
-//            mess.setText("Welcome, " + loggedINUsername);
-//        } else {
-//            mess.setText("Welcome, " + loggedINUsername); // Handle the case when no user is logged in
-//        }
-//    }
-
 
 }
-
-
-
-

@@ -30,14 +30,7 @@ public class HomeController  implements Initializable {
 
     @FXML
     private Button user;
-    @FXML // fx:id="addbloodbankopt"
-    private Button addbloodbankopt; // Value injected by FXMLLoader
 
-    @FXML // fx:id="userclickopt"
-    private Button userclickopt; // Value injected by FXMLLoader
-
-    @FXML // fx:id="anchorpanescreen"
-    private AnchorPane anchorpanescreen; // Value injected by FXMLLoader
 
     @FXML // fx:id="cbtdi"
     private ImageView cbtdi; // Value injected by FXMLLoader
@@ -51,12 +44,6 @@ public class HomeController  implements Initializable {
     @FXML // fx:id="symbol"
     private ImageView symbol; // Value injected by FXMLLoader
 
-
-    @FXML // fx:id="vboxscreen"
-    private VBox vboxscreen; // Value injected by FXMLLoader
-
-    @FXML // fx:id="bglabel"
-    private Label bglabel; // Value injected by FXMLLoader
 
     private Stage stage;
     private Scene scene;
