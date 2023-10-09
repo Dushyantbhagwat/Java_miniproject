@@ -115,6 +115,10 @@ public class patientDetailsController implements Initializable {
     @FXML // fx:id="tableview"
     private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
 
+
+    @FXML
+    private TableColumn<AdminPatient, Void> buttonColumn;
+
     private Stage stage;
     private Scene scene;
 
@@ -162,6 +166,9 @@ public class patientDetailsController implements Initializable {
             File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
             Image backImage3 = new Image(backFile3.toURI().toString());
             iamgepatient.setImage(backImage3);
+
+            // Set the custom cell factory for the button column
+            buttonColumn.setCellFactory(param -> new ButtonCell());
 
         }
 
@@ -230,7 +237,6 @@ public class patientDetailsController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 
 

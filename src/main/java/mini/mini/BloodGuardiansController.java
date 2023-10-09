@@ -11,15 +11,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -31,8 +28,11 @@ import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.util.StringConverter;
 
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class AdminHomePageController implements Initializable {
+public class BloodGuardiansController implements Initializable {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -335,6 +335,153 @@ public class AdminHomePageController implements Initializable {
     }
 
 
+
+
+//        // Database connection fields
+//        private Connection connectDB;
+//
+//        // Map to store blood group quantities
+//        private Map<String, Integer> bloodGroupQuantities;
+//
+//        // Labels for displaying quantities
+//
+//        public BloodGuardiansController() {
+//            // Initialize the map and database connection
+//            bloodGroupQuantities = new HashMap<>();
+//            connectToDatabase();
+//        }
+//
+//        private void connectToDatabase() {
+//            try {
+//                // Initialize your database connection here (e.g., JDBC connection)
+//                String url = "jdbc:mysql://localhost:3306/mini_project";
+//                String username = "root";
+//                String password = "haunting363@";
+//                connectDB = DriverManager.getConnection(url, username, password);
+//
+//                // Load blood group quantities from the database
+//                loadBloodGroupQuantitiesFromDatabase();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        private void loadBloodGroupQuantitiesFromDatabase() {
+//            try {
+//                String query = "SELECT blood_group, quantity FROM blood_quantities";
+//                Statement statement = connectDB.createStatement();
+//                ResultSet resultSet = statement.executeQuery(query);
+//
+//                while (resultSet.next()) {
+//                    String bloodGroup = resultSet.getString("blood_group");
+//                    int quantity = resultSet.getInt("quantity");
+//                    bloodGroupQuantities.put(bloodGroup, quantity);
+//                }
+//
+//                // Update the UI labels with loaded quantities
+//                updateUIWithLoadedQuantities();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        private void updateUIWithLoadedQuantities() {
+//            // Update your UI labels (e.g., labelAPlus, labelBPlus, etc.) with loaded quantities
+//            label75.setText(String.valueOf(bloodGroupQuantities.get("A+")));
+//            label0.setText(String.valueOf(bloodGroupQuantities.get("B+")));
+//            label5.setText(String.valueOf(bloodGroupQuantities.get("O+")));
+//            label7.setText(String.valueOf(bloodGroupQuantities.get("AB+")));
+//            label78.setText(String.valueOf(bloodGroupQuantities.get("A-")));
+//            label87.setText(String.valueOf(bloodGroupQuantities.get("B-")));
+//            label2.setText(String.valueOf(bloodGroupQuantities.get("O-")));
+//            label1.setText(String.valueOf(bloodGroupQuantities.get("AB-")));
+//        }
+//
+//
+//        public void addButttonOnAction(String selectedOption, int increaseAmount) {
+//            if (bloodGroupQuantities.containsKey(selectedOption)) {
+//                int currentValue = bloodGroupQuantities.get(selectedOption);
+//                int newValue = currentValue + increaseAmount;
+//
+//                // Update the map with the new quantity
+//                bloodGroupQuantities.put(selectedOption, newValue);
+//
+//                // Update the database with the new quantity
+//                updateDatabase(selectedOption, newValue);
+//
+//                // Update the UI label
+//                updateUILabel(selectedOption, newValue);
+//            } else {
+//                System.out.println("Invalid blood group selected.");
+//            }
+//        }
+//
+//        private void updateDatabase(String bloodGroup, int newQuantity) {
+//            try {
+//                String query = "UPDATE blood_quantities SET quantity = ? WHERE blood_group = ?";
+//                PreparedStatement preparedStatement = connectDB.prepareStatement(query);
+//                preparedStatement.setInt(1, newQuantity);
+//                preparedStatement.setString(2, bloodGroup);
+//                preparedStatement.executeUpdate();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        private void updateUILabel(String bloodGroup, int newQuantity) {
+//            // Update the corresponding UI label with the new quantity
+//            switch (bloodGroup) {
+//                case "A+":
+//                    label75.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "B+":
+//                    label0.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "O+":
+//                    label5.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "AB+":
+//                    label7.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "A-":
+//                    label78.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "B-":
+//                    label87.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "O-":
+//                    label2.setText(String.valueOf(newQuantity));
+//                    break;
+//                case "AB-":
+//                    label1.setText(String.valueOf(newQuantity));
+//                    break;
+//            }
+//        }
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @FXML
     void addButtonOnAction(ActionEvent event) {
         try {
@@ -548,6 +695,8 @@ public class AdminHomePageController implements Initializable {
             stage.show();
             stage.setTitle("Patient");
         }
+
+
 
 
 //        @FXML
