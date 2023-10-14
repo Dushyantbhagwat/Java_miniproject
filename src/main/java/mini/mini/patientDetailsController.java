@@ -187,7 +187,7 @@ public class patientDetailsController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-         String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
+         String refreshQuery = "SELECT users.user_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
                     "FROM users " +
                     "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
 
@@ -197,6 +197,8 @@ public class patientDetailsController implements Initializable {
             ResultSet queryOutput = statement.executeQuery(refreshQuery);
 
             while (queryOutput.next()) {
+
+                int userId = queryOutput.getInt("user_id");
 
                 String query_Name = queryOutput.getString("name");
 
@@ -219,7 +221,8 @@ public class patientDetailsController implements Initializable {
                 byte[] pdfData = queryOutput.getBytes("report");
 
 
-                AdminPatientObservableList.add(new AdminPatient(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
+
+                AdminPatientObservableList.add(new AdminPatient(userId, query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
             }
 
             tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
