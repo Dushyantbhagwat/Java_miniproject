@@ -16,6 +16,18 @@ public class AdminPatient  {
 
     byte[] report;
 
+    private boolean reportOpened;
+
+
+    public boolean isReportOpened() {
+        return reportOpened;
+    }
+
+    public void setReportOpened(boolean reportOpened) {
+        this.reportOpened = reportOpened;
+    }
+
+
     public AdminPatient(int patient_id,String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
         this.name = name;
         this.dob = dob;
@@ -25,7 +37,10 @@ public class AdminPatient  {
         this.address = address;
         this.report = report;
         this.patient_id=patient_id;
+        this.reportOpened=reportOpened;
     }
+
+
 
 
     public int getId() {
@@ -92,5 +107,14 @@ public class AdminPatient  {
     public void setReport(byte[] report) {
         this.report = report;
     }
+
+    public int getPatient_id() {
+        return patient_id;
+    }
+
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
+    }
+
 
 }

@@ -85,6 +85,9 @@ public class RequestHistoryController implements Initializable {
     @FXML // fx:id="TcolumnReport"
     private TableColumn<Refresh, ?> TcolumnReport; // Value injected by FXMLLoader
 
+    @FXML // fx:id="TcolumnReport"
+    private TableColumn<Refresh, String > TcolumnReport1; // Value injected by FXMLLoader
+
     @FXML // fx:id="UnderLabelAnchorPane"
     private AnchorPane UnderLabelAnchorPane; // Value injected by FXMLLoader
 
@@ -175,7 +178,7 @@ public void refBu(int loggedInUserId) throws SQLException {
     Connection connectDB = connectNow.getConnection();
 
 
-    String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report " +
+    String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report, patient_table.action " +
             "FROM users " +
             "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
             "WHERE users.user_id ='" + loggedInUserId + "'";
@@ -201,9 +204,9 @@ public void refBu(int loggedInUserId) throws SQLException {
 
                 byte[] pdfData = queryOutput.getBytes("report");
 
+                String queryStatus = queryOutput.getString("action");
 
-
-                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData));
+                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData, queryStatus));
 
             }
 
@@ -211,7 +214,7 @@ public void refBu(int loggedInUserId) throws SQLException {
             TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
             TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
             TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
-
+            TcolumnReport1.setCellValueFactory(new PropertyValueFactory<>("action"));
 
             tableView.setItems(RefreshObservableList);
 
@@ -223,6 +226,7 @@ public void refBu(int loggedInUserId) throws SQLException {
         System.out.println("error");
     }
 }
+
 
     @FXML
     void PdfopnerOnAction(ActionEvent event) {

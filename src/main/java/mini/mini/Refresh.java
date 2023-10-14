@@ -8,12 +8,14 @@ public class Refresh {
 
     byte[] report;
 
+    String action;
 
-    public Refresh(String name, String dob, String bloodgroup, byte[] report) {
+    public Refresh(String name, String dob, String bloodgroup, byte[] report, String action) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
         this.report = report;
+        this.action = action;
 
     }
 
@@ -49,4 +51,11 @@ public class Refresh {
         this.report = report;
     }
 
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 }
