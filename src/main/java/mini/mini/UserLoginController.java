@@ -99,7 +99,14 @@ public class UserLoginController implements Initializable {
         } else {
             message.setText("Please enter your username and password");
         }
+        if (username.getText().isBlank() == false && password.getText().isBlank() == false) {
+            validatelogin(e);
+        } else {
+            message.setText("Please enter your username and password");
+        }
     }
+
+
 
     public int authenticateUser(String username, String password) {
         int userId=-1;
@@ -142,6 +149,42 @@ public class UserLoginController implements Initializable {
             return -1;
         }
 //        return userId;
+    }
+
+
+
+
+    public void validatelogin(ActionEvent e) throws RuntimeException {
+
+        DatabaseConnection connection = new DatabaseConnection();
+        Connection connection1 = connection.getConnection();
+
+
+        String verifylogin = "select count(1) from blood_guardians where username='" + username.getText() + "' and password='" + password.getText() + "'";
+
+        try {
+            Statement statement = connection1.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifylogin);
+            while (queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("4_HOME PAGE ADMIN.fxml"));
+                    stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    try {
+                        scene = new Scene(fxmlLoader.load());
+                    } catch (IOException event) {
+                        throw new RuntimeException(String.valueOf(e));
+                    }
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setTitle("Dashboard");
+
+                } else {
+                    message.setText("Invalid Credentials");
+                }
+            }
+        }catch (Exception ep) {
+            ep.printStackTrace();
+        }
     }
 
     private void changeSceneToDashboard(ActionEvent e) {
