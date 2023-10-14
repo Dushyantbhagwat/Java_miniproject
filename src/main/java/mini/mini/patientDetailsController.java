@@ -38,6 +38,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
 public class patientDetailsController implements Initializable {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -172,77 +173,75 @@ public class patientDetailsController implements Initializable {
             // Set the custom cell factory for the button column
             buttonColumn.setCellFactory(param -> new ButtonCell());
 
-        }
-
-
-
-            public void reButtononAction(ActionEvent actionEventevent) throws SQLException{
                 try {
                     display();
-                } catch (Exception e) {
-                    e.printStackTrace(); // Print the stack trace for debugging
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    // Handle any exceptions here
                 }
-            }
 
-        public void display() throws SQLException {
-
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-         String refreshQuery = "SELECT patient_table.patient_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
-                    "FROM users " +
-                    "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
-
-            try {
-
-            Statement statement = connectDB.createStatement();
-            ResultSet queryOutput = statement.executeQuery(refreshQuery);
-
-            while (queryOutput.next()) {
-
-                int userId = queryOutput.getInt("patient_id");
-
-                String query_Name = queryOutput.getString("name");
-
-                String queryBlood_group = queryOutput.getString("bloodgroup");
-
-                String query_Dob = queryOutput.getString("dob");
-                System.out.println("query_Dob: " + query_Dob);
-
-
-                LocalDate dob = LocalDate.parse(query_Dob);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-                String formatted_Dob = dob.format(formatter);
-
-                String queryContactno = queryOutput.getString("phone_number");
-
-                String queryEmail = queryOutput.getString("email_id");
-
-                String queryAddress = queryOutput.getString("address");
-
-                byte[] pdfData = queryOutput.getBytes("report");
-
-
-
-                AdminPatientObservableList.add(new AdminPatient(userId, query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
-            }
-
-            tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
-            tablecolumnage.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
-            tablecolumnbloodgroup.setCellValueFactory(new PropertyValueFactory<>("dob"));
-            tablecolumncontactno.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
-            tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
-            tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
-            tablecolumncontactno3.setCellValueFactory(new PropertyValueFactory<>("report"));
-//            tablecolumnname1.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
-            tableview.setItems(AdminPatientObservableList);
-
-        } catch (SQLException e) {
-            Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
-            e.printStackTrace();
         }
-    }
 
+
+
+            public void display() throws SQLException {
+
+
+                DatabaseConnection connectNow = new DatabaseConnection();
+                Connection connectDB = connectNow.getConnection();
+
+                String refreshQuery = "SELECT patient_table.patient_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
+                        "FROM users " +
+                        "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
+
+                try {
+
+                    Statement statement = connectDB.createStatement();
+                    ResultSet queryOutput = statement.executeQuery(refreshQuery);
+
+                    while (queryOutput.next()) {
+
+                        int userId = queryOutput.getInt("patient_id");
+
+                        String query_Name = queryOutput.getString("name");
+
+                        String queryBlood_group = queryOutput.getString("bloodgroup");
+
+                        String query_Dob = queryOutput.getString("dob");
+                        System.out.println("query_Dob: " + query_Dob);
+
+
+                        LocalDate dob = LocalDate.parse(query_Dob);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        String formatted_Dob = dob.format(formatter);
+
+                        String queryContactno = queryOutput.getString("phone_number");
+
+                        String queryEmail = queryOutput.getString("email_id");
+
+                        String queryAddress = queryOutput.getString("address");
+
+                        byte[] pdfData = queryOutput.getBytes("report");
+
+
+                        AdminPatientObservableList.add(new AdminPatient(userId, query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
+                    }
+
+                    tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
+                    tablecolumnage.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+                    tablecolumnbloodgroup.setCellValueFactory(new PropertyValueFactory<>("dob"));
+                    tablecolumncontactno.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
+                    tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
+                    tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
+                    tablecolumncontactno3.setCellValueFactory(new PropertyValueFactory<>("report"));
+                    tableview.setItems(AdminPatientObservableList);
+
+                } catch (SQLException e) {
+                    Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+                    e.printStackTrace();
+                }
+
+            }
 
 
     @FXML

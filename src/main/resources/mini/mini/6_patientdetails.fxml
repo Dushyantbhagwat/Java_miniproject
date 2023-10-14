@@ -30,11 +30,11 @@
       </AnchorPane>
    </top>
    <left>
-      <VBox prefHeight="354.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="420.0" prefWidth="147.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="424.0" prefWidth="180.0" style="-fx-background-color: #5A5A5A;">
+            <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="148.0" style="-fx-background-color: #5A5A5A;">
                <children>
-                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="125.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Home">
+                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="125.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -42,7 +42,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="175.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="Donor">
+                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="175.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Donor">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Patient">
+                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="147.0" text="Patient">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -73,22 +73,21 @@
                         <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="refbo" layoutX="97.0" layoutY="382.0" mnemonicParsing="false" onAction="#reButtononAction" prefHeight="26.0" prefWidth="77.0" style="-fx-background-radius: 8;" text="Refresh" />
-                  <Button layoutX="4.0" layoutY="382.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="87.0" style="-fx-background-radius: 8;" text="Open Report" />
+                  <Button layoutX="25.0" layoutY="382.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 8;" text="Open Report" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
    </left>
    <center>
-      <TableView fx:id="tableview" prefHeight="365.0" prefWidth="735.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableview" prefHeight="420.0" prefWidth="826.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="tablecolumnname" prefWidth="144.0000457763672" text="NAME" />
-            <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="75.199951171875" text="DOB" />
-            <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="92.79998779296875" text="BLOOD GROUP" />
+            <TableColumn fx:id="tablecolumnname" prefWidth="102.40008848905563" text="NAME" />
+            <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="68.80000305175781" text="DOB" />
+            <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="103.99998474121094" text="BLOOD GROUP" />
             <TableColumn fx:id="tablecolumncontactno" minWidth="0.0" prefWidth="104.79998779296875" text="CONTACT NO." />
-            <TableColumn fx:id="tablecolumncontactno1" minWidth="0.0" prefWidth="145.59991455078125" text="EMAIL ID" />
-            <TableColumn fx:id="tablecolumncontactno2" minWidth="0.0" prefWidth="128.800048828125" text="ADDRESS" />
+            <TableColumn fx:id="tablecolumncontactno1" minWidth="0.0" prefWidth="108.0" text="EMAIL ID" />
+            <TableColumn fx:id="tablecolumncontactno2" minWidth="0.0" prefWidth="138.4000244140625" text="ADDRESS" />
             <TableColumn fx:id="tablecolumncontactno3" minWidth="0.0" prefWidth="84.0" text="REPORT" />
             <TableColumn fx:id="buttonColumn" prefWidth="144.0000457763672" text="ACTION" />
          </columns>

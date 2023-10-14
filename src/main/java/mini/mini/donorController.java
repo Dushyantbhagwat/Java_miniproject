@@ -162,20 +162,25 @@ public class donorController implements Initializable {
 
     @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-            File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
-            Image backImage1 = new Image(backFile1.toURI().toString());
-            iamgehome.setImage(backImage1);
+        File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
+        Image backImage1 = new Image(backFile1.toURI().toString());
+        iamgehome.setImage(backImage1);
 
-            File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
-            Image backImage2 = new Image(backFile2.toURI().toString());
-            imagedonor.setImage(backImage2);
+        File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
+        Image backImage2 = new Image(backFile2.toURI().toString());
+        imagedonor.setImage(backImage2);
 
-            File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
-            Image backImage3 = new Image(backFile3.toURI().toString());
-            iamgepatient.setImage(backImage3);
+        File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
+        Image backImage3 = new Image(backFile3.toURI().toString());
+        iamgepatient.setImage(backImage3);
 
-
+        try {
+            display();
+        } catch (Exception e) {
+            e.printStackTrace(); // Print the stack trace for debugging
         }
+
+    }
 
 
     @FXML
@@ -191,13 +196,6 @@ public class donorController implements Initializable {
     }
 
 
-    public void reButtononAction(ActionEvent actionEventevent) throws SQLException {
-        try {
-            display();
-        } catch (Exception e) {
-            e.printStackTrace(); // Print the stack trace for debugging
-        }
-    }
 
     public void display() throws SQLException {
 

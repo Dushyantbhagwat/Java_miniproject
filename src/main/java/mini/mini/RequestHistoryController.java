@@ -162,71 +162,66 @@ public class RequestHistoryController implements Initializable {
         File backFile5 = new File("im/WhatsApp Image 2023-09-02 at 22.25..jpg");
         Image backImage5 = new Image(backFile5.toURI().toString());
         requesthistorysybol.setImage(backImage5);
-    }
 
-
-        public void refreshButtonOnAction(ActionEvent actionEventevent) throws SQLException {
             int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
-                refBu(loggedInUserId);
-        }
-
-
-public void refBu(int loggedInUserId) throws SQLException {
-
-
-    DatabaseConnection connectNow = new DatabaseConnection();
-    Connection connectDB = connectNow.getConnection();
-
-
-    String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report, patient_table.action " +
-            "FROM users " +
-            "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
-            "WHERE users.user_id ='" + loggedInUserId + "'";
-
-    if (loggedInUserId != -1) {
-        try {
-
-            Statement statement = connectDB.createStatement();
-            ResultSet queryOutput = statement.executeQuery(refreshQuery);
-
-
-            while (queryOutput.next()) {
-
-                String queryName = queryOutput.getString("name");
-
-                String queryDob = queryOutput.getString("dob");
-
-                LocalDate dob = LocalDate.parse(queryDob);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
-                String formatted_Dob = dob.format(formatter);
-
-                String queryBloodgroup = queryOutput.getString("bloodgroup");
-
-                byte[] pdfData = queryOutput.getBytes("report");
-
-                String queryStatus = queryOutput.getString("action");
-
-                RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData, queryStatus));
-
+            if (loggedInUserId != -1) {
+                try {
+                    refBu(loggedInUserId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    // Handle any exceptions here
+                }
+            } else {
+                System.out.println("error");
             }
-
-            TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-            TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
-            TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
-            TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
-            TcolumnReport1.setCellValueFactory(new PropertyValueFactory<>("action"));
-
-            tableView.setItems(RefreshObservableList);
-
-        } catch (SQLException e) {
-            Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
-            e.printStackTrace();
         }
-    } else {
-        System.out.println("error");
-    }
-}
 
+        public void refBu(int loggedInUserId) throws SQLException {
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            String refreshQuery = "SELECT users.name, users.dob, users.bloodgroup, users.report, patient_table.action " +
+                    "FROM users " +
+                    "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
+                    "WHERE users.user_id ='" + loggedInUserId + "'";
+
+            if (loggedInUserId != -1) {
+                try {
+                    Statement statement = connectDB.createStatement();
+                    ResultSet queryOutput = statement.executeQuery(refreshQuery);
+
+                    while (queryOutput.next()) {
+                        String queryName = queryOutput.getString("name");
+                        String queryDob = queryOutput.getString("dob");
+
+                        LocalDate dob = LocalDate.parse(queryDob);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        String formatted_Dob = dob.format(formatter);
+
+                        String queryBloodgroup = queryOutput.getString("bloodgroup");
+
+                        byte[] pdfData = queryOutput.getBytes("report");
+
+                        String queryStatus = queryOutput.getString("action");
+
+                        RefreshObservableList.add(new Refresh(queryName, formatted_Dob, queryBloodgroup, pdfData, queryStatus));
+                    }
+
+                    TColumnPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+                    TcolumnAge.setCellValueFactory(new PropertyValueFactory<>("dob"));
+                    TColumnBloodgrp.setCellValueFactory(new PropertyValueFactory<>("bloodgroup"));
+                    TcolumnReport.setCellValueFactory(new PropertyValueFactory<>("report"));
+                    TcolumnReport1.setCellValueFactory(new PropertyValueFactory<>("action"));
+
+                    tableView.setItems(RefreshObservableList);
+                } catch (SQLException e) {
+                    Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("error");
+            }
+        }
 
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
