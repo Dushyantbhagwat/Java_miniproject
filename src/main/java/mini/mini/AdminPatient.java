@@ -2,7 +2,7 @@ package mini.mini;
 
 public class AdminPatient  {
 
-    private int user_id;
+    private int patient_id;
 
     String name;
     String dob;
@@ -16,7 +16,7 @@ public class AdminPatient  {
 
     byte[] report;
 
-    public AdminPatient(int user_id,String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
+    public AdminPatient(int patient_id,String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
@@ -24,16 +24,16 @@ public class AdminPatient  {
         this.email_id = email_id;
         this.address = address;
         this.report = report;
-        this.user_id= user_id;
+        this.patient_id=patient_id;
     }
 
 
     public int getId() {
-        return user_id;
+        return patient_id;
     }
 
     public void setId(int id) {
-        this.user_id = id;
+        this.patient_id = id;
     }
 
 

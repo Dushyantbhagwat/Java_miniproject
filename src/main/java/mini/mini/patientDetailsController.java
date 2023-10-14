@@ -112,6 +112,9 @@ public class patientDetailsController implements Initializable {
     @FXML // fx:id="tablecolumnname"
     private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
 
+    @FXML // fx:id="tablecolumnname1"
+    private TableColumn<AdminPatient,String> tablecolumnname1; // Value injected by FXMLLoader
+
     @FXML // fx:id="tableview"
     private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
 
@@ -187,7 +190,7 @@ public class patientDetailsController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-         String refreshQuery = "SELECT users.user_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
+         String refreshQuery = "SELECT patient_table.patient_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
                     "FROM users " +
                     "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
 
@@ -198,7 +201,7 @@ public class patientDetailsController implements Initializable {
 
             while (queryOutput.next()) {
 
-                int userId = queryOutput.getInt("user_id");
+                int userId = queryOutput.getInt("patient_id");
 
                 String query_Name = queryOutput.getString("name");
 
@@ -232,7 +235,7 @@ public class patientDetailsController implements Initializable {
             tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
             tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
             tablecolumncontactno3.setCellValueFactory(new PropertyValueFactory<>("report"));
-
+//            tablecolumnname1.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
             tableview.setItems(AdminPatientObservableList);
 
         } catch (SQLException e) {

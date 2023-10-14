@@ -86,8 +86,8 @@ public class ButtonCell extends TableCell<AdminPatient, Void> {
         this.acceptButton = new Button("ACCEPT");
         this.rejectButton = new Button("REJECT");
 
-        acceptButton.setOnAction(event -> handleButtonAction("YES", acceptButton));
-        rejectButton.setOnAction(event -> handleButtonAction("NO", rejectButton));
+        acceptButton.setOnAction(event -> handleButtonAction("YES"));
+        rejectButton.setOnAction(event -> handleButtonAction("NO"));
     }
 
     @Override
@@ -99,22 +99,62 @@ public class ButtonCell extends TableCell<AdminPatient, Void> {
             HBox buttonBox = new HBox(acceptButton, rejectButton);
             buttonBox.setSpacing(5);
             setGraphic(buttonBox);
+
+            if (isDisabled()) {
+                // Disable both buttons if the cell is disabled
+                acceptButton.setDisable(true);
+                rejectButton.setDisable(true);
+            } else {
+                // Enable both buttons by default
+                acceptButton.setDisable(false);
+                rejectButton.setDisable(false);
+            }
         }
     }
-
-    private void handleButtonAction(String action, Button button) {
+    private void handleButtonAction(String action) {
         AdminPatient patient = getTableView().getItems().get(getIndex());
         int uniqueIdentifier = patient.getId();
 
         if (showConfirmationDialog(action)) {
             updateDatabase(uniqueIdentifier, action);
-            button.setDisable(true); // Disable the button after clicking
+            setGraphic(null); // Disable the entire cell
         }
     }
 
     private void updateDatabase(int uniqueIdentifier, String action) {
-        // Your updateDatabase method remains the same as previously provided
+        try {
+            // Initialize your database connection here (e.g., JDBC connection)
+            String url = "jdbc:mysql://localhost:3306/mini_project";
+            String username = "root";
+            String password = "haunting363@";
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            // Prepare an SQL update statement
+            String updateQuery = "UPDATE patient_table SET action = ? WHERE patient_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+
+            // Set the values for the SQL statement
+            preparedStatement.setString(1, action); // Set the action to "YES" or "NO"
+            preparedStatement.setInt(2, uniqueIdentifier);
+
+            // Execute the update statement
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Database updated successfully.");
+            } else {
+                System.out.println("No records were updated.");
+            }
+
+            // Close the resources (statement and connection)
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error updating the database.");
+        }
     }
+
 
     private boolean showConfirmationDialog(String action) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
