@@ -258,6 +258,7 @@ public class BloodGuardiansController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
         Image backImage1 = new Image(backFile1.toURI().toString());
         iamgehome.setImage(backImage1);
@@ -333,6 +334,108 @@ public class BloodGuardiansController implements Initializable {
         });
 
     }
+
+
+
+    @FXML
+    void addButtonOnAction(ActionEvent event) {
+        try {
+            // Get the selected item from the choice box
+            String selectedOption = bloodgroup.getValue();
+
+            if (selectedOption != null) {
+                int increaseAmount = Integer.parseInt(qunatitytext.getText());
+
+                // Update the quantity in the database for the selected blood group
+                updateQuantityInDatabase(selectedOption, increaseAmount);
+
+                // Update the UI labels and clear input fields
+                updateUI(selectedOption, increaseAmount);
+
+                bloodgroup.getSelectionModel().clearSelection();
+                qunatitytext.clear();
+            } else {
+                System.out.println("Please select an option from the ChoiceBox.");
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("Invalid input");
+        }
+    }
+
+    void updateQuantityInDatabase(String bloodGroup, int increaseAmount) {
+        try {
+            // Initialize your database connection here
+            String url = "jdbc:mysql://localhost:3306/mini_project";
+            String username = "root";
+            String password = "haunting363@";
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            connection.setAutoCommit(true);
+
+            // Prepare the SQL update statement
+            String updateQuery = "UPDATE blood_quantities SET quantity = quantity + ? WHERE blood_group = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+
+            // Set the values for the SQL statement
+            preparedStatement.setInt(1, increaseAmount);
+            preparedStatement.setString(2, bloodGroup);
+
+            // Execute the update statement
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Database updated successfully.");
+            } else {
+                System.out.println("No records were updated.");
+            }
+
+            // Close the resources (statement and connection)
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error updating the database.");
+        }
+    }
+
+
+
+
+    void updateUI(String selectedOption, int increaseAmount) {
+        switch (selectedOption) {
+            // Update the corresponding UI labels here
+            case "A+":
+                label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
+                break;
+            case "B+":
+                label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
+                break;
+            // Add cases for other blood groups
+        }
+
+        // Update the total label
+        label100.setText(String.valueOf(Integer.parseInt(label100.getText()) + increaseAmount));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -482,176 +585,178 @@ public class BloodGuardiansController implements Initializable {
 
 
 
-    @FXML
-    void addButtonOnAction(ActionEvent event) {
-        try {
-            // Get the selected item from the checkbox
-            String selectedOption = bloodgroup.getValue();
-
-            if (selectedOption != null) {
-                // Initialize it only once, not in every click event
-                if (label75 == null) {
-                    label75 = new Label("0");
-                }
-                if (label0 == null) {
-                    label0 = new Label("0");
-                }
-                if (label5== null) {
-                    label5 = new Label("0");
-                }
-                if (label7 == null) {
-                    label7 = new Label("0");
-                }
-                if (label78 == null) {
-                    label78 = new Label("0");
-                }
-                if (label87 == null) {
-                    label87 = new Label("0");
-                }
-                if (label2 == null) {
-                    label2 = new Label("0");
-                }
-                if (label1 == null) {
-                    label1 = new Label("0");
-                }
-
-                int increaseAmount,currentValue,newValue;
-
-                switch (selectedOption) {
-
-                    case "A+":
-
-                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                         currentValue = Integer.parseInt(label75.getText());
-                         newValue = currentValue + increaseAmount;
-
-                         label75.setText(String.valueOf(newValue));
-                         bloodgroup.getSelectionModel().clearSelection();
-                         qunatitytext.clear();
-
-                         updateTotalLabel(increaseAmount);
-                         break;
-                    case "B+":
-
-                         increaseAmount = Integer.parseInt(qunatitytext.getText());
-                         currentValue = Integer.parseInt(label0.getText());
-                         newValue = currentValue + increaseAmount;
-
-                         label0.setText(String.valueOf(newValue));
-                         bloodgroup.getSelectionModel().clearSelection();
-                         qunatitytext.clear();
-
-                         updateTotalLabel(increaseAmount);
-                        break;
-                    case "O+":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label5.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        label5.setText(String.valueOf(newValue));
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-
-                        updateTotalLabel(increaseAmount);
-                        break;
-                    case "AB+":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label7.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        label7.setText(String.valueOf(newValue));
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-
-                        updateTotalLabel(increaseAmount);
-                        break;
-                    case "A-":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label78.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        // Update the label with the new value
-                        label78.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-                        break;
-                    case "B-":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label87.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        // Update the label with the new value
-                        label87.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-                        break;
-                    case "O-":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label2.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        // Update the label with the new value
-                        label2.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-                        break;
-                    case "AB-":
-
-                        increaseAmount = Integer.parseInt(qunatitytext.getText());
-                        currentValue = Integer.parseInt(label1.getText());
-                        newValue = currentValue + increaseAmount;
-
-                        // Update the label with the new value
-                        label1.setText(String.valueOf(newValue));
-
-                        // Clear the bloodgroup selection
-                        bloodgroup.getSelectionModel().clearSelection();
-                        qunatitytext.clear();
-                        updateTotalLabel(increaseAmount);
-                        break;
-                }
-            }
-             else {
-                System.out.println("Please select an option from the ChoiceBox.");
-            }
-        } catch (NumberFormatException ex) {
-            System.out.println("Invalid input");
-        }
-    }
-
-    @FXML
-    void updateTotalLabel(int increaseAmount) {
-        try {
-            // Assuming label100 is a member variable or field of your class
-            // Initialize it only once, not in every click event
-            if (label100 == null) {
-                label100 = new Label("0");
-            }
-
-            // Get the current value from the label
-            int currentValue = Integer.parseInt(label100.getText());
-            int newValue = currentValue + increaseAmount;
-
-            // Update the label with the new value
-            label100.setText(String.valueOf(newValue));
-        } catch (NumberFormatException ex) {
-            System.out.println("Invalid input");
-        }
-    }
+//    @FXML
+//    void addButtonOnAction(ActionEvent event) {
+//        try {
+//            // Get the selected item from the checkbox
+//            String selectedOption = bloodgroup.getValue();
+//
+//            if (selectedOption != null) {
+//                // Initialize it only once, not in every click event
+//                if (label75 == null) {
+//                    label75 = new Label("0");
+//                }
+//                if (label0 == null) {
+//                    label0 = new Label("0");
+//                }
+//                if (label5== null) {
+//                    label5 = new Label("0");
+//                }
+//                if (label7 == null) {
+//                    label7 = new Label("0");
+//                }
+//                if (label78 == null) {
+//                    label78 = new Label("0");
+//                }
+//                if (label87 == null) {
+//                    label87 = new Label("0");
+//                }
+//                if (label2 == null) {
+//                    label2 = new Label("0");
+//                }
+//                if (label1 == null) {
+//                    label1 = new Label("0");
+//                }
+//
+//                int increaseAmount,currentValue,newValue;
+//
+//                switch (selectedOption) {
+//
+//                    case "A+":
+//
+//                         increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                         currentValue = Integer.parseInt(label75.getText());
+//                         newValue = currentValue + increaseAmount;
+//
+//                         label75.setText(String.valueOf(newValue));
+//                         bloodgroup.getSelectionModel().clearSelection();
+//                         qunatitytext.clear();
+//
+//                         updateTotalLabel(increaseAmount);
+//                         break;
+//                    case "B+":
+//
+//                         increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                         currentValue = Integer.parseInt(label0.getText());
+//                         newValue = currentValue + increaseAmount;
+//
+//                         label0.setText(String.valueOf(newValue));
+//                         bloodgroup.getSelectionModel().clearSelection();
+//                         qunatitytext.clear();
+//
+//                         updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "O+":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label5.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        label5.setText(String.valueOf(newValue));
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "AB+":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label7.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        label7.setText(String.valueOf(newValue));
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "A-":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label78.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        // Update the label with the new value
+//                        label78.setText(String.valueOf(newValue));
+//
+//                        // Clear the bloodgroup selection
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "B-":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label87.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        // Update the label with the new value
+//                        label87.setText(String.valueOf(newValue));
+//
+//                        // Clear the bloodgroup selection
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "O-":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label2.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        // Update the label with the new value
+//                        label2.setText(String.valueOf(newValue));
+//
+//                        // Clear the bloodgroup selection
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                    case "AB-":
+//
+//                        increaseAmount = Integer.parseInt(qunatitytext.getText());
+//                        currentValue = Integer.parseInt(label1.getText());
+//                        newValue = currentValue + increaseAmount;
+//
+//                        // Update the label with the new value
+//                        label1.setText(String.valueOf(newValue));
+//
+//                        // Clear the bloodgroup selection
+//                        bloodgroup.getSelectionModel().clearSelection();
+//                        qunatitytext.clear();
+//                        updateTotalLabel(increaseAmount);
+//                        break;
+//                }
+//            }
+//             else {
+//                System.out.println("Please select an option from the ChoiceBox.");
+//            }
+//        } catch (NumberFormatException ex) {
+//            System.out.println("Invalid input");
+//        }
+//    }
+//
+//    @FXML
+//    void updateTotalLabel(int increaseAmount) {
+//        try {
+//            // Assuming label100 is a member variable or field of your class
+//            // Initialize it only once, not in every click event
+//            if (label100 == null) {
+//                label100 = new Label("0");
+//            }
+//
+//            // Get the current value from the label
+//            int currentValue = Integer.parseInt(label100.getText());
+//            int newValue = currentValue + increaseAmount;
+//
+//            // Update the UI label
+//
+//            // Update the label with the new value
+//            label100.setText(String.valueOf(newValue));
+//        } catch (NumberFormatException ex) {
+//            System.out.println("Invalid input");
+//        }
+//    }
 
          @FXML
         void DonorButtonOnAction (ActionEvent event){

@@ -173,6 +173,9 @@ public class patientDetailsController implements Initializable {
             // Set the custom cell factory for the button column
             buttonColumn.setCellFactory(param -> new ButtonCell());
 
+//            acceptButton.setDisable(true);
+//            rejectButton.setDisable(true);
+
                 try {
                     display();
                 } catch (SQLException e) {
@@ -250,6 +253,10 @@ public class patientDetailsController implements Initializable {
         // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
         try {
             java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
+//
+//            acceptButton.setDisable(false);
+//            rejectButton.setDisable(false);
+
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
             // Handling any exceptions here

@@ -11,11 +11,22 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 
+
 public class ButtonCell extends TableCell<AdminPatient, Void> {
+    public Button getAcceptButton() {
+        return acceptButton;
+    }
+
+    public Button getRejectButton() {
+        return rejectButton;
+    }
+
     private final Button acceptButton;
     private final Button rejectButton;
 
     public ButtonCell() {
+
+
         this.acceptButton = new Button("ACCEPT");
         this.rejectButton = new Button("REJECT");
 
@@ -41,6 +52,8 @@ public class ButtonCell extends TableCell<AdminPatient, Void> {
     }
 
     private void handleButtonAction(String action, Button clickedButton, Button otherButton) {
+
+
         AdminPatient patient = getTableView().getItems().get(getIndex());
         if (isReportOpened(patient)) {
             showAlert("Report is opened", "Action is not allowed when the report is opened.");
