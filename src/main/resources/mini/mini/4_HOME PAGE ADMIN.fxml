@@ -210,22 +210,22 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label25" layoutX="354.0" layoutY="71.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="0">
+                  <Label fx:id="label25" layoutX="354.0" layoutY="71.0" prefHeight="18.0" prefWidth="14.0" style="-fx-background-color: white;" text="0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label100" layoutX="346.0" layoutY="332.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="0">
+                  <Label fx:id="label100" layoutX="347.0" layoutY="332.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label38" layoutX="354.0" layoutY="242.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="0">
+                  <Label fx:id="label38" layoutX="354.0" layoutY="242.0" prefHeight="18.0" prefWidth="14.0" style="-fx-background-color: white;" text="0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label99" layoutX="354.0" layoutY="153.0" prefHeight="16.0" prefWidth="22.0" style="-fx-background-color: white;" text="0">
+                  <Label fx:id="label99" layoutX="354.0" layoutY="153.0" prefHeight="18.0" prefWidth="14.0" style="-fx-background-color: white;" text="0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

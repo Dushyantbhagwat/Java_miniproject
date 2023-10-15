@@ -95,25 +95,25 @@ public class patientDetailsController implements Initializable {
     private TableColumn<AdminPatient, String> tablecolumnage; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumnbloodgroup"
-    private TableColumn<AdminPatient,LocalDate> tablecolumnbloodgroup; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, LocalDate> tablecolumnbloodgroup; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumncontactno"
-    private TableColumn<AdminPatient,String> tablecolumncontactno; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> tablecolumncontactno; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumncontactno1"
-    private TableColumn<AdminPatient,String> tablecolumncontactno1; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> tablecolumncontactno1; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumncontactno2"
-    private TableColumn<AdminPatient,String> tablecolumncontactno2; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> tablecolumncontactno2; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumncontactno3"
-    private TableColumn<?,?> tablecolumncontactno3; // Value injected by FXMLLoader
+    private TableColumn<?, ?> tablecolumncontactno3; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumnname"
-    private TableColumn<AdminPatient,String> tablecolumnname; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> tablecolumnname; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumnname1"
-    private TableColumn<AdminPatient,String> tablecolumnname1; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> tablecolumnname1; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableview"
     private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
@@ -125,7 +125,8 @@ public class patientDetailsController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert anchorpaneP != null : "fx:id=\"anchorpaneP\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert anchorpaneSP != null : "fx:id=\"anchorpaneSP\" was not injected: check your FXML file '6_patientdetails.fxml'.";
@@ -155,35 +156,34 @@ public class patientDetailsController implements Initializable {
     ObservableList<AdminPatient> AdminPatientObservableList = FXCollections.observableArrayList();
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
+        Image backImage1 = new Image(backFile1.toURI().toString());
+        iamgehome.setImage(backImage1);
 
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-            File backFile1 = new File("im/WhatsApp Image 2023-09-02 at 22.25.59.jpg");
-            Image backImage1 = new Image(backFile1.toURI().toString());
-            iamgehome.setImage(backImage1);
+        File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
+        Image backImage2 = new Image(backFile2.toURI().toString());
+        imagedonor.setImage(backImage2);
 
-            File backFile2 = new File("im/WhatsApp Image 2023-09-02 at 22.25.5.jpg");
-            Image backImage2 = new Image(backFile2.toURI().toString());
-            imagedonor.setImage(backImage2);
+        File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
+        Image backImage3 = new Image(backFile3.toURI().toString());
+        iamgepatient.setImage(backImage3);
 
-            File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
-            Image backImage3 = new Image(backFile3.toURI().toString());
-            iamgepatient.setImage(backImage3);
-
-            // Set the custom cell factory for the button column
-            buttonColumn.setCellFactory(param -> new ButtonCell());
+        // Set the custom cell factory for the button column
+        buttonColumn.setCellFactory(param -> new ButtonCell());
 
 //            acceptButton.setDisable(true);
 //            rejectButton.setDisable(true);
 
-                try {
-                    display();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    // Handle any exceptions here
-                }
-
+        try {
+            display();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any exceptions here
         }
+
+    }
 
 
 

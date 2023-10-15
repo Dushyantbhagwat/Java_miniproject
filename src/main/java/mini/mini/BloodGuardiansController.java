@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,8 +30,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.util.StringConverter;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BloodGuardiansController implements Initializable {
 
@@ -203,6 +199,7 @@ public class BloodGuardiansController implements Initializable {
     private Scene scene;
 
 
+
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -338,7 +335,103 @@ public class BloodGuardiansController implements Initializable {
 
         });
 
+
+        int tr1 = updateLabelsFromDatabase("A+");
+        label75.setText(String.valueOf(tr1));
+        int tr2 = updateLabelsFromDatabase("B+");
+        label0.setText(String.valueOf(tr2));
+        int tr3 = updateLabelsFromDatabase("O+");
+        label5.setText(String.valueOf(tr3));
+        int tr4 = updateLabelsFromDatabase("AB+");
+        label7.setText(String.valueOf(tr4));
+        int tr5 = updateLabelsFromDatabase("A-");
+        label78.setText(String.valueOf(tr5));
+        int tr6 = updateLabelsFromDatabase("B-");
+        label87.setText(String.valueOf(tr6));
+        int tr7 = updateLabelsFromDatabase("O-");
+        label2.setText(String.valueOf(tr7));
+        int tr8 = updateLabelsFromDatabase("AB-");
+        label1.setText(String.valueOf(tr8));
+
+
+        int rowCount1 = countRowsInDatabase1();
+        label25.setText( "" + rowCount1);
+
+        int rowCount2 = countRowsInDatabase2();
+        label99.setText( "" + rowCount2);
+
+
     }
+    private int updateLabelsFromDatabase(String bloodGroup) {
+        // Replace with your database connection details
+        String url = "jdbc:mysql://localhost:3306/mini_project";
+        String username = "root";
+        String password = "haunting363@";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT SUM(quantity) FROM blood_quantities WHERE blood_group = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            // Set the parameter for the WHERE clause
+            preparedStatement.setString(1, bloodGroup);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+
+
+    private int countRowsInDatabase1() {
+        // Replace with your database connection details
+        String url = "jdbc:mysql://localhost:3306/mini_project";
+        String username = "root";
+        String password = "haunting363@";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(donor_id) FROM donor";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1); // Get the count from the first column
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if there's an error
+    }
+
+
+    private int countRowsInDatabase2() {
+        // Replace with your database connection details
+        String url = "jdbc:mysql://localhost:3306/mini_project";
+        String username = "root";
+        String password = "haunting363@";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(patient_id) FROM patient_table";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1); // Get the count from the first column
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if there's an error
+    }
+
 
 
     @FXML
