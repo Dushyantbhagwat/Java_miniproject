@@ -66,8 +66,7 @@
                                 <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
                             </image>
                         </ImageView>
-                  <Button fx:id="refresh" layoutX="108.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" style="-fx-background-radius: 8;" text="Refresh" />
-                  <Button fx:id="pdf1" layoutX="5.0" layoutY="353.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="90.0" style="-fx-background-radius: 8;" text="Open Report" />
+                  <Button fx:id="pdf1" layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="90.0" style="-fx-background-radius: 8;" text="Open Report" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="anchorpanelARH" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="737.0">

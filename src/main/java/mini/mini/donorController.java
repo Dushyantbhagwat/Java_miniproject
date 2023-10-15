@@ -267,7 +267,7 @@ public class donorController implements Initializable {
 
     @FXML
     void LogoutButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
