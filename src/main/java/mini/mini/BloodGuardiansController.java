@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -199,7 +202,9 @@ public class BloodGuardiansController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert Abga != null : "fx:id=\"Abga\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
         assert Abgm != null : "fx:id=\"Abgm\" was not injected: check your FXML file '4_HOME PAGE ADMIN.fxml'.";
@@ -336,7 +341,6 @@ public class BloodGuardiansController implements Initializable {
     }
 
 
-
     @FXML
     void addButtonOnAction(ActionEvent event) {
         try {
@@ -399,8 +403,6 @@ public class BloodGuardiansController implements Initializable {
     }
 
 
-
-
     void updateUI(String selectedOption, int increaseAmount) {
         switch (selectedOption) {
             // Update the corresponding UI labels here
@@ -410,7 +412,26 @@ public class BloodGuardiansController implements Initializable {
             case "B+":
                 label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
                 break;
-            // Add cases for other blood groups
+            case "O+":
+                label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
+                break;
+            case "AB+":
+                label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
+                break;
+            case "A-":
+                label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
+                break;
+            case "B-":
+                label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
+                break;
+            case "O-":
+                label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
+                break;
+            case "AB-":
+                label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
+                break;
+
+
         }
 
         // Update the total label
@@ -418,168 +439,50 @@ public class BloodGuardiansController implements Initializable {
     }
 
 
+    @FXML
+    void DonorButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
+    }
 
+    @FXML
+    void LogoutButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Logout");
+    }
 
+    @FXML
+    void PatientButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("6_patientdetails.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Patient");
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        // Database connection fields
-//        private Connection connectDB;
-//
-//        // Map to store blood group quantities
-//        private Map<String, Integer> bloodGroupQuantities;
-//
-//        // Labels for displaying quantities
-//
-//        public BloodGuardiansController() {
-//            // Initialize the map and database connection
-//            bloodGroupQuantities = new HashMap<>();
-//            connectToDatabase();
-//        }
-//
-//        private void connectToDatabase() {
-//            try {
-//                // Initialize your database connection here (e.g., JDBC connection)
-//                String url = "jdbc:mysql://localhost:3306/mini_project";
-//                String username = "root";
-//                String password = "haunting363@";
-//                connectDB = DriverManager.getConnection(url, username, password);
-//
-//                // Load blood group quantities from the database
-//                loadBloodGroupQuantitiesFromDatabase();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        private void loadBloodGroupQuantitiesFromDatabase() {
-//            try {
-//                String query = "SELECT blood_group, quantity FROM blood_quantities";
-//                Statement statement = connectDB.createStatement();
-//                ResultSet resultSet = statement.executeQuery(query);
-//
-//                while (resultSet.next()) {
-//                    String bloodGroup = resultSet.getString("blood_group");
-//                    int quantity = resultSet.getInt("quantity");
-//                    bloodGroupQuantities.put(bloodGroup, quantity);
-//                }
-//
-//                // Update the UI labels with loaded quantities
-//                updateUIWithLoadedQuantities();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        private void updateUIWithLoadedQuantities() {
-//            // Update your UI labels (e.g., labelAPlus, labelBPlus, etc.) with loaded quantities
-//            label75.setText(String.valueOf(bloodGroupQuantities.get("A+")));
-//            label0.setText(String.valueOf(bloodGroupQuantities.get("B+")));
-//            label5.setText(String.valueOf(bloodGroupQuantities.get("O+")));
-//            label7.setText(String.valueOf(bloodGroupQuantities.get("AB+")));
-//            label78.setText(String.valueOf(bloodGroupQuantities.get("A-")));
-//            label87.setText(String.valueOf(bloodGroupQuantities.get("B-")));
-//            label2.setText(String.valueOf(bloodGroupQuantities.get("O-")));
-//            label1.setText(String.valueOf(bloodGroupQuantities.get("AB-")));
-//        }
-//
-//
-//        public void addButttonOnAction(String selectedOption, int increaseAmount) {
-//            if (bloodGroupQuantities.containsKey(selectedOption)) {
-//                int currentValue = bloodGroupQuantities.get(selectedOption);
-//                int newValue = currentValue + increaseAmount;
-//
-//                // Update the map with the new quantity
-//                bloodGroupQuantities.put(selectedOption, newValue);
-//
-//                // Update the database with the new quantity
-//                updateDatabase(selectedOption, newValue);
-//
-//                // Update the UI label
-//                updateUILabel(selectedOption, newValue);
-//            } else {
-//                System.out.println("Invalid blood group selected.");
-//            }
-//        }
-//
-//        private void updateDatabase(String bloodGroup, int newQuantity) {
-//            try {
-//                String query = "UPDATE blood_quantities SET quantity = ? WHERE blood_group = ?";
-//                PreparedStatement preparedStatement = connectDB.prepareStatement(query);
-//                preparedStatement.setInt(1, newQuantity);
-//                preparedStatement.setString(2, bloodGroup);
-//                preparedStatement.executeUpdate();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        private void updateUILabel(String bloodGroup, int newQuantity) {
-//            // Update the corresponding UI label with the new quantity
-//            switch (bloodGroup) {
-//                case "A+":
-//                    label75.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "B+":
-//                    label0.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "O+":
-//                    label5.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "AB+":
-//                    label7.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "A-":
-//                    label78.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "B-":
-//                    label87.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "O-":
-//                    label2.setText(String.valueOf(newQuantity));
-//                    break;
-//                case "AB-":
-//                    label1.setText(String.valueOf(newQuantity));
-//                    break;
-//            }
-//        }
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -757,65 +660,3 @@ public class BloodGuardiansController implements Initializable {
 //            System.out.println("Invalid input");
 //        }
 //    }
-
-         @FXML
-        void DonorButtonOnAction (ActionEvent event){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Donor");
-        }
-
-        @FXML
-        void LogoutButtonOnAction (ActionEvent event){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminlogin.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Logout");
-        }
-
-        @FXML
-        void PatientButtonOnAction (ActionEvent event){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("6_patientdetails.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-            stage.setTitle("Patient");
-        }
-
-
-
-
-//        @FXML
-//        void bloodrequestsButtonOnAction (ActionEvent event){
-//            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
-//            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            try {
-//                scene = new Scene(fxmlLoader.load());
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//            stage.setScene(scene);
-//            stage.show();
-//            stage.setTitle("BloodRequest");
-//        }
-
-}
