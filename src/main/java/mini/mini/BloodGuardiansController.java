@@ -16,17 +16,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
 import javafx.util.StringConverter;
 
 import java.sql.*;
@@ -361,6 +357,10 @@ public class BloodGuardiansController implements Initializable {
         label1.setText(String.valueOf(tr8));
 
 
+        int tr9 = TotalDatabase();
+        label100.setText(String.valueOf(tr9));
+
+
         int rowCount1 = countRowsInDatabase1();
         label25.setText( "" + rowCount1);
 
@@ -393,6 +393,26 @@ public class BloodGuardiansController implements Initializable {
         return 0;
     }
 
+    private int TotalDatabase() {
+        // Replace with your database connection details
+        String url = "jdbc:mysql://localhost:3306/mini_project";
+        String username = "root";
+        String password = "haunting363@";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT SUM(quantity) FROM blood_quantities";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1); // Get the count from the first column
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if there's an error
+    }
 
 
 
@@ -503,40 +523,59 @@ public class BloodGuardiansController implements Initializable {
     }
 
 
-    void updateUI(String selectedOption, int increaseAmount) {
-        switch (selectedOption) {
-            // Update the corresponding UI labels here
-            case "A+":
-                label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
-                break;
-            case "B+":
-                label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
-                break;
-            case "O+":
-                label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
-                break;
-            case "AB+":
-                label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
-                break;
-            case "A-":
-                label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
-                break;
-            case "B-":
-                label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
-                break;
-            case "O-":
-                label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
-                break;
-            case "AB-":
-                label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
-                break;
 
+void updateUI(String selectedOption, int increaseAmount) {
+    int currentTotal = Integer.parseInt(label100.getText());
+    int updatedTotal = currentTotal + increaseAmount;
 
-        }
-
-        // Update the total label
-        label100.setText(String.valueOf(Integer.parseInt(label100.getText()) + increaseAmount));
+    // Check if any of the labels have a value of zero
+    if (Integer.parseInt(label75.getText()) == 0 ||
+            Integer.parseInt(label0.getText()) == 0 ||
+            Integer.parseInt(label5.getText()) == 0 ||
+            Integer.parseInt(label7.getText()) == 0 ||
+            Integer.parseInt(label78.getText()) == 0 ||
+            Integer.parseInt(label87.getText()) == 0 ||
+            Integer.parseInt(label2.getText()) == 0 ||
+            Integer.parseInt(label1.getText()) == 0) {
     }
+
+    // Check if the updated total becomes negative
+    if (updatedTotal < 0) {
+        System.out.println("Invalid input: Total quantity can't be negative.");
+        return; // Don't update the labels or total
+    }
+
+    // Now, update the corresponding UI labels
+    switch (selectedOption) {
+        case "A+":
+            label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
+            break;
+        case "B+":
+            label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
+            break;
+        case "O+":
+            label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
+            break;
+        case "AB+":
+            label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
+            break;
+        case "A-":
+            label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
+            break;
+        case "B-":
+            label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
+            break;
+        case "O-":
+            label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
+            break;
+        case "AB-":
+            label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
+            break;
+    }
+
+    // Update the total label
+    label100.setText(String.valueOf(updatedTotal));
+}
 
 
     @FXML

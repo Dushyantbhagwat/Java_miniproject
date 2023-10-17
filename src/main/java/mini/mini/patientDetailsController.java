@@ -26,12 +26,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -113,7 +110,7 @@ public class patientDetailsController implements Initializable {
     private TableColumn<AdminPatient, String> tablecolumnname; // Value injected by FXMLLoader
 
     @FXML // fx:id="tablecolumnname1"
-    private TableColumn<AdminPatient, String> tablecolumnname1; // Value injected by FXMLLoader
+    private TableColumn<AdminPatient, String> buttonColumn1; // Value injected by FXMLLoader
 
     @FXML // fx:id="tableview"
     private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
@@ -124,6 +121,8 @@ public class patientDetailsController implements Initializable {
 
     private Stage stage;
     private Scene scene;
+
+
 
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
@@ -193,9 +192,11 @@ public class patientDetailsController implements Initializable {
                 DatabaseConnection connectNow = new DatabaseConnection();
                 Connection connectDB = connectNow.getConnection();
 
-                String refreshQuery = "SELECT patient_table.patient_id, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
+                String refreshQuery = "SELECT patient_table.patient_id, patient_table.request_date, users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
                         "FROM users " +
-                        "INNER JOIN patient_table ON users.user_id = patient_table.user_id";
+                        "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
+                        "WHERE action = 'Request is in Progress......'";
+
 
                 try {
 
@@ -213,10 +214,17 @@ public class patientDetailsController implements Initializable {
                         String query_Dob = queryOutput.getString("dob");
                         System.out.println("query_Dob: " + query_Dob);
 
-
                         LocalDate dob = LocalDate.parse(query_Dob);
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
                         String formatted_Dob = dob.format(formatter);
+
+                        String query_Dob1 = queryOutput.getString("request_date");
+
+                        LocalDate request_date = LocalDate.parse(query_Dob1);
+                        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        String formatted_Dob1 = request_date.format(formatter1);
+
+
 
                         String queryContactno = queryOutput.getString("phone_number");
 
@@ -227,7 +235,7 @@ public class patientDetailsController implements Initializable {
                         byte[] pdfData = queryOutput.getBytes("report");
 
 
-                        AdminPatientObservableList.add(new AdminPatient(userId, query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
+                        AdminPatientObservableList.add(new AdminPatient(userId, query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData, formatted_Dob1));
                     }
 
                     tablecolumnname.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -237,6 +245,7 @@ public class patientDetailsController implements Initializable {
                     tablecolumncontactno1.setCellValueFactory(new PropertyValueFactory<>("email_id"));
                     tablecolumncontactno2.setCellValueFactory(new PropertyValueFactory<>("address"));
                     tablecolumncontactno3.setCellValueFactory(new PropertyValueFactory<>("report"));
+                    buttonColumn1.setCellValueFactory(new PropertyValueFactory<>("request_date"));
                     tableview.setItems(AdminPatientObservableList);
 
                 } catch (SQLException e) {
@@ -247,13 +256,15 @@ public class patientDetailsController implements Initializable {
             }
 
 
+
+
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
         String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
         // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
         try {
             java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
-//
+
 //            acceptButton.setDisable(false);
 //            rejectButton.setDisable(false);
 
@@ -262,9 +273,6 @@ public class patientDetailsController implements Initializable {
             // Handling any exceptions here
         }
     }
-
-
-
 
 
     @FXML

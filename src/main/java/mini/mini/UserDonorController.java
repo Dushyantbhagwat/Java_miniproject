@@ -9,8 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -121,12 +124,14 @@ import javafx.stage.Stage;
             if (loggedInUserId != -1) {
                 try {
 
-                    String insertFields = "insert into patient_table(user_id) values ('";
-                    String inserValues = loggedInUserId + "')";
-                    String insertToRegister5 = insertFields + inserValues;
+                    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
-                    Statement statement = connectDB.createStatement();
-                    statement.executeUpdate(insertToRegister5);
+                    String insertToRegister5 = "INSERT INTO patient_table (user_id, request_date) VALUES (?, ?)";
+
+                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+                    preparedStatement.setInt(1, loggedInUserId);
+                    preparedStatement.setDate(2, currentDate);
+                    preparedStatement.executeUpdate();
 
                     message.setText("You  request for blood has been made!");
 

@@ -32,7 +32,7 @@
    <left>
       <VBox prefHeight="420.0" prefWidth="147.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="148.0" style="-fx-background-color: #5A5A5A;">
+            <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="139.0" style="-fx-background-color: #5A5A5A;">
                <children>
                   <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="125.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Home">
                      <font>
@@ -82,14 +82,15 @@
    <center>
       <TableView fx:id="tableview" prefHeight="420.0" prefWidth="826.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="tablecolumnname" prefWidth="102.40008848905563" text="NAME" />
-            <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="68.80000305175781" text="DOB" />
-            <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="103.99998474121094" text="BLOOD GROUP" />
-            <TableColumn fx:id="tablecolumncontactno" minWidth="0.0" prefWidth="104.79998779296875" text="CONTACT NO." />
-            <TableColumn fx:id="tablecolumncontactno1" minWidth="0.0" prefWidth="108.0" text="EMAIL ID" />
-            <TableColumn fx:id="tablecolumncontactno2" minWidth="0.0" prefWidth="138.4000244140625" text="ADDRESS" />
-            <TableColumn fx:id="tablecolumncontactno3" minWidth="0.0" prefWidth="84.0" text="REPORT" />
-            <TableColumn fx:id="buttonColumn" prefWidth="144.0000457763672" text="ACTION" />
+            <TableColumn fx:id="tablecolumnname" prefWidth="85.59997862577438" text="NAME" />
+            <TableColumn fx:id="tablecolumnbloodgroup" minWidth="1.60003662109375" prefWidth="78.40003967285156" text="DOB" />
+            <TableColumn fx:id="tablecolumnage" minWidth="0.0" prefWidth="96.79998779296875" text="BLOOD GROUP" />
+            <TableColumn fx:id="tablecolumncontactno" minWidth="0.0" prefWidth="87.99998474121094" text="CONTACT NO." />
+            <TableColumn fx:id="tablecolumncontactno1" minWidth="0.0" prefWidth="80.79998779296875" text="EMAIL ID" />
+            <TableColumn fx:id="tablecolumncontactno2" minWidth="0.0" prefWidth="88.0" text="ADDRESS" />
+            <TableColumn fx:id="tablecolumncontactno3" minWidth="0.0" prefWidth="69.5999755859375" text="REPORT" />
+            <TableColumn fx:id="buttonColumn" prefWidth="137.60003662109375" text="ACTION" />
+            <TableColumn fx:id="buttonColumn1" prefWidth="122.4000244140625" text="Date of request" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

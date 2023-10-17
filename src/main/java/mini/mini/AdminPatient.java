@@ -16,6 +16,7 @@ public class AdminPatient  {
 
     byte[] report;
 
+    String request_date;
     private boolean reportOpened;
 
 
@@ -28,7 +29,7 @@ public class AdminPatient  {
     }
 
 
-    public AdminPatient(int patient_id,String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
+    public AdminPatient(int patient_id,String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report, String request_date) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
@@ -38,6 +39,7 @@ public class AdminPatient  {
         this.report = report;
         this.patient_id=patient_id;
         this.reportOpened=reportOpened;
+        this.request_date=request_date;
     }
 
 
@@ -116,5 +118,11 @@ public class AdminPatient  {
         this.patient_id = patient_id;
     }
 
+    public String getRequest_date() {
+        return request_date;
+    }
 
+    public void setRequest_date(String request_date) {
+        this.request_date = request_date;
+    }
 }
