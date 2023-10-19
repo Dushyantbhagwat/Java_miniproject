@@ -74,6 +74,14 @@
                      </image>
                   </ImageView>
                   <Button layoutX="25.0" layoutY="382.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 8;" text="Open Report" />
+                  <Button fx:id="buttonpatient1" blendMode="OVERLAY" layoutY="275.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="history">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

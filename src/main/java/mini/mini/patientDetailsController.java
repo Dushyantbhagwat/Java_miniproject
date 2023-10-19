@@ -67,6 +67,9 @@ public class patientDetailsController implements Initializable {
     @FXML // fx:id="buttonpatient"
     private Button buttonpatient; // Value injected by FXMLLoader
 
+    @FXML // fx:id="buttonpatient"
+    private Button buttonpatient1; // Value injected by FXMLLoader
+
     @FXML // fx:id="iamgebloodrequest"
     private ImageView iamgebloodrequest; // Value injected by FXMLLoader
 
@@ -134,6 +137,7 @@ public class patientDetailsController implements Initializable {
         assert buttonhome != null : "fx:id=\"buttonhome\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert buttonlogout != null : "fx:id=\"buttonlogout\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert buttonpatient != null : "fx:id=\"buttonpatient\" was not injected: check your FXML file '6_patientdetails.fxml'.";
+        assert buttonpatient1 != null : "fx:id=\"buttonpatient\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert iamgebloodrequest != null : "fx:id=\"iamgebloodrequest\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert iamgehome != null : "fx:id=\"iamgehome\" was not injected: check your FXML file '6_patientdetails.fxml'.";
         assert iamgepatient != null : "fx:id=\"iamgepatient\" was not injected: check your FXML file '6_patientdetails.fxml'.";
@@ -249,7 +253,7 @@ public class patientDetailsController implements Initializable {
                     tableview.setItems(AdminPatientObservableList);
 
                 } catch (SQLException e) {
-                    Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(patientDetailsController.class.getName()).log(Level.SEVERE, null, e);
                     e.printStackTrace();
                 }
 
@@ -317,7 +321,19 @@ public class patientDetailsController implements Initializable {
         stage.show();
         stage.setTitle("Login");
     }
-
+    @FXML
+    void RequestHistoryButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Login");
+    }
 
 
 }
