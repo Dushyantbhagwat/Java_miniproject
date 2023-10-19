@@ -5,7 +5,8 @@ public class AdminPatientHistory {
 
     private int patient_id;
 
-    String name;
+     String name;
+
     String dob;
 
     String bloodgroup;
@@ -45,7 +46,7 @@ public class AdminPatientHistory {
     }
 
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
@@ -61,7 +62,7 @@ public class AdminPatientHistory {
         this.dob = dob;
     }
 
-    public String getBloodgroup() {
+    public  String getBloodgroup() {
         return bloodgroup;
     }
 

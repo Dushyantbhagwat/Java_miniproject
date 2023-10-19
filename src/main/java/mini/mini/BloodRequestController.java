@@ -21,16 +21,15 @@ import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -108,12 +107,16 @@ public class BloodRequestController implements Initializable {
     @FXML // fx:id="tableview"
     private TableView<AdminPatientHistory> tableview; // Value injected by FXMLLoader
 
+
+    @FXML // fx:id="searching"
+    private TextField searching; // Value injected by FXMLLoader
+
     private Stage stage;
     private Scene scene;
 
     @FXML
     void DonorButtonOnAction(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
@@ -289,6 +292,38 @@ public class BloodRequestController implements Initializable {
             buttonColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
             buttonColumn1.setCellValueFactory(new PropertyValueFactory<>("request_date"));
             tableview.setItems(AdminPatientHistoryObservableList);
+
+            FilteredList<AdminPatientHistory> filteredData = new FilteredList<>(AdminPatientHistoryObservableList, b -> true);
+
+            searching.textProperty().addListener((observable, oldValue, newValue) -> {
+
+                filteredData.setPredicate(AdminPatientHistory -> {
+
+                    if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
+                        return true;
+                    }
+
+
+                    String searchKeyword = newValue.toLowerCase();
+
+                    if (AdminPatientHistory.getName().toLowerCase().indexOf(searchKeyword) > -1) {
+                        return true;
+                    } else if (AdminPatientHistory.getBloodgroup().toLowerCase().indexOf(searchKeyword) > -1) {
+                        return true;
+                    } else if (AdminPatientHistory.getDob().toString().indexOf(searchKeyword) > -1) {
+                        return true;
+                    } else
+
+                    return false;
+                });
+            });
+
+            SortedList<AdminPatientHistory> sortedData = new SortedList<>(filteredData);
+
+            sortedData.comparatorProperty().bind(tableview.comparatorProperty());
+
+
+            tableview.setItems(sortedData);
 
         } catch (SQLException e) {
             Logger.getLogger(BloodRequestController.class.getName()).log(Level.SEVERE, null, e);
