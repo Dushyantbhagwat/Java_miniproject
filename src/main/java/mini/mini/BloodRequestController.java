@@ -5,6 +5,9 @@
 package mini.mini;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +23,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -108,22 +113,56 @@ public class BloodRequestController implements Initializable {
 
     @FXML
     void DonorButtonOnAction(ActionEvent event) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Donor");
     }
 
     @FXML
     void HomeButtonOnAction(ActionEvent event) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("4_HOME PAGE ADMIN.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("HomePage_Admin");
     }
 
     @FXML
     void LogoutButtonOnAction(ActionEvent event) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("2_coomon_login_page.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Logout");
     }
 
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
-
+        String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
+        // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
+        try {
+            java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            // Handling any exceptions here
+        }
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -194,7 +233,7 @@ public class BloodRequestController implements Initializable {
         String refreshQuery = "SELECT patient_table.patient_id, patient_table.action, patient_table.request_date, users.name, users.dob, users.email_id, users.phone_number, users.address, users.bloodgroup, users.report " +
                 "FROM users " +
                 "INNER JOIN patient_table ON users.user_id = patient_table.user_id " +
-                "WHERE action = 'YES'";
+                "WHERE action != 'Request is in Progress......'";
 
 
         try {
