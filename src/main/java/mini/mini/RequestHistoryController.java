@@ -18,17 +18,15 @@ import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -114,6 +112,9 @@ public class RequestHistoryController implements Initializable {
 
     @FXML // fx:id="tableView"
     private TableView<Refresh> tableView; // Value injected by FXMLLoader
+
+    @FXML // fx:id="searching"
+    private TextField searching; // Value injected by FXMLLoader
 
     private Stage stage;
     private Scene scene;
@@ -214,6 +215,32 @@ public class RequestHistoryController implements Initializable {
                     TcolumnReport1.setCellValueFactory(new PropertyValueFactory<>("action"));
 
                     tableView.setItems(RefreshObservableList);
+
+
+                    FilteredList<Refresh> filteredData = new FilteredList<>(RefreshObservableList, b -> true);
+
+                    searching.textProperty().addListener((observable, oldValue, newValue) -> {
+                        filteredData.setPredicate(refresh -> {
+                            if (newValue == null || newValue.trim().isEmpty()) {
+                                return true; // No filter, show all items
+                            }
+
+                            String lowerCaseKeyword = newValue.toLowerCase();
+
+                            return  refresh.getName().toLowerCase().contains(lowerCaseKeyword) ||
+                                    refresh.getBloodgroup().toLowerCase().contains(lowerCaseKeyword) ||
+                                    refresh.getDob().toString().contains(lowerCaseKeyword) ||
+                                    refresh.getReport().toString().contains(lowerCaseKeyword)||
+                                    refresh.getAction().toLowerCase().contains(lowerCaseKeyword);
+                        });
+                    });
+
+                    SortedList<Refresh> sortedData = new SortedList<>(filteredData);
+
+                    sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+
+                    tableView.setItems(sortedData);
+
                 } catch (SQLException e) {
                     Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
                     e.printStackTrace();

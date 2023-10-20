@@ -66,6 +66,14 @@
                         <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.59.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="buttonpatient1" blendMode="OVERLAY" layoutY="257.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="180.0" text="History">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="434.0" style="-fx-background-color: D3D3D3;">

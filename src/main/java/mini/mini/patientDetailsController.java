@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,6 +120,8 @@ public class patientDetailsController implements Initializable {
     @FXML // fx:id="tableview"
     private TableView<AdminPatient> tableview; // Value injected by FXMLLoader
 
+    @FXML // fx:id="searching"
+    private TextField searching; // Value injected by FXMLLoader
 
     @FXML
     private TableColumn<AdminPatient, Void> buttonColumn;
@@ -252,6 +256,34 @@ public class patientDetailsController implements Initializable {
                     buttonColumn1.setCellValueFactory(new PropertyValueFactory<>("request_date"));
                     tableview.setItems(AdminPatientObservableList);
 
+                    FilteredList<AdminPatient> filteredData = new FilteredList<>(AdminPatientObservableList, b -> true);
+
+                    searching.textProperty().addListener((observable, oldValue, newValue) -> {
+                        filteredData.setPredicate(adminpatient -> {
+                            if (newValue == null || newValue.trim().isEmpty()) {
+                                return true; // No filter, show all items
+                            }
+
+                            String lowerCaseKeyword = newValue.toLowerCase();
+
+                            return adminpatient.getName().toLowerCase().contains(lowerCaseKeyword) ||
+                                    adminpatient.getBloodgroup().toLowerCase().contains(lowerCaseKeyword) ||
+                                    adminpatient.getDob().toString().contains(lowerCaseKeyword) ||
+                                    adminpatient.getAddress().toLowerCase().contains(lowerCaseKeyword) ||
+                                    adminpatient.getEmail_id().toLowerCase().contains(lowerCaseKeyword) ||
+                                    adminpatient.getPhone_number().toLowerCase().contains(lowerCaseKeyword) ||
+                                    adminpatient.getReport().toString().contains(lowerCaseKeyword) ||
+                                    adminpatient.getRequest_date().toString().contains(lowerCaseKeyword);
+                        });
+                    });
+
+                    SortedList<AdminPatient> sortedData = new SortedList<>(filteredData);
+
+                    sortedData.comparatorProperty().bind(tableview.comparatorProperty());
+
+                    tableview.setItems(sortedData);
+
+
                 } catch (SQLException e) {
                     Logger.getLogger(patientDetailsController.class.getName()).log(Level.SEVERE, null, e);
                     e.printStackTrace();
@@ -268,10 +300,6 @@ public class patientDetailsController implements Initializable {
         // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
         try {
             java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
-
-//            acceptButton.setDisable(false);
-//            rejectButton.setDisable(false);
-
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
             // Handling any exceptions here
@@ -283,9 +311,11 @@ public class patientDetailsController implements Initializable {
     void DonorButtonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -321,18 +351,23 @@ public class patientDetailsController implements Initializable {
         stage.show();
         stage.setTitle("Login");
     }
+
+
     @FXML
     void RequestHistoryButtonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Login");
+        stage.setTitle("Request History");
     }
 
 

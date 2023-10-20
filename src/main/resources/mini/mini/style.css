@@ -1,1 +1,10 @@
+/* Define styles for even rows */
+.table-row-cell:even {
+    -fx-background-color: lightgray;
+}
+
+/* Define styles for odd rows */
+.table-row-cell:odd {
+    -fx-background-color: white;
+}
 

@@ -115,11 +115,33 @@ public class BloodRequestController implements Initializable {
     private Scene scene;
 
     @FXML
+    void PatientButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("6_patientdetails.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Patient");
+    }
+
+
+
+    @FXML
     void DonorButtonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -159,7 +181,7 @@ public class BloodRequestController implements Initializable {
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
         String pdfUrl = "https://drive.google.com/file/d/1hcbjDsPC9p0on8c3C-ZdEoLWclyLzmpt/view?usp=drive_link";
-        // Replacing "YOUR_FILE_ID" with the actual ID of your Google Drive file
+        // Replacing "YOUR_FILE_ID" with thstyle.csse actual ID of your Google Drive file
         try {
             java.awt.Desktop.getDesktop().browse(new URI(pdfUrl));
         } catch (IOException | URISyntaxException e) {
@@ -212,7 +234,6 @@ public class BloodRequestController implements Initializable {
         File backFile3 = new File("im/WhatsApp Image 2023-09-02 at 22.25.56.jpg");
         Image backImage3 = new Image(backFile3.toURI().toString());
         iamgepatient.setImage(backImage3);
-
 
 
         try {
@@ -296,25 +317,22 @@ public class BloodRequestController implements Initializable {
             FilteredList<AdminPatientHistory> filteredData = new FilteredList<>(AdminPatientHistoryObservableList, b -> true);
 
             searching.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                filteredData.setPredicate(AdminPatientHistory -> {
-
-                    if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
-                        return true;
+                filteredData.setPredicate(adminPatientHistory -> {
+                    if (newValue == null || newValue.trim().isEmpty()) {
+                        return true; // No filter, show all items
                     }
 
+                    String lowerCaseKeyword = newValue.toLowerCase();
 
-                    String searchKeyword = newValue.toLowerCase();
-
-                    if (AdminPatientHistory.getName().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (AdminPatientHistory.getBloodgroup().toLowerCase().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else if (AdminPatientHistory.getDob().toString().indexOf(searchKeyword) > -1) {
-                        return true;
-                    } else
-
-                    return false;
+                    return adminPatientHistory.getName().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getBloodgroup().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getDob().toString().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getAction().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getAddress().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getEmail_id().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getPhone_number().toLowerCase().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getReport().toString().contains(lowerCaseKeyword) ||
+                            adminPatientHistory.getRequest_date().toString().contains(lowerCaseKeyword);
                 });
             });
 
@@ -322,8 +340,8 @@ public class BloodRequestController implements Initializable {
 
             sortedData.comparatorProperty().bind(tableview.comparatorProperty());
 
-
             tableview.setItems(sortedData);
+
 
         } catch (SQLException e) {
             Logger.getLogger(BloodRequestController.class.getName()).log(Level.SEVERE, null, e);

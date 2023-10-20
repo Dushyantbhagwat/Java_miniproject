@@ -191,6 +191,9 @@ public class BloodGuardiansController implements Initializable {
     @FXML // fx:id="totalunit1"
     private ImageView totalunit1; // Value injected by FXMLLoader
 
+    @FXML // fx:id="buttonpatient1"
+    private Button buttonpatient1; // Value injected by FXMLLoader
+
     private Stage stage;
     private Scene scene;
 
@@ -585,6 +588,9 @@ void updateUI(String selectedOption, int increaseAmount) {
 
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -613,12 +619,32 @@ void updateUI(String selectedOption, int increaseAmount) {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Patient");
+    }
+
+    @FXML
+    void RequestHistoryButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Request History");
     }
 
 }

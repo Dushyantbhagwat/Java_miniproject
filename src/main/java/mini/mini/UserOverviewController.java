@@ -112,6 +112,9 @@ public class UserOverviewController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

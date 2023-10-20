@@ -18,17 +18,15 @@ import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -83,6 +81,9 @@ public class donorController implements Initializable {
     @FXML // fx:id="anchorpanelP"
     private Button anchorpanelP; // Value injected by FXMLLoader
 
+    @FXML // fx:id="anchorpanelP"
+    private Button anchorpanelP1; // Value injected by FXMLLoader
+
     @FXML // fx:id="anchorpanelSP"
     private SplitPane anchorpanelSP; // Value injected by FXMLLoader
 
@@ -125,6 +126,8 @@ public class donorController implements Initializable {
     @FXML // fx:id="refresh"
     private Button refresh; // Value injected by FXMLLoader
 
+    @FXML // fx:id="searching"
+    private TextField searching; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
@@ -245,6 +248,35 @@ public class donorController implements Initializable {
 
             anchorpanelTV.setItems(AdminDonorObservableList);
 
+
+            FilteredList<AdminDonor> filteredData = new FilteredList<>(AdminDonorObservableList, b -> true);
+
+            searching.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(admindonor -> {
+                    if (newValue == null || newValue.trim().isEmpty()) {
+                        return true; // No filter, show all items
+                    }
+
+                    String lowerCaseKeyword = newValue.toLowerCase();
+
+                    return  admindonor.getName().toLowerCase().contains(lowerCaseKeyword) ||
+                            admindonor.getBloodgroup().toLowerCase().contains(lowerCaseKeyword) ||
+                            admindonor.getDob().toString().contains(lowerCaseKeyword) ||
+                            admindonor.getAddress().toLowerCase().contains(lowerCaseKeyword) ||
+                            admindonor.getEmail_id().toLowerCase().contains(lowerCaseKeyword) ||
+                            admindonor.getPhone_number().toLowerCase().contains(lowerCaseKeyword) ||
+                            admindonor.getReport().toString().contains(lowerCaseKeyword);
+                });
+            });
+
+            SortedList<AdminDonor> sortedData = new SortedList<>(filteredData);
+
+            sortedData.comparatorProperty().bind(anchorpanelTV.comparatorProperty());
+
+            anchorpanelTV.setItems(sortedData);
+
+
+
         } catch (SQLException e) {
             Logger.getLogger(RequestHistoryController.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
@@ -285,6 +317,9 @@ public class donorController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -293,19 +328,22 @@ public class donorController implements Initializable {
         stage.setTitle("Patient");
     }
 
-//    @FXML
-//    void bloodrequestsButtonOnAction(ActionEvent event) {
-//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        try {
-//            scene = new Scene(fxmlLoader.load());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        stage.setScene(scene);
-//        stage.show();
-//        stage.setTitle("BloodRequest");
-//    }
+    @FXML
+    void RequestHistoryButtonOnAction(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("7_bloodrequest.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            scene = new Scene(fxmlLoader.load());
+            // Load the CSS for the new scene
+            String cssPath = getClass().getResource("style.css").toExternalForm();
+            scene.getStylesheets().add(cssPath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Request History");
+    }
 
 }
 

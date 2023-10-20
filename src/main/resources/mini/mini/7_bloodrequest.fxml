@@ -51,7 +51,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="147.0" text="Patient">
+                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="225.0" mnemonicParsing="false" onAction="#PatientButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Patient">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
