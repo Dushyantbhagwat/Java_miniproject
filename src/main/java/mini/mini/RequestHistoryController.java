@@ -196,7 +196,7 @@ public class RequestHistoryController implements Initializable {
                         String queryDob = queryOutput.getString("dob");
 
                         LocalDate dob = LocalDate.parse(queryDob);
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy");
                         String formatted_Dob = dob.format(formatter);
 
                         String queryBloodgroup = queryOutput.getString("bloodgroup");

@@ -74,6 +74,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <ImageView fx:id="iamgepatient1" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="15.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.58.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="434.0" style="-fx-background-color: D3D3D3;">

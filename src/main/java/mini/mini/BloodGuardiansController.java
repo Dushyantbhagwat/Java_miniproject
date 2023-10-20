@@ -122,6 +122,10 @@ public class BloodGuardiansController implements Initializable {
     @FXML // fx:id="iamgepatient"
     private ImageView iamgepatient; // Value injected by FXMLLoader
 
+
+    @FXML // fx:id="iamgepatient"
+    private ImageView iamgepatient1; // Value injected by FXMLLoader
+
     @FXML // fx:id="imagedonor"
     private ImageView imagedonor; // Value injected by FXMLLoader
 
@@ -319,6 +323,10 @@ public class BloodGuardiansController implements Initializable {
         File backFile16 = new File("im/WhatsApp Image 2023-09-02 .jpg");
         Image backImage16 = new Image(backFile16.toURI().toString());
         totalunit1.setImage(backImage16);
+
+        File backFile17 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+        Image backImage17 = new Image(backFile17.toURI().toString());
+        iamgepatient1.setImage(backImage17);
 
         bloodgroup.getItems().addAll("A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-");
         bloodgroup.setConverter(new StringConverter<String>() {

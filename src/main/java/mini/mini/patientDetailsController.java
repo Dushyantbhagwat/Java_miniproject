@@ -81,6 +81,9 @@ public class patientDetailsController implements Initializable {
     @FXML // fx:id="iamgepatient"
     private ImageView iamgepatient; // Value injected by FXMLLoader
 
+    @FXML // fx:id="iamgepatient"
+    private ImageView iamgepatient1; // Value injected by FXMLLoader
+
     @FXML // fx:id="imagedonor"
     private ImageView imagedonor; // Value injected by FXMLLoader
 
@@ -177,6 +180,11 @@ public class patientDetailsController implements Initializable {
         Image backImage3 = new Image(backFile3.toURI().toString());
         iamgepatient.setImage(backImage3);
 
+        File backFile17 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+        Image backImage17 = new Image(backFile17.toURI().toString());
+        iamgepatient1.setImage(backImage17);
+
+
         // Set the custom cell factory for the button column
         buttonColumn.setCellFactory(param -> new ButtonCell());
 
@@ -223,7 +231,7 @@ public class patientDetailsController implements Initializable {
                         System.out.println("query_Dob: " + query_Dob);
 
                         LocalDate dob = LocalDate.parse(query_Dob);
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy");
                         String formatted_Dob = dob.format(formatter);
 
                         String query_Dob1 = queryOutput.getString("request_date");

@@ -35,7 +35,7 @@
          <children>
             <AnchorPane fx:id="anchorpaneSP" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="139.0" style="-fx-background-color: #5A5A5A;">
                <children>
-                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="125.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Home">
+                  <Button fx:id="buttonhome" blendMode="OVERLAY" layoutY="103.0" mnemonicParsing="false" onAction="#HomeButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Home">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="175.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Donor">
+                  <Button fx:id="buttondonor" blendMode="OVERLAY" layoutY="153.0" mnemonicParsing="false" onAction="#DonorButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="Donor">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="147.0" text="Patient">
+                  <Button fx:id="buttonpatient" blendMode="OVERLAY" layoutY="203.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="147.0" text="Patient">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -59,23 +59,23 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="136.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="iamgehome" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="118.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.59.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="185.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="imagedonor" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="166.0" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.5.jpg" />
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.5.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="11.0" layoutY="237.0" pickOnBounds="true">
+                  <ImageView fx:id="iamgepatient" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="11.0" layoutY="218.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../../im/WhatsApp%20Image%202023-09-02%20at%2022.25.56.jpg" />
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.56.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="25.0" layoutY="382.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 8;" text="Open Report" />
-                  <Button fx:id="buttonpatient1" blendMode="OVERLAY" layoutY="275.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="history">
+                  <Button layoutX="26.0" layoutY="389.0" mnemonicParsing="false" onAction="#PdfopnerOnAction" prefHeight="26.0" prefWidth="85.0" style="-fx-background-radius: 8;" text="Open Report" />
+                  <Button fx:id="buttonpatient1" blendMode="OVERLAY" layoutY="253.0" mnemonicParsing="false" onAction="#RequestHistoryButtonOnAction" prefHeight="50.0" prefWidth="147.0" text="history">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -83,7 +83,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField fx:id="searching" layoutX="28.0" layoutY="51.0" prefHeight="26.0" prefWidth="90.0" promptText="search" />
+                  <TextField fx:id="searching" layoutX="1.0" layoutY="344.0" prefHeight="26.0" prefWidth="145.0" promptText="search" style="-fx-background-radius: 10;" />
+                  <ImageView fx:id="iamgepatient1" blendMode="MULTIPLY" fitHeight="24.0" fitWidth="26.0" layoutX="10.0" layoutY="265.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../im/WhatsApp Image 2023-09-02 at 22.25.58.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

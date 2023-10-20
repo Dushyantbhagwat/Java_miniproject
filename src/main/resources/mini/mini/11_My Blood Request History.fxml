@@ -67,7 +67,7 @@
                         <Image url="@../../../AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/FB2FCD534B0FF3BBED73CC51DF620323/WhatsApp%20Image%202023-09-02%20at%2022.25.59.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="searching" layoutX="14.0" layoutY="345.0" prefHeight="26.0" prefWidth="143.0" promptText="search" />
+                  <TextField fx:id="searching" layoutX="16.0" layoutY="345.0" prefHeight="26.0" prefWidth="143.0" promptText="search........" style="-fx-background-radius: 10;" />
                </children>
             </AnchorPane>
           <AnchorPane fx:id="UnderLabelAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="610.0" style="-fx-background-color: white;">

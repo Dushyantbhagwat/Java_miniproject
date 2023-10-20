@@ -77,6 +77,9 @@ public class BloodRequestController implements Initializable {
     @FXML // fx:id="iamgepatient"
     private ImageView iamgepatient; // Value injected by FXMLLoader
 
+    @FXML // fx:id="iamgepatient"
+    private ImageView iamgepatient1; // Value injected by FXMLLoader
+
     @FXML // fx:id="imagedonor"
     private ImageView imagedonor; // Value injected by FXMLLoader
 
@@ -235,6 +238,10 @@ public class BloodRequestController implements Initializable {
         Image backImage3 = new Image(backFile3.toURI().toString());
         iamgepatient.setImage(backImage3);
 
+        File backFile17 = new File("im/WhatsApp Image 2023-09-02 at 22.25.58.jpg");
+        Image backImage17 = new Image(backFile17.toURI().toString());
+        iamgepatient1.setImage(backImage17);
+
 
         try {
             display2();
@@ -277,7 +284,7 @@ public class BloodRequestController implements Initializable {
                 System.out.println("query_Dob: " + query_Dob);
 
                 LocalDate dob = LocalDate.parse(query_Dob);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
                 String formatted_Dob = dob.format(formatter);
 
 
@@ -285,7 +292,7 @@ public class BloodRequestController implements Initializable {
                 String query_Dob1 = queryOutput.getString("request_date");
 
                 LocalDate request_date = LocalDate.parse(query_Dob1);
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyy");
                 String formatted_Dob1 = request_date.format(formatter1);
 
 
