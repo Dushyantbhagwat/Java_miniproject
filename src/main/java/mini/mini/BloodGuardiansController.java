@@ -556,60 +556,158 @@ public class BloodGuardiansController implements Initializable {
         }
     }
 
+    void updateUI(String selectedOption, int increaseAmount) {
+        int currentTotal = Integer.parseInt(label100.getText());
+        int updatedTotal = currentTotal + increaseAmount;
 
+        // Check if the updated total becomes negative
+        if (updatedTotal < 0) {
+            System.out.println("Invalid input: Total quantity can't be negative.");
+            showAlert("Invalid Input", "Total quantity can't be negative.");
+            return; // Don't update the labels or total
+        }
 
-void updateUI(String selectedOption, int increaseAmount) {
-    int currentTotal = Integer.parseInt(label100.getText());
-    int updatedTotal = currentTotal + increaseAmount;
+        // Now, update the corresponding UI labels
+        switch (selectedOption) {
+            case "A+":
+                int newAPlusValue = Integer.parseInt(label75.getText()) + increaseAmount;
+                if (newAPlusValue >= 0) {
+                    label75.setText(String.valueOf(newAPlusValue));
+                } else {
+                    System.out.println("Invalid input: A+ quantity can't be negative.");
+                    showAlert("Invalid Input", "A+ quantity can't be negative.");
+                }
+                break;
+            case "B+":
+                int newBPlusValue = Integer.parseInt(label0.getText()) + increaseAmount;
+                if (newBPlusValue >= 0) {
+                    label0.setText(String.valueOf(newBPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "O+":
+                int newOPlusValue = Integer.parseInt(label5.getText()) + increaseAmount;
+                if (newOPlusValue >= 0) {
+                    label5.setText(String.valueOf(newOPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "AB+":
+                int newABPlusValue = Integer.parseInt(label7.getText()) + increaseAmount;
+                if (newABPlusValue >= 0) {
+                    label7.setText(String.valueOf(newABPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "A-":
+                int newaPlusValue = Integer.parseInt(label78.getText()) + increaseAmount;
+                if (newaPlusValue >= 0) {
+                    label78.setText(String.valueOf(newaPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "B-":
+                int newbPlusValue = Integer.parseInt(label87.getText()) + increaseAmount;
+                if (newbPlusValue >= 0) {
+                    label87.setText(String.valueOf(newbPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "O-":
+                int newoPlusValue = Integer.parseInt(label2.getText()) + increaseAmount;
+                if (newoPlusValue >= 0) {
+                    label2.setText(String.valueOf(newoPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+            case "AB-":
+                int newabPlusValue = Integer.parseInt(label1.getText()) + increaseAmount;
+                if (newabPlusValue >= 0) {
+                    label1.setText(String.valueOf(newabPlusValue));
+                } else {
+                    System.out.println("Invalid input: B+ quantity can't be negative.");
+                    showAlert("Invalid Input", "B+ quantity can't be negative.");
+                }
+                break;
+        }
 
-    // Check if any of the labels have a value of zero
-    if (Integer.parseInt(label75.getText()) == 0 ||
-            Integer.parseInt(label0.getText()) == 0 ||
-            Integer.parseInt(label5.getText()) == 0 ||
-            Integer.parseInt(label7.getText()) == 0 ||
-            Integer.parseInt(label78.getText()) == 0 ||
-            Integer.parseInt(label87.getText()) == 0 ||
-            Integer.parseInt(label2.getText()) == 0 ||
-            Integer.parseInt(label1.getText()) == 0) {
+        // Update the total label
+        label100.setText(String.valueOf(updatedTotal));
     }
 
-    // Check if the updated total becomes negative
-    if (updatedTotal < 0) {
-        System.out.println("Invalid input: Total quantity can't be negative.");
-        return; // Don't update the labels or total
+    void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    // Now, update the corresponding UI labels
-    switch (selectedOption) {
-        case "A+":
-            label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
-            break;
-        case "B+":
-            label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
-            break;
-        case "O+":
-            label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
-            break;
-        case "AB+":
-            label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
-            break;
-        case "A-":
-            label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
-            break;
-        case "B-":
-            label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
-            break;
-        case "O-":
-            label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
-            break;
-        case "AB-":
-            label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
-            break;
-    }
 
-    // Update the total label
-    label100.setText(String.valueOf(updatedTotal));
-}
+//void updateUI(String selectedOption, int increaseAmount) {
+//    int currentTotal = Integer.parseInt(label100.getText());
+//    int updatedTotal = currentTotal + increaseAmount;
+//
+//    // Check if any of the labels have a value of zero
+//    if (Integer.parseInt(label75.getText()) == 0 ||
+//            Integer.parseInt(label0.getText()) == 0 ||
+//            Integer.parseInt(label5.getText()) == 0 ||
+//            Integer.parseInt(label7.getText()) == 0 ||
+//            Integer.parseInt(label78.getText()) == 0 ||
+//            Integer.parseInt(label87.getText()) == 0 ||
+//            Integer.parseInt(label2.getText()) == 0 ||
+//            Integer.parseInt(label1.getText()) == 0) {
+//    }
+//
+//    // Check if the updated total becomes negative
+//    if (updatedTotal < 0) {
+//        System.out.println("Invalid input: Total quantity can't be negative.");
+//        return; // Don't update the labels or total
+//    }
+//
+//    // Now, update the corresponding UI labels
+//    switch (selectedOption) {
+//        case "A+":
+//            label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
+//            break;
+//        case "B+":
+//            label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
+//            break;
+//        case "O+":
+//            label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
+//            break;
+//        case "AB+":
+//            label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
+//            break;
+//        case "A-":
+//            label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
+//            break;
+//        case "B-":
+//            label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
+//            break;
+//        case "O-":
+//            label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
+//            break;
+//        case "AB-":
+//            label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
+//            break;
+//    }
+//
+//    // Update the total label
+//    label100.setText(String.valueOf(updatedTotal));
+//}
 
 
     @FXML
