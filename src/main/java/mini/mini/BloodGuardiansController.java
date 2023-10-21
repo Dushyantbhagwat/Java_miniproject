@@ -378,6 +378,8 @@ public class BloodGuardiansController implements Initializable {
         int rowCount2 = countRowsInDatabase2();
         label99.setText( "" + rowCount2);
 
+        int rowCount3 = countRowsInDatabase3();
+        label38.setText("" + rowCount3);
 
     }
     private int updateLabelsFromDatabase(String bloodGroup) {
@@ -456,7 +458,28 @@ public class BloodGuardiansController implements Initializable {
         String password = "haunting363@";
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "SELECT COUNT(patient_id) FROM patient_table";
+            String query = "SELECT COUNT(patient_id) FROM patient_table where action='Request is in Progress......'";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1); // Get the count from the first column
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if there's an error
+    }
+
+    private int countRowsInDatabase3() {
+        // Replace with your database connection details
+        String url = "jdbc:mysql://localhost:3306/mini_project";
+        String username = "root";
+        String password = "haunting363@";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(patient_id) FROM patient_table WHERE action='YES'";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
