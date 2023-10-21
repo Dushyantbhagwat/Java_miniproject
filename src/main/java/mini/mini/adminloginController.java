@@ -86,13 +86,13 @@ public class adminloginController implements Initializable {
 
     }
 
-    public void loginOnAction(ActionEvent e) throws SQLException {
-        if (usernametext.getText().isBlank() == false && passwordtext.getText().isBlank() == false) {
-            validatelogin(e);
-        } else {
-            diplaymessage.setText("Please enter your username and password");
-        }
-    }
+//    public void loginOnAction(ActionEvent e) throws SQLException {
+//        if (usernametext.getText().isBlank() == false && passwordtext.getText().isBlank() == false) {
+//            validatelogin(e);
+//        } else {
+//            diplaymessage.setText("Please enter your username and password");
+//        }
+//    }
 
 
     public void validatelogin(ActionEvent e) throws RuntimeException {

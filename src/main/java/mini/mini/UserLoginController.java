@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-
+import org.mindrot.jbcrypt.BCrypt;
 /**
  * Sample Skeleton for '2_coomon login page.fxml' Controller Class
  */
@@ -85,6 +85,48 @@ public class UserLoginController implements Initializable {
 
 
 
+//    public void loginButtonOnAction(ActionEvent e) throws SQLException {
+//        if (!username.getText().isBlank() && !password.getText().isBlank()) {
+//            int userId = authenticateUser(username.getText(), password.getText()); // Retrieve user ID
+//            if (userId != -1) {
+//                String loggedInUsername = username.getText(); // Get the username from the input field
+//                AuthService.getInstance().login(userId, loggedInUsername);
+//                changeSceneToDashboard(e);
+//            } else {
+//                message.setText("Invalid username or password");
+//            }
+//        } else {
+//            message.setText("Please enter your username and password");
+//        }
+//    }
+//
+    public int authenticateUser(String username, String providedPassword) {
+        int userId = -1;
+        DatabaseConnection connection = new DatabaseConnection();
+        Connection connection1 = connection.getConnection();
+
+        String verifyLogin = "SELECT user_id, password FROM users WHERE email_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection1.prepareStatement(verifyLogin);
+            preparedStatement.setString(1, username);
+
+            ResultSet queryResult = preparedStatement.executeQuery();
+
+            if (queryResult.next()) {
+                String storedPassword = queryResult.getString("password");
+
+                if (BCrypt.checkpw(providedPassword, storedPassword)) {
+                    // Passwords match
+                    userId = queryResult.getInt("user_id");
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return userId;
+    }
     public void loginButtonOnAction(ActionEvent e) throws SQLException {
         if (!username.getText().isBlank() && !password.getText().isBlank()) {
             int userId = authenticateUser(username.getText(), password.getText()); // Retrieve user ID
@@ -108,48 +150,48 @@ public class UserLoginController implements Initializable {
 
 
 
-    public int authenticateUser(String username, String password) {
-        int userId=-1;
-        DatabaseConnection connection = new DatabaseConnection();
-        Connection connection1 = connection.getConnection();
-
-
-
-
-        String verifyLogin = "SELECT user_id FROM users WHERE email_id = ? AND password = ?";
-
-        try {
-            PreparedStatement preparedStatement = connection1.prepareStatement(verifyLogin);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-
-            ResultSet queryResult = preparedStatement.executeQuery();
-
-            if (queryResult.next()) {
-
-                // Store the user ID in CurrentUser or another appropriate location
-//                userId = queryResult.getInt("user_id");
-                return queryResult.getInt("user_id");
-//                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
-//                stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-//                try {
-//                    scene = new Scene(fxmlLoader.load());
-//                } catch (IOException event) {
-//                    throw new RuntimeException(String.valueOf(e));
-//                }
-//                stage.setScene(scene);
-//                stage.show();
-//                stage.setTitle("Dashboard");
-            } else {
-                return -1;
-//                message.setText("Invalid Credentials");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return -1;
-        }
-//        return userId;
-    }
+//    public int authenticateUser(String username, String password) {
+//        int userId=-1;
+//        DatabaseConnection connection = new DatabaseConnection();
+//        Connection connection1 = connection.getConnection();
+//
+//
+//
+//
+//        String verifyLogin = "SELECT user_id FROM users WHERE email_id = ? AND password = ?";
+//
+//        try {
+//            PreparedStatement preparedStatement = connection1.prepareStatement(verifyLogin);
+//            preparedStatement.setString(1, username);
+//            preparedStatement.setString(2, password);
+//
+//            ResultSet queryResult = preparedStatement.executeQuery();
+//
+//            if (queryResult.next()) {
+//
+//                // Store the user ID in CurrentUser or another appropriate location
+////                userId = queryResult.getInt("user_id");
+//                return queryResult.getInt("user_id");
+////                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+////                stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+////                try {
+////                    scene = new Scene(fxmlLoader.load());
+////                } catch (IOException event) {
+////                    throw new RuntimeException(String.valueOf(e));
+////                }
+////                stage.setScene(scene);
+////                stage.show();
+////                stage.setTitle("Dashboard");
+//            } else {
+//                return -1;
+////                message.setText("Invalid Credentials");
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//            return -1;
+//        }
+////        return userId;
+//    }
 
 
 
