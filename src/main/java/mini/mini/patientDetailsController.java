@@ -4,7 +4,9 @@ package mini.mini;
  * Sample Skeleton for 'patient_details.fxml' Controller Class
  */
 
+import java.awt.*;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -31,6 +33,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -298,9 +303,6 @@ public class patientDetailsController implements Initializable {
                 }
 
             }
-
-
-
 
     @FXML
     void PdfopnerOnAction(ActionEvent event) {
