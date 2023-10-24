@@ -656,60 +656,6 @@ public class BloodGuardiansController implements Initializable {
     }
 
 
-//void updateUI(String selectedOption, int increaseAmount) {
-//    int currentTotal = Integer.parseInt(label100.getText());
-//    int updatedTotal = currentTotal + increaseAmount;
-//
-//    // Check if any of the labels have a value of zero
-//    if (Integer.parseInt(label75.getText()) == 0 ||
-//            Integer.parseInt(label0.getText()) == 0 ||
-//            Integer.parseInt(label5.getText()) == 0 ||
-//            Integer.parseInt(label7.getText()) == 0 ||
-//            Integer.parseInt(label78.getText()) == 0 ||
-//            Integer.parseInt(label87.getText()) == 0 ||
-//            Integer.parseInt(label2.getText()) == 0 ||
-//            Integer.parseInt(label1.getText()) == 0) {
-//    }
-//
-//    // Check if the updated total becomes negative
-//    if (updatedTotal < 0) {
-//        System.out.println("Invalid input: Total quantity can't be negative.");
-//        return; // Don't update the labels or total
-//    }
-//
-//    // Now, update the corresponding UI labels
-//    switch (selectedOption) {
-//        case "A+":
-//            label75.setText(String.valueOf(Integer.parseInt(label75.getText()) + increaseAmount));
-//            break;
-//        case "B+":
-//            label0.setText(String.valueOf(Integer.parseInt(label0.getText()) + increaseAmount));
-//            break;
-//        case "O+":
-//            label5.setText(String.valueOf(Integer.parseInt(label5.getText()) + increaseAmount));
-//            break;
-//        case "AB+":
-//            label7.setText(String.valueOf(Integer.parseInt(label7.getText()) + increaseAmount));
-//            break;
-//        case "A-":
-//            label78.setText(String.valueOf(Integer.parseInt(label78.getText()) + increaseAmount));
-//            break;
-//        case "B-":
-//            label87.setText(String.valueOf(Integer.parseInt(label87.getText()) + increaseAmount));
-//            break;
-//        case "O-":
-//            label2.setText(String.valueOf(Integer.parseInt(label2.getText()) + increaseAmount));
-//            break;
-//        case "AB-":
-//            label1.setText(String.valueOf(Integer.parseInt(label1.getText()) + increaseAmount));
-//            break;
-//    }
-//
-//    // Update the total label
-//    label100.setText(String.valueOf(updatedTotal));
-//}
-
-
     @FXML
     void DonorButtonOnAction(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("5_donor details.fxml"));
