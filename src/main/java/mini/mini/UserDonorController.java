@@ -86,8 +86,8 @@ import javafx.stage.Stage;
 
         }
 
+        public void donateButtonOnAction(ActionEvent actionEventevrnt) throws SQLException{
 
-        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException {
 
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
@@ -96,14 +96,16 @@ import javafx.stage.Stage;
             if (loggedInUserId != -1) {
                 try {
 
-                    String insertFields = "insert into donor(user_id) values ('";
-                    String inserValues = loggedInUserId + "')";
-                    String insertToRegister5 = insertFields + inserValues;
+                    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
-                    Statement statement = connectDB.createStatement();
-                    statement.executeUpdate(insertToRegister5);
+                    String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
 
-                    message.setText("You  request to donate  blood has been made!");
+                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+                    preparedStatement.setInt(1, loggedInUserId);
+                    preparedStatement.setDate(2, currentDate);
+                    preparedStatement.executeUpdate();
+
+                    message.setText("You request for blood has been made!");
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -111,8 +113,35 @@ import javafx.stage.Stage;
             } else {
                 System.out.println("error");
             }
-
         }
+
+
+//        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException {
+//
+//            DatabaseConnection connectNow = new DatabaseConnection();
+//            Connection connectDB = connectNow.getConnection();
+//
+//            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+//            if (loggedInUserId != -1) {
+//                try {
+//
+//                    String insertFields = "insert into donor(user_id, request_date) values ('";
+//                    String inserValues = loggedInUserId + "')";
+//                    String insertToRegister5 = insertFields + inserValues;
+//
+//                    Statement statement = connectDB.createStatement();
+//                    statement.executeUpdate(insertToRegister5);
+//
+//                    message.setText("You request to donate blood has been made!");
+//
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            } else {
+//                System.out.println("error");
+//            }
+//
+//        }
 
         public void requestbuttonOnAction(ActionEvent actionEventevrnt) throws SQLException{
 
@@ -133,7 +162,7 @@ import javafx.stage.Stage;
                     preparedStatement.setDate(2, currentDate);
                     preparedStatement.executeUpdate();
 
-                    message.setText("You  request for blood has been made!");
+                    message.setText("You request for blood has been made!");
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -155,7 +184,7 @@ import javafx.stage.Stage;
             }
             stage.setScene(scene);
             stage.show();
-            stage.setTitle("Donor");
+            stage.setTitle("Login");
 
         }
 
@@ -170,7 +199,7 @@ import javafx.stage.Stage;
             }
             stage.setScene(scene);
             stage.show();
-            stage.setTitle("Donor");
+            stage.setTitle("Home");
 
 
         }

@@ -67,7 +67,7 @@ public class RulesController implements Initializable {
     @FXML
     void closeOnAction(ActionEvent event) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("9_patientoverview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("12_DONOR PAGE.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             scene = new Scene(fxmlLoader.load());
@@ -76,7 +76,7 @@ public class RulesController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Rules");
+        stage.setTitle("Donor");
 
     }
 

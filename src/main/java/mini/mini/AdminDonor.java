@@ -13,8 +13,10 @@ public class AdminDonor {
 
     byte[] report;
 
+    String request_date;
 
-    public AdminDonor(String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report) {
+
+    public AdminDonor(String name, String dob, String bloodgroup, String phone_number,String email_id, String address, byte[] report, String request_date) {
         this.name = name;
         this.dob = dob;
         this.bloodgroup = bloodgroup;
@@ -22,6 +24,7 @@ public class AdminDonor {
         this.email_id = email_id;
         this.address = address;
         this.report = report;
+        this.request_date = request_date;
     }
 
     public String getName() {
@@ -80,4 +83,11 @@ public class AdminDonor {
         this.report = report;
     }
 
+    public String getRequest_date() {
+        return request_date;
+    }
+
+    public void setRequest_date(String request_date) {
+        this.request_date = request_date;
+    }
 }

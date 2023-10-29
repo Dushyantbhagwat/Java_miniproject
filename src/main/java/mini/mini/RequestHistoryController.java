@@ -290,7 +290,7 @@ public class RequestHistoryController implements Initializable {
                 }
                 stage.setScene(scene);
                 stage.show();
-                stage.setTitle("Donor");
+                stage.setTitle("History");
 
 
             }
@@ -321,7 +321,7 @@ public class RequestHistoryController implements Initializable {
                 }
                 stage.setScene(scene);
                 stage.show();
-                stage.setTitle("Donor");
+                stage.setTitle("Login");
 
             }
 

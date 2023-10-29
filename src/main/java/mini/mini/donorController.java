@@ -108,6 +108,9 @@ public class donorController implements Initializable {
     @FXML // fx:id="anchorpanelTCA11"
     private TableColumn<AdminDonor, String> anchorpanelTCA11; // Value injected by FXMLLoader
 
+    @FXML // fx:id="anchorpanelTCA11"
+    private TableColumn<AdminDonor, String> anchorpanelTCA111; // Value injected by FXMLLoader
+
     @FXML // fx:id="anchorpanelTV"
     private TableView<AdminDonor> anchorpanelTV; // Value injected by FXMLLoader
 
@@ -211,7 +214,7 @@ public class donorController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report " +
+        String refreshQuery = "SELECT users.name, users.email_id, users.phone_number, users.address, users.bloodgroup, users.dob, users.report, donor.request_date " +
                 "FROM users " +
                 "INNER JOIN donor ON users.user_id = donor.user_id";
 
@@ -242,8 +245,14 @@ public class donorController implements Initializable {
 
                 byte[] pdfData = queryOutput.getBytes("report");
 
+                String query_Dob1 = queryOutput.getString("request_date");
 
-                AdminDonorObservableList.add(new AdminDonor(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData));
+                LocalDate request_date = LocalDate.parse(query_Dob1);
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyy");
+                String formatted_Dob1 = request_date.format(formatter1);
+
+
+                AdminDonorObservableList.add(new AdminDonor(query_Name, formatted_Dob, queryBlood_group, queryContactno, queryEmail, queryAddress, pdfData, formatted_Dob1));
             }
 
            anchorpanelTCN .setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -253,6 +262,7 @@ public class donorController implements Initializable {
             anchorpanelTCA.setCellValueFactory(new PropertyValueFactory<>("email_id"));
             anchorpanelTCA1.setCellValueFactory(new PropertyValueFactory<>("address"));
             anchorpanelTCA11.setCellValueFactory(new PropertyValueFactory<>("report"));
+            anchorpanelTCA111.setCellValueFactory(new PropertyValueFactory<>("request_date"));
 
             anchorpanelTV.setItems(AdminDonorObservableList);
 
@@ -273,7 +283,9 @@ public class donorController implements Initializable {
                             admindonor.getAddress().toLowerCase().contains(lowerCaseKeyword) ||
                             admindonor.getEmail_id().toLowerCase().contains(lowerCaseKeyword) ||
                             admindonor.getPhone_number().toLowerCase().contains(lowerCaseKeyword) ||
-                            admindonor.getReport().toString().contains(lowerCaseKeyword);
+                            admindonor.getReport().toString().contains(lowerCaseKeyword) ||
+                            admindonor.getRequest_date().toString().contains(lowerCaseKeyword) ;
+
                 });
             });
 

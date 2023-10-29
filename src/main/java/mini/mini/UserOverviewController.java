@@ -135,7 +135,7 @@ public class UserOverviewController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Donor");
+        stage.setTitle("Home");
 
     }
 
@@ -152,7 +152,7 @@ public class UserOverviewController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Donor");
+        stage.setTitle("Login");
 
     }
 
@@ -166,9 +166,8 @@ public class UserOverviewController implements Initializable {
             throw new RuntimeException(e);
         }
         stage.setScene(scene);
-//        scene.getStylesheets().add("/style.css");
         stage.show();
-        stage.setTitle("Donor");
+        stage.setTitle("History");
 
     }
 

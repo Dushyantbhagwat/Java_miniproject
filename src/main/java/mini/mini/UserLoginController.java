@@ -84,22 +84,6 @@ public class UserLoginController implements Initializable {
     }
 
 
-
-//    public void loginButtonOnAction(ActionEvent e) throws SQLException {
-//        if (!username.getText().isBlank() && !password.getText().isBlank()) {
-//            int userId = authenticateUser(username.getText(), password.getText()); // Retrieve user ID
-//            if (userId != -1) {
-//                String loggedInUsername = username.getText(); // Get the username from the input field
-//                AuthService.getInstance().login(userId, loggedInUsername);
-//                changeSceneToDashboard(e);
-//            } else {
-//                message.setText("Invalid username or password");
-//            }
-//        } else {
-//            message.setText("Please enter your username and password");
-//        }
-//    }
-//
     public int authenticateUser(String username, String providedPassword) {
         int userId = -1;
         DatabaseConnection connection = new DatabaseConnection();
@@ -240,7 +224,7 @@ public class UserLoginController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Dashboard");
+        stage.setTitle("Home");
         }
 
 
@@ -269,7 +253,7 @@ public class UserLoginController implements Initializable {
         }
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("Register");
+        stage.setTitle("Password");
     }
 
     @FXML
