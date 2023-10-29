@@ -242,7 +242,7 @@ public class patientDetailsController implements Initializable {
                         String query_Dob1 = queryOutput.getString("request_date");
 
                         LocalDate request_date = LocalDate.parse(query_Dob1);
-                        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyy");
                         String formatted_Dob1 = request_date.format(formatter1);
 
 

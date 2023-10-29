@@ -493,8 +493,6 @@ public class BloodGuardiansController implements Initializable {
         return 0; // Return 0 if there's an error
     }
 
-
-
     @FXML
     void addButtonOnAction(ActionEvent event) {
         try {
