@@ -201,6 +201,7 @@ public class BloodGuardiansController implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    private boolean showAlertShown = false;
 
 
     @FXML
@@ -644,6 +645,8 @@ public class BloodGuardiansController implements Initializable {
         // Update the total label
         label100.setText(String.valueOf(updatedTotal));
     }
+
+
 
     void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
