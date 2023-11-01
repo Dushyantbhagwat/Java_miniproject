@@ -8,10 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -21,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -86,19 +84,31 @@ import javafx.stage.Stage;
 
         }
 
-        public void donateButtonOnAction(ActionEvent actionEventevrnt) throws SQLException{
-
-
+        public void donateButtonOnAction(ActionEvent actionEvent) throws SQLException {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
             int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+
             if (loggedInUserId != -1) {
                 try {
-
+                    // Get the current date
                     java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
-                    String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
+                    // Checking if there is a record with the same user_id and request_date
+                    String checkExistingRequest = "SELECT COUNT(*) FROM donor WHERE user_id = ? AND request_date = ?";
+                    PreparedStatement checkStatement = connectDB.prepareStatement(checkExistingRequest);
+                    checkStatement.setInt(1, loggedInUserId);
+                    checkStatement.setDate(2, currentDate);
+                    ResultSet resultSet = checkStatement.executeQuery();
+
+                    resultSet.next();
+                    int count = resultSet.getInt(1);
+
+                    if (count > 0) {
+                        showAlert("Request Already Made", "You've already made a request for blood today.");
+                    } else {
+                        String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
 
                     PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
                     preparedStatement.setInt(1, loggedInUserId);
@@ -106,14 +116,54 @@ import javafx.stage.Stage;
                     preparedStatement.executeUpdate();
 
                     message.setText("You request to donate blood has been made!");
-
-                } catch (SQLException e) {
+                }} catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             } else {
                 System.out.println("error");
             }
         }
+
+        private void showAlert(String title, String message) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
+
+
+
+
+
+//        public void donateButtonOnAction(ActionEvent actionEventevrnt) throws SQLException{
+//
+//
+//            DatabaseConnection connectNow = new DatabaseConnection();
+//            Connection connectDB = connectNow.getConnection();
+//
+//            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+//            if (loggedInUserId != -1) {
+//                try {
+//
+//                    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+//
+//                    String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
+//
+//                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+//                    preparedStatement.setInt(1, loggedInUserId);
+//                    preparedStatement.setDate(2, currentDate);
+//                    preparedStatement.executeUpdate();
+//
+//                    message.setText("You request to donate blood has been made!");
+//
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            } else {
+//                System.out.println("error");
+//            }
+//        }
 
 
 //        public void donateButtonOnAction(ActionEvent actionEventevent) throws SQLException {
