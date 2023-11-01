@@ -105,7 +105,7 @@ import javafx.stage.Stage;
                     preparedStatement.setDate(2, currentDate);
                     preparedStatement.executeUpdate();
 
-                    message.setText("You request for blood has been made!");
+                    message.setText("You request to donate blood has been made!");
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
