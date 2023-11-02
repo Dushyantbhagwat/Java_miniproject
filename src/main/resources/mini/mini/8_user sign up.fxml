@@ -60,7 +60,7 @@
          </font></TextArea>
       <DatePicker fx:id="date" layoutX="225.0" layoutY="242.0" prefHeight="26.0" prefWidth="314.0" promptText="yyyy-mm-dd" style="-fx-background-radius: 4;" />
       <ChoiceBox fx:id="bloodchoice" layoutX="226.0" layoutY="291.0" prefHeight="26.0" prefWidth="314.0" style="-fx-background-radius: 10;" />
-      <Button fx:id="REPORTFILES" layoutX="424.0" layoutY="549.0" mnemonicParsing="false" onAction="#filesetOnAction" prefHeight="26.0" prefWidth="119.0" style="-fx-background-radius: 10;" text="MEFDICAL REPORT" />
+      <Button fx:id="REPORTFILES" layoutX="424.0" layoutY="549.0" mnemonicParsing="false" onAction="#filesetOnAction" prefHeight="26.0" prefWidth="119.0" style="-fx-background-radius: 10;" text="MEDICAL REPORT" />
       <Label fx:id="nameLabel" layoutX="14.0" layoutY="89.0" prefHeight="18.0" prefWidth="178.0" />
       <Label fx:id="emailLabel" layoutX="27.0" layoutY="143.0" prefHeight="18.0" prefWidth="178.0" />
    </children>
