@@ -106,7 +106,7 @@ import javafx.stage.Stage;
                     int count = resultSet.getInt(1);
 
                     if (count > 0) {
-                        showAlert("Request Already Made", "You've already made a request for blood today.");
+                        showAlert("Request Already Made", "You've already made a request to donate blood today.");
                     } else {
                         String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
 
@@ -203,17 +203,33 @@ import javafx.stage.Stage;
             if (loggedInUserId != -1) {
                 try {
 
+                    // Get the current date
                     java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
-                    String insertToRegister5 = "INSERT INTO patient_table (user_id, request_date) VALUES (?, ?)";
+                    // Checking if there is a record with the same user_id and request_date
+                    String checkExistingRequest = "SELECT COUNT(*) FROM patient_table WHERE user_id = ? AND request_date = ?";
+                    PreparedStatement checkStatement = connectDB.prepareStatement(checkExistingRequest);
+                    checkStatement.setInt(1, loggedInUserId);
+                    checkStatement.setDate(2, currentDate);
+                    ResultSet resultSet = checkStatement.executeQuery();
 
-                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
-                    preparedStatement.setInt(1, loggedInUserId);
-                    preparedStatement.setDate(2, currentDate);
-                    preparedStatement.executeUpdate();
+                    resultSet.next();
 
-                    message.setText("You request for blood has been made!");
+                    int count = resultSet.getInt(1);
 
+                    if (count > 0) {
+                        showAlert("Request Already Made", "You've already made a request for blood today.");
+                    }else {
+
+                        String insertToRegister5 = "INSERT INTO patient_table (user_id, request_date) VALUES (?, ?)";
+
+                        PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+                        preparedStatement.setInt(1, loggedInUserId);
+                        preparedStatement.setDate(2, currentDate);
+                        preparedStatement.executeUpdate();
+
+                        message.setText("You request for blood has been made!");
+                    }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
