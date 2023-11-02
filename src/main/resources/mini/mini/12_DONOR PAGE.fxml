@@ -59,7 +59,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="message" layoutX="287.0" layoutY="570.0" prefHeight="20.0" prefWidth="318.0" textFill="#088f8f">
+                  <Label fx:id="message" layoutX="300.0" layoutY="570.0" prefHeight="20.0" prefWidth="300.0" textFill="#088f8f">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Label>
