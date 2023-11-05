@@ -66,7 +66,6 @@ import javafx.stage.Stage;
         @FXML
             // This method is called by the FXMLLoader when initialization is complete
         void initialize() {
-            assert Checkbox1 != null : "fx:id=\"Checkbox1\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert Checkbox2 != null : "fx:id=\"Checkbox2\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert DonateButton != null : "fx:id=\"DonateButton\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
             assert anchorpanelBG != null : "fx:id=\"anchorpanelBG\" was not injected: check your FXML file '12_DONOR PAGE (1).fxml'.";
