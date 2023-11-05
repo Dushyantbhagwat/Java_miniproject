@@ -38,8 +38,8 @@ import javafx.stage.Stage;
         @FXML // URL location of the FXML file that was given to the FXMLLoader
         private URL location;
 
-        @FXML // fx:id="Checkbox1"
-        private CheckBox Checkbox1; // Value injected by FXMLLoader
+//        @FXML // fx:id="Checkbox1"
+//        private CheckBox Checkbox1; // Value injected by FXMLLoader
 
         @FXML // fx:id="Checkbox2"
         private CheckBox Checkbox2; // Value injected by FXMLLoader
