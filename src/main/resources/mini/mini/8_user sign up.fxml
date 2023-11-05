@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpanescreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.userSignupController">
+<AnchorPane fx:id="anchorpanescreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mini.mini.userSignupController">
    <children>
-      <ImageView fx:id="fullbackgimage" fitHeight="600.0" fitWidth="724.0" layoutY="32.0" pickOnBounds="true" smooth="false">
+      <ImageView fx:id="fullbackgimage" fitHeight="628.0" fitWidth="724.0" layoutY="32.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../../../../../im/background.png" />
          </image>
@@ -26,21 +26,21 @@
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font></TextField>
-      <TextField fx:id="passwordtext" alignment="CENTER" layoutX="227.0" layoutY="449.0" prefHeight="34.0" prefWidth="314.0" promptText="         create password" style="-fx-background-radius: 10;">
+      <TextField fx:id="passwordtext" alignment="CENTER" layoutX="227.0" layoutY="447.0" prefHeight="34.0" prefWidth="314.0" promptText="         create password" style="-fx-background-radius: 10;">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font></TextField>
-      <TextField fx:id="confirmtext" alignment="CENTER" layoutX="227.0" layoutY="504.0" prefHeight="34.0" prefWidth="314.0" promptText="            confirm password" style="-fx-background-radius: 10;">
+      <TextField fx:id="confirmtext" alignment="CENTER" layoutX="227.0" layoutY="500.0" prefHeight="34.0" prefWidth="314.0" promptText="            confirm password" style="-fx-background-radius: 10;">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font></TextField>
-      <Button fx:id="signupbutton" layoutX="344.0" layoutY="594.0" mnemonicParsing="false" onAction="#signupOnAction" text="Sign up" />
+      <Button fx:id="signupbutton" layoutX="344.0" layoutY="601.0" mnemonicParsing="false" onAction="#signupOnAction" text="Sign up" />
       <Label fx:id="profiletext" layoutX="277.0" layoutY="43.0" prefHeight="27.0" prefWidth="172.0" text="           PROFILE" textFill="#0ca1c7">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="bloodguardianslabel" layoutX="-1.0" layoutY="-2.0" prefHeight="34.0" prefWidth="724.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="596.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label fx:id="bloodguardianslabel" layoutX="-1.0" layoutY="-2.0" prefHeight="34.0" prefWidth="724.0" style="-fx-background-color: black;" text="   BLOOD GUARDIANS                     " textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -54,13 +54,13 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <TextArea fx:id="addresstext" layoutX="225.0" layoutY="343.0" prefHeight="82.0" prefWidth="314.0" promptText="Resendential Address" style="-fx-background-radius: 10;">
+      <TextArea fx:id="addresstext" layoutX="225.0" layoutY="342.0" prefHeight="82.0" prefWidth="314.0" promptText="Resendential Address" style="-fx-background-radius: 10;">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font></TextArea>
       <DatePicker fx:id="date" layoutX="225.0" layoutY="242.0" prefHeight="26.0" prefWidth="314.0" promptText="yyyy-mm-dd" style="-fx-background-radius: 4;" />
       <ChoiceBox fx:id="bloodchoice" layoutX="226.0" layoutY="291.0" prefHeight="26.0" prefWidth="314.0" style="-fx-background-radius: 10;" />
-      <Button fx:id="REPORTFILES" layoutX="424.0" layoutY="549.0" mnemonicParsing="false" onAction="#filesetOnAction" prefHeight="26.0" prefWidth="119.0" style="-fx-background-radius: 10;" text="MEDICAL REPORT" />
+      <Button fx:id="REPORTFILES" layoutX="424.0" layoutY="548.0" mnemonicParsing="false" onAction="#filesetOnAction" prefHeight="26.0" prefWidth="119.0" style="-fx-background-radius: 10;" text="MEDICAL REPORT" />
       <Label fx:id="nameLabel" layoutX="14.0" layoutY="89.0" prefHeight="18.0" prefWidth="178.0" />
       <Label fx:id="emailLabel" layoutX="27.0" layoutY="143.0" prefHeight="18.0" prefWidth="178.0" />
    </children>

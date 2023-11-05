@@ -11,6 +11,7 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,6 +85,7 @@ import javafx.stage.Stage;
 
         }
 
+
         public void donateButtonOnAction(ActionEvent actionEvent) throws SQLException {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
@@ -95,34 +97,80 @@ import javafx.stage.Stage;
                     // Get the current date
                     java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
-                    // Checking if there is a record with the same user_id and request_date
-                    String checkExistingRequest = "SELECT COUNT(*) FROM donor WHERE user_id = ? AND request_date = ?";
+                    // Calculate the date 30 days ago
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(currentDate);
+                    cal.add(Calendar.DATE, -30);
+                    java.sql.Date thirtyDaysAgo = new java.sql.Date(cal.getTimeInMillis());
+
+                    // Check if there is a record with the same user_id and request_date within the last 30 days
+                    String checkExistingRequest = "SELECT COUNT(*) FROM donor WHERE user_id = ? AND request_date >= ?";
                     PreparedStatement checkStatement = connectDB.prepareStatement(checkExistingRequest);
                     checkStatement.setInt(1, loggedInUserId);
-                    checkStatement.setDate(2, currentDate);
+                    checkStatement.setDate(2, thirtyDaysAgo);
                     ResultSet resultSet = checkStatement.executeQuery();
 
                     resultSet.next();
                     int count = resultSet.getInt(1);
 
                     if (count > 0) {
-                        showAlert("Request Already Made", "You've already made a request to donate blood today.");
+                        showAlert("Request Not Allowed", "You must wait at least 30 days between donations.");
                     } else {
                         String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
+                        PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+                        preparedStatement.setInt(1, loggedInUserId);
+                        preparedStatement.setDate(2, currentDate);
+                        preparedStatement.executeUpdate();
 
-                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
-                    preparedStatement.setInt(1, loggedInUserId);
-                    preparedStatement.setDate(2, currentDate);
-                    preparedStatement.executeUpdate();
-
-                    message.setText("You request to donate blood has been made!");
-                }} catch (SQLException e) {
+                        message.setText("Your request to donate blood has been made!");
+                    }
+                } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             } else {
                 System.out.println("error");
             }
         }
+
+//        public void donateButtonOnAction(ActionEvent actionEvent) throws SQLException {
+//            DatabaseConnection connectNow = new DatabaseConnection();
+//            Connection connectDB = connectNow.getConnection();
+//
+//            int loggedInUserId = AuthService.getInstance().getLoggedInUserId();
+//
+//            if (loggedInUserId != -1) {
+//                try {
+//                    // Get the current date
+//                    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+//
+//                    // Checking if there is a record with the same user_id and request_date
+//                    String checkExistingRequest = "SELECT COUNT(*) FROM donor WHERE user_id = ? AND request_date = ?";
+//                    PreparedStatement checkStatement = connectDB.prepareStatement(checkExistingRequest);
+//                    checkStatement.setInt(1, loggedInUserId);
+//                    checkStatement.setDate(2, currentDate);
+//                    ResultSet resultSet = checkStatement.executeQuery();
+//
+//                    resultSet.next();
+//                    int count = resultSet.getInt(1);
+//
+//                    if (count > 0) {
+//                        showAlert("Request Already Made", "You've already made a request to donate blood today.");
+//                    } else {
+//                        String insertToRegister5 = "INSERT INTO donor (user_id, request_date) VALUES (?, ?)";
+//
+//                    PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister5);
+//                    preparedStatement.setInt(1, loggedInUserId);
+//                    preparedStatement.setDate(2, currentDate);
+//                    preparedStatement.executeUpdate();
+//
+//                    message.setText("You request to donate blood has been made!");
+//                }} catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            } else {
+//                System.out.println("error");
+//            }
+//        }
 
         private void showAlert(String title, String message) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -131,9 +179,6 @@ import javafx.stage.Stage;
             alert.setContentText(message);
             alert.showAndWait();
         }
-
-
-
 
 
 //        public void donateButtonOnAction(ActionEvent actionEventevrnt) throws SQLException{

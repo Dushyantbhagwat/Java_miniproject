@@ -81,8 +81,8 @@
                     <columns>
                       <TableColumn fx:id="TColumnPatientName" prefWidth="165.6000518798828" text="Patient Name" />
                       <TableColumn fx:id="TcolumnAge" prefWidth="120.800048828125" text="DOB" />
-                        <TableColumn fx:id="TColumnBloodgrp" prefWidth="118.39996337890625" text="Blood Group" />
-                        <TableColumn fx:id="TcolumnReport" prefWidth="278.40008544921875" text="Report" />
+                        <TableColumn fx:id="TColumnBloodgrp" prefWidth="142.39996337890625" text="Blood Group" />
+                        <TableColumn fx:id="TcolumnReport" prefWidth="143.20001220703125" text="Report" />
                         <TableColumn fx:id="TcolumnReport1" prefWidth="278.40008544921875" text="STATUS" />
                     </columns>
                      <columnResizePolicy>
